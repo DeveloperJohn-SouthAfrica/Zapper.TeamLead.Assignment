@@ -1,7 +1,6 @@
 # Summary & Reporting Domain Classes
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 classDiagram
     class DailySummaryService {
         +generateSummary(Date reportDate)
@@ -29,11 +28,6 @@ classDiagram
     DailySummaryService --> PaymentRepository
     DailySummaryService --> SummaryPresenter
     SummaryScheduler --> DailySummaryService
-    classDef service fill:#38bdf8,stroke:#0f172a,stroke-width:2px,color:#0c0e16,font-weight:600;
-    classDef helper fill:#a5b4fc,stroke:#312e81,stroke-width:2px,color:#0c0e16,font-weight:600;
-    class DailySummaryService service
-    class SummaryQueryBuilder,SummaryScheduler helper
-    class SummaryPresenter helper
 ```
 
 ## Notes

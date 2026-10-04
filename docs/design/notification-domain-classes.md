@@ -1,7 +1,6 @@
 # Notification Domain Classes
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 classDiagram
     class NotificationHandler {
         +handleNotification(NotificationEnvelope envelope)
@@ -54,15 +53,6 @@ classDiagram
     PaymentStateTransitionService --> PaymentRepository
     PaymentStateTransitionService --> DiagnosticsPublisher
     NotificationRepository --> NotificationDeduplicator
-    classDef handler fill:#fde68a,stroke:#92400e,stroke-width:2px,color:#0c0e16,font-weight:600;
-    classDef auth fill:#a5b4fc,stroke:#312e81,stroke-width:2px,color:#0c0e16,font-weight:600;
-    classDef verify fill:#34d399,stroke:#065f46,stroke-width:2px,color:#0c0e16,font-weight:600;
-    classDef service fill:#38bdf8,stroke:#0f172a,stroke-width:2px,color:#0c0e16,font-weight:600;
-    class NotificationHandler,PaymentAdviceHandler,TransactionStatusWebhookHandler handler
-    class NotificationRepository,PaymentStateTransitionService service
-    class NotificationDeduplicator service
-    class SignatureVerifier verify
-    class DiagnosticsPublisher auth
 ```
 
 ## Notes

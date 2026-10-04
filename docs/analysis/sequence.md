@@ -3,7 +3,6 @@
 ## 1. Payment submission flow
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'sequenceNumberColor': '#fb7185', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 sequenceDiagram
     participant App as Zapper\nApp
     participant API as Payment\nIntake
@@ -23,7 +22,6 @@ sequenceDiagram
 ## 2. Notification dedup/reordering
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'sequenceNumberColor': '#38bdf8', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 sequenceDiagram
     participant Acme as Acme\nStub
     participant Notify as Notification\nHandler
@@ -41,7 +39,6 @@ sequenceDiagram
 ## 3. Daily summary generation
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'sequenceNumberColor': '#f59e0b', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 sequenceDiagram
     participant Scheduler
     participant Summary as Summary\nService
@@ -57,7 +54,6 @@ sequenceDiagram
 ## 4. Payment Advice notification
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'sequenceNumberColor': '#fb7185', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 sequenceDiagram
     participant AcmeAdvice as Acme Payment\nAdvice
     participant AdviceEndpoint as Payment Advice\nEndpoint
@@ -77,7 +73,6 @@ sequenceDiagram
 ## 5. Transaction Status webhook (Reversals/Refunds)
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'sequenceNumberColor': '#10b981', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 sequenceDiagram
     participant AcmeSwitch as Acme Transaction\nStatus
     participant StatusWebhook as Transaction Status\nWebhook
@@ -96,7 +91,6 @@ sequenceDiagram
 ## 6. Real-time transaction query
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'edgeLabelBackground': '#e0f2fe', 'sequenceNumberColor': '#38bdf8', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 sequenceDiagram
     participant App as Zapper\nApp
     participant RTTQ as Real Time\nTransaction Query

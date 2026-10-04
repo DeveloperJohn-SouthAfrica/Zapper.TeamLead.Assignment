@@ -3,7 +3,6 @@
 ## Level 0 - Payment acceptance system
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'secondaryColor': '#fb7185', 'tertiaryColor': '#38bdf8', 'edgeLabelBackground': '#e0f2fe', 'nodeBorder': '#030712', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 flowchart LR
     subgraph External Actors
         App["Zapper\nApp"]:::actor

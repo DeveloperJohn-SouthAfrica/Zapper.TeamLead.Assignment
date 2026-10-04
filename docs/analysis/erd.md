@@ -1,7 +1,6 @@
 # Entity Relationship Diagram (ERD)
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#0f172a', 'secondaryColor': '#fb7185', 'tertiaryColor': '#0ea5e9', 'edgeLabelBackground': '#e0f2fe', 'nodeBorder': '#94a3b8', 'fontFamily': 'Inter, system-ui, sans-serif'}}}%%
 erDiagram
     SUBMERCHANT {
         string SubMerchantID PK "Zapper identifier"
@@ -62,11 +61,6 @@ erDiagram
     CUSTOMER ||--|{ PAYMENT : initiates
     SUBMERCHANT ||--|{ PAYMENT : receives
     STORED_CARD }|..|| CUSTOMER : "references"
-    classDef entity fill: #fcd34d,stroke:#be123c,stroke-width:2px,color:#0f172a,font-weight:600;
-    classDef audit fill:#bae6fd,stroke:#1d4ed8,stroke-width:2px,color:#0f172a,font-weight:500;
-    class SUBMERCHANT,CUSTOMER,STORED_CARD entity
-    class PAYMENT entity
-    class PAYMENT_HISTORY,NOTIFICATION audit
 ```
 
 ## Notes
