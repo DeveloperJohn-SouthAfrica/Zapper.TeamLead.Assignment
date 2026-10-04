@@ -18,5 +18,5 @@ See [Setup.md](docs/setup.md) for how we orchestrate tooling before coding. It d
 
 ## Next steps
 
-- Use the artifacts in [analysis](docs/analysis) to seed the Object-Oriented analysis and design pass in [design](docs/design).
-- Capture the adaptive/iterative refinements after we select the stack and translate these diagrams into concrete modules.
+-   Use the artifacts in [analysis](docs/analysis) to seed the Object-Oriented analysis and design pass in [design](docs/design).
+-   Capture the adaptive/iterative refinements after we select the stack and translate these diagrams into concrete modules.

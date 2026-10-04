@@ -42,9 +42,6 @@ flowchart LR
     SummaryService --> PaymentDB
     TokenStore --> Orchestrator
     SummaryService -->|Reports| App
-    classDef actor fill:#8ecae6,stroke:#023047,stroke-width:2px,color:#012a4a,font-weight:bold;
-    classDef core fill:#ffb703,stroke:#fb8500,stroke-width:2px,color:#241e10,font-weight:600;
-    classDef data fill:#219ebc,stroke:#023047,stroke-width:2px,color:#ffffff,font-weight:600;
 ```
 
 ## Notes

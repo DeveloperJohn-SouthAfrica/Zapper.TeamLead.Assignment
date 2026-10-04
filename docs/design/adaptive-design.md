@@ -14,7 +14,7 @@ Phase 3 bridges the stack-agnostic OO model into an implementation blueprint thr
    - Guaranteeing the Notification subsystem acknowledges each delivery (200 on success, 401/400 on invalid auth or signature) and replays the exact payload when Acme retries after failures.
 3. **Instrumentation & compliance checks** – choose logging/metrics/health checks that confirm observability expectations from ISO/IEC 25010 and 12-Factor. This includes:
    - Emitting structured logs for every payment lifecycle event.
-   - Exposing health/readiness endpoints and hooking them into diagnostics modules already outlined in `docs/analysis/structured-systems-analysis.md`.
+   - Exposing health/readiness endpoints and hooking them into diagnostics modules already outlined in [structured-systems-analysis.md](../analysis/structured-systems-analysis.md).
 4. **Iterative validation** – define a lightweight validation loop that cycles through:
    - Reviewing each Mermaid diagram for consistency with the chosen stack.
    - Confirming ACID-enforcing transactions exist (e.g., via pseudo-SQL or migration snippets).
@@ -26,4 +26,4 @@ Phase 3 bridges the stack-agnostic OO model into an implementation blueprint thr
 - ✅ Documented trade-offs for scaling and observability, ensuring the adaptive approach stays flexible (e.g., injecting alternate storage for the token store, instrumenting Summary Scheduler to avoid load spikes).
 - ✅ A checklist for the next sprint that ensures the structured analysis artifacts remain the source of truth as we start coding.
 
-Phase 3 is the final preparatory layer before implementation: it converts our abstract models into runnable modules while honoring the quality, reliability, and operational commitments in `Soul.md`.
+Phase 3 is the final preparatory layer before implementation: it converts our abstract models into runnable modules while honoring the quality, reliability, and operational commitments in [soul.md](../../soul.md).

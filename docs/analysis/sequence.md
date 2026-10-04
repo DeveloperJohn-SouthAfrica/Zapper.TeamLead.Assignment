@@ -4,11 +4,11 @@
 
 ```mermaid
 sequenceDiagram
-    participant App as Zapper\nApp
-    participant API as Payment\nIntake
+    participant App as Zapper<br>App
+    participant API as Payment<br>Intake
     participant Orchestrator
-    participant Acme as Acme\nStub
-    participant DB as SQL\nStore
+    participant Acme as Acme<br>Stub
+    participant DB as SQL<br>Store
 
     App->>API: Submit payment request (customer, sub-merchant, amount, app payment ID)
     API->>Orchestrator: Validate, augment with metadata
@@ -23,9 +23,9 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant Acme as Acme\nStub
-    participant Notify as Notification\nHandler
-    participant DB as SQL\nStore
+    participant Acme as Acme<br>Stub
+    participant Notify as Notification<br>Handler
+    participant DB as SQL<br>Store
     participant Orchestrator
 
     Acme->>Notify: Callback (status update)
@@ -41,9 +41,9 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant Scheduler
-    participant Summary as Summary\nService
-    participant DB as SQL\nStore
-    participant Client as Reporting\nConsumer
+    participant Summary as Summary<br>Service
+    participant DB as SQL<br>Store
+    participant Client as Reporting<br>Consumer
 
     Scheduler->>Summary: Trigger aggregated summary for date, merchant, currency
     Summary->>DB: Query payments grouped by status (approved, declined, reversed, refunded)
@@ -55,10 +55,10 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant AcmeAdvice as Acme Payment\nAdvice
-    participant AdviceEndpoint as Payment Advice\nEndpoint
+    participant AcmeAdvice as Acme Payment<br>Advice
+    participant AdviceEndpoint as Payment Advice<br>Endpoint
     participant NotificationSystem
-    participant DB as SQL\nStore
+    participant DB as SQL<br>Store
     participant Orchestrator
 
     AcmeAdvice->>AdviceEndpoint: POST notification (basic auth, payload)
@@ -74,11 +74,11 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant AcmeSwitch as Acme Transaction\nStatus
-    participant StatusWebhook as Transaction Status\nWebhook
+    participant AcmeSwitch as Acme Transaction<br>Status
+    participant StatusWebhook as Transaction Status<br>Webhook
     participant SignatureVerifier
     participant NotificationSystem
-    participant DB as SQL\nStore
+    participant DB as SQL <br> Store
 
     AcmeSwitch->>StatusWebhook: POST reversal/refund (x-signature HMAC)
     StatusWebhook->>SignatureVerifier: validate x-signature using secret
@@ -92,9 +92,9 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant App as Zapper\nApp
-    participant RTTQ as Real Time\nTransaction Query
-    participant DB as SQL\nStore
+    participant App as Zapper<br>App
+    participant RTTQ as Real Time<br>Transaction Query
+    participant DB as SQL<br>Store
 
     App->>RTTQ: GET /apirttq/query/Merchant/{MerchantID}?TransactionID=xxx
     RTTQ->>DB: locate latest Payment or Notification per TransactionID/OrderNumber
