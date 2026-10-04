@@ -1,0 +1,22 @@
+# Solution
+
+## Structured Systems Analysis & Design phase
+
+We begin from the specification in `Zapper - Team_Lead Assignment.md`, holding off on stack/architecture choices until the analysis artifacts below inform our decisions. The [Structured Systems Analysis](docs/analysis/structured-systems-analysis.md) report anchors this phase, and lives alongside the DFD, ERD, and sequence‐diagram subfiles that capture the modular components, data flows (including payment advice, transaction status, and real-time queries), and behavioral contracts.
+
+## Object-Oriented Analysis & Design phase
+
+Phase 2 translates the structured systems artifacts into domain-aligned object models, respecting ACID/SOLID/DRY/12-Factor goals. See `docs/design/object-oriented-analysis.md` for the mapping from flows to services plus links to the payment, notification, and summary class diagrams. These remain stack-agnostic yet provide the vocabulary and responsibilities we will implement later.
+
+## Adaptive analysis & design phase
+
+Phase 3 will translate the OO models into implementation-ready modules within whichever stack we select. `docs/design/adaptive-design.md` explains how we will iterate, validate, and evolve the diagrams (DFD, ERD, sequences, classes) into resilient components, while keeping the ISO/IEC 25010 quality attributes, ACID, SOLID, DRY, and 12-Factor commitments alive. This adaptive stage also identifies instrumentation targets, scaling knobs, and observability checks before we write the first line of code.
+
+## Tooling and agent context
+
+See [Setup](setup.md) for how we orchestrate tooling before coding. It documents our use of Copilot CLI (each session pinned to BYOM/BYOK keys), Impeccable, Graphify, and Context7 so AI helpers remain context aware, gate UX regressions, and focus on documentation-driven implementation rather than aimless exploration.
+
+## Next steps
+
+- Use the artifacts in `docs/analysis` to seed the Object-Oriented analysis and design pass in `docs/design/`.
+- Capture the adaptive/iterative refinements after we select the stack and translate these diagrams into concrete modules.
