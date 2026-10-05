@@ -1724,7 +1724,7 @@
 
   function layoutFlowChildren(parent) {
     if (!parent) return [];
-    return [...parent.children]
+    return Array.from(parent.children)
       .filter(pickable)
       .map((el) => ({ el, rect: el.getBoundingClientRect() }));
   }

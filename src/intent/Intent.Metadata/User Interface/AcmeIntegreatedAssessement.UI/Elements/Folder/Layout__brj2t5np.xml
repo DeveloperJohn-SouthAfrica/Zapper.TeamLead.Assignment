@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="473cab9b-9a71-4ac4-beab-e86adbc9cb83" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Layout</name>
+  <display>Layout</display>
+  <externalReference>b83a32db-8c13-4013-94bc-781b07b2a0b6</externalReference>
+  <sort-children>by-type-then-by-name</sort-children>
+  <parentFolderId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</parentFolderId>
+  <packageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</packageId>
+  <packageName>AcmeIntegreatedAssessement.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="96df2fa6-7361-4e43-9acf-dbcea23b650a" display="Namespace Provider" value="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</class>

@@ -1,0 +1,10 @@
+title: Zapper - Team_Lead Assignment
+slug: zapper-team-lead-assignment
+phase: implementation
+createdUtc: 2026-10-04T23:33:36Z
+updatedUtc: 2026-10-05T01:52:59Z
+doc.requirements: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/Zapper - Team_Lead Assignment.md
+source: native
+sourcePath: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/intent/docs
+gates: auto
+traceBaseline: 86dc661433a5e41b246eb9ab0704d846eaf01098

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0f89812e-06c2-477f-9d63-c6a0b91617c0" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+  <name>StoredCardToken</name>
+  <display>StoredCardToken</display>
+  <sort-children>by-type-then-manually</sort-children>
+  <parentFolderId>cde13474-026a-419f-b3f4-29543e80f77f</parentFolderId>
+  <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+  <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+  <children>
+    <element id="5d18ff18-a697-4d04-be33-7ddc313cdbd0" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>Id</name>
+      <display>Id: guid</display>
+      <typeReference id="68891463-b35a-4e83-98d7-73d2d46d30ea">
+        <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
+        <typeName>guid</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>0f89812e-06c2-477f-9d63-c6a0b91617c0</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6" name="Primary Key">
+          <definitionPackageName>Intent.Metadata.RDBMS</definitionPackageName>
+          <definitionPackageId>AF8F3810-745C-42A2-93C8-798860DC45B1</definitionPackageId>
+          <properties>
+            <property name="a7a5e921-18b9-43b4-8078-b4ac4e5dae6f" display="Data source" value="Default" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="is-managed-key" value="true" />
+      </metadata>
+    </element>
+    <element id="9c038a10-c84b-441b-86eb-077aafc1bc0b" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>StoredCardTokenId</name>
+      <display>StoredCardTokenId: string</display>
+      <typeReference id="022eaaf3-8a43-4666-b8e6-0bb81f9aff68">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>0f89812e-06c2-477f-9d63-c6a0b91617c0</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="64f6a994-4909-4a9d-a0a9-afc5adf2ef74" name="Primary Key">
+          <definitionPackageName>Intent.Metadata.DocumentDB</definitionPackageName>
+          <definitionPackageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</definitionPackageId>
+          <properties>
+            <property name="ce12cf69-e97f-401b-9b08-7e2c62171d4e" display="Data source" value="Default" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="managed" value="true" />
+      </metadata>
+    </element>
+    <element id="aea38c42-e349-4769-83ea-9df8173fc0f7" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>AcmeToken</name>
+      <display>AcmeToken: string</display>
+      <typeReference id="a89bcb17-7816-4202-9d68-af707fdab049">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>0f89812e-06c2-477f-9d63-c6a0b91617c0</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="55146a90-0523-440d-83f3-d99b87c08e22" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>CustomerId</name>
+      <display>CustomerId: string</display>
+      <typeReference id="175574b6-1099-4f67-84d8-4e6401a3a208">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>0f89812e-06c2-477f-9d63-c6a0b91617c0</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="af5e58a5-e1fa-4830-b79b-1aec22fbb465" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>CustomerEmail</name>
+      <display>CustomerEmail: string</display>
+      <typeReference id="77938f3a-66eb-4e8d-8f64-315d32d3dcff">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>0f89812e-06c2-477f-9d63-c6a0b91617c0</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="82b03a97-db5f-4057-9645-e7bba2470e6f" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>PaymentId</name>
+      <display>PaymentId: guid</display>
+      <typeReference id="cc6e1262-6dca-4dc2-8f8a-f2c70dcc7e9e">
+        <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
+        <typeName>guid</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>0f89812e-06c2-477f-9d63-c6a0b91617c0</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="ced3e970-e900-4f99-bd04-b993228fe17d" name="Foreign Key">
+          <definitionPackageName>Intent.Metadata.DocumentDB</definitionPackageName>
+          <definitionPackageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</definitionPackageId>
+          <properties>
+            <property name="9e1a5430-b594-405e-9129-dcc188923265" display="Association" value="951c799b-a37b-4551-bbbd-e54076c0c769" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="793a5128-57a1-440b-a206-af5722b752a6" name="Foreign Key">
+          <definitionPackageName>Intent.Metadata.RDBMS</definitionPackageName>
+          <definitionPackageId>AF8F3810-745C-42A2-93C8-798860DC45B1</definitionPackageId>
+          <properties>
+            <property name="42e4f9b5-f834-4e5f-86aa-d3a35c505076" display="Association" value="951c799b-a37b-4551-bbbd-e54076c0c769" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="fk-original-name" value="PaymentId" />
+        <entry key="association" value="951c799b-a37b-4551-bbbd-e54076c0c769" />
+        <entry key="is-managed-key" value="true" />
+      </metadata>
+    </element>
+    <association id="951c799b-a37b-4551-bbbd-e54076c0c769">
+      <sourceEnd id="2c0b750f-13d7-484c-a9ad-5b65767feff6" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+        <name>StoredCardTokens</name>
+        <display>StoredCardTokens: StoredCardToken[*]?</display>
+        <order>0</order>
+        <typeReference id="02d2b7f6-14a5-4cea-a132-432303ad8c87">
+          <typeId>0f89812e-06c2-477f-9d63-c6a0b91617c0</typeId>
+          <typeName>StoredCardToken</typeName>
+          <isNavigable>false</isNavigable>
+          <isNullable>true</isNullable>
+          <isCollection>true</isCollection>
+          <typePackageName>AcmeIntegreatedAssessement.Domain</typePackageName>
+          <typePackageId>cde13474-026a-419f-b3f4-29543e80f77f</typePackageId>
+        </typeReference>
+      </sourceEnd>
+      <targetEnd id="951c799b-a37b-4551-bbbd-e54076c0c769" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+        <name>Payment</name>
+        <display>Payment: Payment</display>
+        <order>6</order>
+        <typeReference id="0a9d093f-88ca-4f15-80a4-01dbe3d96000">
+          <typeId>5b469c38-f093-4b67-a21f-79546c316c55</typeId>
+          <typeName>Payment</typeName>
+          <typePackageName>AcmeIntegreatedAssessement.Domain</typePackageName>
+          <typePackageId>cde13474-026a-419f-b3f4-29543e80f77f</typePackageId>
+        </typeReference>
+      </targetEnd>
+      <associationType>Association</associationType>
+      <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
+    </association>
+  </children>
+</class>

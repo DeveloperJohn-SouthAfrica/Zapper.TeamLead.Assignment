@@ -12,6 +12,10 @@ Phase 2 translates the structured systems artifacts into domain-aligned object m
 
 Phase 3 will translate the OO models into implementation-ready modules within whichever stack we select. [adaptive-design.md](docs/design/adaptive-design.md) explains how we will iterate, validate, and evolve the diagrams (DFD, ERD, sequences, classes) into resilient components, while keeping the ISO/IEC 25010 quality attributes, ACID, SOLID, DRY, and 12-Factor commitments alive. This adaptive stage also identifies instrumentation targets, scaling knobs, and observability checks before we write the first line of code.
 
+## Selected Architecture Stack
+
+We chose a **Blazor WebAssembly** clean architecture, leveraging **MassTransit** for pub/sub to handle distributed, event-driven communication. We employ the **Mediator** pattern for fluent validation and segregated, highly structured controller business logic, complemented by the **CQRS** pattern and additional architectural frameworks to meet the team's development needs.
+
 ## Tooling and agent context
 
 See [Setup.md](docs/setup.md) for how we orchestrate tooling before coding. It documents our use of Copilot CLI (each session pinned to BYOM/BYOK keys), Impeccable, Graphify, and Context7 so AI helpers remain context aware, gate UX regressions, and focus on documentation-driven implementation rather than aimless exploration.
@@ -19,4 +23,7 @@ See [Setup.md](docs/setup.md) for how we orchestrate tooling before coding. It d
 ## Next steps
 
 -   Use the artifacts in [analysis](docs/analysis) to seed the Object-Oriented analysis and design pass in [design](docs/design).
--   Capture the adaptive/iterative refinements after we select the stack and translate these diagrams into concrete modules.
+-   ## Assumptions
+
+- **Acme Pay stub configuration**: We assume environment variables `AcmePay:BaseUrl` (e.g., `https://sandbox.acmepay.example/`) and optional `AcmePay:ApiKey` are defined; the client honor HMAC header `x-api-key`.
+- **Initial stub behavior**: The Acme Pay stub returns a JSON envelope `{ "TransactionID": "<uuid>" }` on successful payment submission; we record it as `AcmeTransactionId`. Notifications and retry logic are simulated separately and documented in infrastructure tests.

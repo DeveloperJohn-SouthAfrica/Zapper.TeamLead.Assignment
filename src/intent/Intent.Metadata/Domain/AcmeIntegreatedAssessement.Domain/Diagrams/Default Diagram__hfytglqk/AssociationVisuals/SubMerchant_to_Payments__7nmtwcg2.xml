@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<associationVisual id="0de7ea6e-faab-4436-a123-f63991a66404" zIndex="0">
+  <name>SubMerchant_to_Payments</name>
+  <sourceId>a7005262-1b6d-4490-a256-8231022acb99</sourceId>
+  <targetId>5b469c38-f093-4b67-a21f-79546c316c55</targetId>
+  <targetPrefPoint x="100" y="44" />
+</associationVisual>

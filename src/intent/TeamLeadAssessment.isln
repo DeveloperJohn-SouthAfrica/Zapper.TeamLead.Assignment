@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<solution id="f34d6bb3-9161-47d5-a64c-48787c28d5a1">
+  <name>TeamLeadAssessment</name>
+  <description>Assessment</description>
+  <version>3.3.0</version>
+  <icon>./img/logo-blue.svg</icon>
+  <iconType>UrlImagePath</iconType>
+  <metadataRelativePath>Intent.Metadata</metadataRelativePath>
+  <modulesCacheRelativePath>.cache/modules</modulesCacheRelativePath>
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.AspNetCore.Blazor.Server" version="1.1.19" />
+  <applications>
+    <application id="e477e0b1-f141-4531-b30f-7b53a9b73a52" name="AcmeIntegreatedAssessement" relativePath="AcmeIntegreatedAssessement.application.config" />
+  </applications>
+  <workspaceRoot>..</workspaceRoot>
+</solution>

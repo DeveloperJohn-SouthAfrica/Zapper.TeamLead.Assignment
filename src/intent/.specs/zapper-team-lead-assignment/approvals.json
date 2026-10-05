@@ -1,0 +1,25 @@
+{
+  "entries": [
+    {
+      "fromPhase": "requirements",
+      "toPhase": "design",
+      "approvedVia": "panel-button",
+      "conversationId": null,
+      "timestampUtc": "2026-10-04T23:34:31Z"
+    },
+    {
+      "fromPhase": "design",
+      "toPhase": "tasks",
+      "approvedVia": "chat-gate",
+      "conversationId": "conv-1791157162828-75273457",
+      "timestampUtc": "2026-10-04T23:42:34Z"
+    },
+    {
+      "fromPhase": "tasks",
+      "toPhase": "implementation",
+      "approvedVia": "chat-gate",
+      "conversationId": "conv-1791157378465-49747334",
+      "timestampUtc": "2026-10-04T23:43:49Z"
+    }
+  ]
+}

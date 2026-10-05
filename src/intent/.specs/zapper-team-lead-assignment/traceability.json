@@ -1,0 +1,328 @@
+{
+  "slug": "zapper-team-lead-assignment",
+  "updatedUtc": "2026-10-05T01:08:38Z",
+  "links": {
+    "Task 1": [
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "a7005262-1b6d-4490-a256-8231022acb99",
+        "elementName": "SubMerchant",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.1"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "7fb718b7-dae9-417b-90e5-2a028c3ed2bb",
+        "elementName": "ZapperMerchantId",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.1"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "497e9141-22c9-4e06-8442-c14fcf86155c",
+        "elementName": "TradingName",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.1"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "8f56cd4d-445f-47c6-97a4-faa21e6898c6",
+        "elementName": "City",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.1"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "dbf7a6cd-e816-4bec-aa5a-9181adc26c3f",
+        "elementName": "Region",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.1"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "f8249109-b759-4e14-bd3a-493dddf8d7cc",
+        "elementName": "Country",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.1"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "de3ec1ef-d550-4679-ab4f-c6139b41bc96",
+        "elementName": "MerchantCategoryCode",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.1"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "0f89812e-06c2-477f-9d63-c6a0b91617c0",
+        "elementName": "StoredCardToken",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.2"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "aea38c42-e349-4769-83ea-9df8173fc0f7",
+        "elementName": "AcmeToken",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.2"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "55146a90-0523-440d-83f3-d99b87c08e22",
+        "elementName": "CustomerId",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.2"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "af5e58a5-e1fa-4830-b79b-1aec22fbb465",
+        "elementName": "CustomerEmail",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.2"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "5b469c38-f093-4b67-a21f-79546c316c55",
+        "elementName": "Payment",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "d50588f1-07b6-4999-b4bb-9a8ea6309abd",
+        "elementName": "PaymentId",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "682e8cd3-0558-484e-b39f-da1a49edd36e",
+        "elementName": "AppPaymentId",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "f5da22f6-1126-48d7-821d-7dd735cd827d",
+        "elementName": "Amount",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "07a0a3f2-cc65-4343-ad1a-a3bfe79cae20",
+        "elementName": "Currency",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "bfdf6c8c-42b7-4280-b9e8-105b9c07db85",
+        "elementName": "SubMerchantRrn",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "c8168949-3e97-4d17-bded-5bb2caea28c9",
+        "elementName": "Status",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "e4cb4eca-1079-44dd-9558-ac0e84bcc57c",
+        "elementName": "AcmeTransactionUuid",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.3"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "21416844-e9d3-4bb5-96e2-433dbf974b12",
+        "elementName": "PaymentChange",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.4"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "fc891f42-6b15-4e45-ade8-b73d16c472b4",
+        "elementName": "EventType",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.4"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "c9f57548-e8d8-415d-98d0-053e8e0891ab",
+        "elementName": "IsApproved",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.4"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "0beebe43-8aab-4278-a9bf-abca00b4fb5f",
+        "elementName": "AcmeNotificationTransactionUuid",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.4"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "f440747a-3a14-4ec8-96f4-d65f19dc6565",
+        "elementName": "Rrn",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.4"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "3b9aad87-7a4e-4cf9-8254-7fabb30da706",
+        "elementName": "Amount",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.4"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "7f81e2ce-ffda-4cd3-bb88-515f648e51c4",
+        "elementName": "OccurredAt",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.4"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "738dc363-ba4b-4427-82f5-00ae66d01661",
+        "elementName": "NotificationDelivery",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.5"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "93a00a14-2310-43c1-b579-41a98acd47bc",
+        "elementName": "AcmeAdjustmentNotification",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.5"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "6ab29b31-27af-4f56-a67c-986d82097d63",
+        "elementId": "3c466a81-6bb0-4959-8baf-c217ce39f09a",
+        "elementName": "AcmeTransactionNotification",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.5"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "81104ae6-2bc5-4bae-b05a-f987b0372d81",
+        "elementId": "d9c1ca24-81f6-4719-94e9-301ccffbd026",
+        "elementName": "Body: AcmeApprovedNotificationDto",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.6"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "81104ae6-2bc5-4bae-b05a-f987b0372d81",
+        "elementId": "f4115ae3-3878-48bf-b2e5-17b354ae98d2",
+        "elementName": "Body: AcmeReversalNotificationDto",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.6"
+      },
+      {
+        "targetKind": "element",
+        "applicationId": "e477e0b1-f141-4531-b30f-7b53a9b73a52",
+        "designerId": "81104ae6-2bc5-4bae-b05a-f987b0372d81",
+        "elementId": "5d6c2fd7-f15a-40f1-ad65-06110919894d",
+        "elementName": "Request: SubmitPaymentRequestDto",
+        "operation": "created",
+        "linkSource": "implementation",
+        "taskId": "T2.6"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "intent-architect": {
+      "command": "/home/jvanniekerk/Downloads/intent-architect-v5-5.3.4.AppImage",
+      "args": [
+        "--mcp-server"
+      ],
+      "type": "local"
+    }
+  }
+}

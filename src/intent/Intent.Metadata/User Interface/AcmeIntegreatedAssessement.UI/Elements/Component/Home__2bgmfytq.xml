@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="2e74d321-7e8f-4e5f-bcb4-75a7f94352e5" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b">
+  <name>Home</name>
+  <display>Home</display>
+  <externalReference>5cf35899-5d12-4e0c-8642-ba734abbf14d</externalReference>
+  <parentFolderId>71565c0f-da69-4c43-a358-a5d7456a1195</parentFolderId>
+  <packageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</packageId>
+  <packageName>AcmeIntegreatedAssessement.UI</packageName>
+  <traits>
+    <trait id="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]" />
+    <trait id="ea4adc09-8978-4ede-ba5f-265debb2b60c" name="Page" />
+  </traits>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="ea4adc09-8978-4ede-ba5f-265debb2b60c" name="Page">
+      <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
+      <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
+      <properties>
+        <property name="9dff9df1-a993-4bf6-9aa7-c16811142228" display="Route" value="/" />
+        <property name="0a8627ba-ec45-4023-9c36-b0999f43e982" display="Title" value="Home" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</class>

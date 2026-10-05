@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<classVisual id="e2e1bd3a-179c-497c-95ac-26b49c9fcbfe" zIndex="0">
+  <name>SubmitPaymentCommand</name>
+  <position x="50" y="50" />
+  <size width="200" height="80" />
+  <autoResizeEnabled>true</autoResizeEnabled>
+</classVisual>
