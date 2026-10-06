@@ -1,0 +1,203 @@
+@page "/"
+@using MudBlazor
+
+<PageTitle>Acme Payments Operations</PageTitle>
+
+<div class="home-shell">
+    <section class="hero" aria-label="Daily operations hero section">
+        <div class="hero-gradient"></div>
+        <div class="hero-grid">
+            <div class="hero-copy">
+                <p class="hero-eyebrow" data-testid="hero-eyebrow">Stateless orchestration</p>
+                <h1 class="hero-title" data-testid="hero-title">
+                    Acme payments reliability command center
+                </h1>
+                <p class="hero-subtitle">
+                    Tokenized payments, audit trails, and redis-backed feature flags served from a stateless .NET layer while SQL stored procedures own every change.
+                </p>
+
+                <div class="hero-band">
+                    <div class="hero-band-block">
+                        <span class="hero-band-label">Report date</span>
+                        <strong class="hero-band-value" data-testid="report-date">@ReportDateDisplay</strong>
+                    </div>
+                    <div class="hero-band-block">
+                        <span class="hero-band-label">Infrastructure</span>
+                        <strong class="hero-band-value">SQL DACPAC · Redis straight-through</strong>
+                    </div>
+                    <div class="hero-band-block">
+                        <span class="hero-band-label">Audit & logging</span>
+                        <strong class="hero-band-value">Stored procedures + elastic logs</strong>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               Href="#daily-summary"
+                               Class="hero-button"
+                               StartIcon="@Icons.Material.Filled.Assessment">
+                        View daily summary
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined"
+                               Color="Color.Secondary"
+                               Href="https://github.com/DeveloperJohn-SouthAfrica/Zapper.TeamLead.Assignment"
+                               Target="_blank"
+                               Class="hero-button"
+                               StartIcon="@Icons.Material.Filled.Code">
+                        Inspect code
+                    </MudButton>
+                </div>
+            </div>
+
+            <div class="hero-spotlight">
+                <div class="hero-spotlight-card" data-testid="hero-status">
+                    <p class="hero-spotlight-label">Telemetry</p>
+                    <h2>@TotalsDisplay</h2>
+                    <p class="hero-spotlight-subtitle">SQL stats and cache hit ratios stored in telemetry tables to keep query plans lean.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section" aria-live="polite">
+        <header class="section-heading">
+            <div>
+                <p class="section-eyebrow">Live snapshot</p>
+                <h2 class="section-title">Daily payment metrics</h2>
+            </div>
+            <p class="section-note">
+                Every query path lands in a stored procedure, parameter sniffing is stabilized, and audit columns ensure every command and notification lands in SQL.
+            </p>
+        </header>
+
+        @if (_isLoading)
+        {
+            <div class="status-loading" data-testid="status-loading">
+                <MudProgressCircular Size="48" Color="Color.Primary" Class="loading-spinner" />
+                <span>Calculating the latest totals…</span>
+            </div>
+        }
+        else if (_errorMessage is not null)
+        {
+            <MudAlert Severity="Severity.Error" Variant="Variant.Filled" Class="status-error" data-testid="summary-error">
+                @(_errorMessage)
+            </MudAlert>
+        }
+        else
+        {
+            <div class="stats-grid">
+                @foreach (var metric in HeroMetrics)
+                {
+                    <article class="stat-card" data-testid="@metric.TestId">
+                        <div class="stat-card-head">
+                            <span class="stat-label">@metric.Label</span>
+                            <MudChip T="string" Color="@metric.ChipColor" Size="Size.Small" Class="stat-chip">@metric.TagLine</MudChip>
+                        </div>
+                        <p class="stat-value">@metric.CountDisplay</p>
+                        <p class="stat-amount">@metric.AmountDisplay</p>
+                    </article>
+                }
+            </div>
+        }
+    </section>
+
+    <section class="summary-section" id="daily-summary">
+        <header class="section-heading">
+            <div>
+                <p class="section-eyebrow">Sub-merchant pulse</p>
+                <h2 class="section-title">Summary by merchant & currency</h2>
+            </div>
+            <p class="section-note">
+                Each row mirrors the stored procedure output so every merchant, introduction, and currency pair has its own model and index-friendly plan.
+            </p>
+        </header>
+
+        @if (_isLoading)
+        {
+            <div class="table-loading">
+                <MudProgressCircular Size="32" Color="Color.Primary" Class="loading-spinner" />
+                <span>Loading the ledger…</span>
+            </div>
+        }
+        else if (_errorMessage is not null)
+        {
+            <MudPaper Elevation="1" Class="table-error">
+                Unable to render the merchant breakdown while the data service is unreachable.
+            </MudPaper>
+        }
+        else if (!MerchantRows.Any())
+        {
+            <MudPaper Elevation="1" Class="table-empty">
+                No summary rows have been recorded for today. Payments will surface as soon as Acme notifications land via the stored procedures.
+            </MudPaper>
+        }
+        else
+        {
+            <MudTable Items="@MerchantRows" Hover="true" Dense="false" Elevation="0"
+                      Class="merchant-table" Breakpoint="Breakpoint.Sm">
+                <HeaderContent>
+                    <MudTh>Sub-merchant</MudTh>
+                    <MudTh>Currency</MudTh>
+                    <MudTh Class="align-right">Approved</MudTh>
+                    <MudTh Class="align-right">Declined</MudTh>
+                    <MudTh Class="align-right">Reversed</MudTh>
+                    <MudTh Class="align-right">Refunded</MudTh>
+                    <MudTh Class="align-right">Total</MudTh>
+                    <MudTh Class="align-right">Amount</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>
+                        <div class="merchant-cell">
+                            <strong>@context.SubMerchantRrn</strong>
+                            <span class="merchant-id">(@context.SubMerchantId.ToString())</span>
+                        </div>
+                    </MudTd>
+                    <MudTd>@context.Currency</MudTd>
+                    <MudTd Class="align-right">@context.ApprovedCount</MudTd>
+                    <MudTd Class="align-right">@context.DeclinedCount</MudTd>
+                    <MudTd Class="align-right">@context.ReversedCount</MudTd>
+                    <MudTd Class="align-right">@context.RefundedCount</MudTd>
+                    <MudTd Class="align-right">@context.TotalEvents</MudTd>
+                    <MudTd Class="align-right">@context.TotalAmountDisplay</MudTd>
+                </RowTemplate>
+            </MudTable>
+        }
+    </section>
+
+    <section class="panel-section">
+        <MudPaper Elevation="3" Class="panel" data-testid="infrastructure-panel">
+            <div class="panel-heading">
+                <p class="section-eyebrow">Infrastructure signals</p>
+                <h3 class="section-title">SQL, cache, and stateful controls</h3>
+            </div>
+            <div class="panel-grid">
+                @foreach (var item in InfrastructureItems)
+                {
+                    <article class="infrastructure-item" data-testid="@item.TestId">
+                        <div class="item-head">
+                            <MudChip T="string" Color="@item.ChipColor" Size="Size.Small" Class="stat-chip">@item.Status</MudChip>
+                            <h4>@item.Title</h4>
+                        </div>
+                        <p>@item.Description</p>
+                        <p class="item-footnote">@item.Footnote</p>
+                    </article>
+                }
+            </div>
+        </MudPaper>
+
+        <MudPaper Elevation="3" Class="panel" data-testid="cache-panel">
+            <div class="panel-heading">
+                <p class="section-eyebrow">Observability + cache safety</p>
+                <h3 class="section-title">Audit logs & Redis orchestration</h3>
+            </div>
+            <ul class="audit-list">
+                <li>Every transactional query fires a stored procedure model, populating `CreatedAt/UpdatedAt` and `ChangedBy` columns for full auditability.</li>
+                <li>Audit records stream into SQL tables that the UI, Playwright suite, and logs query via dedicated indexes so plans stay stable when scales grow.</li>
+                <li>Redis acts as the only stateful tier, caching each card/token individually and flushing on every write to keep the .NET layer stateless.</li>
+                <li>AWS AppConfig-backed feature flag module (with environment override) decides telemetry sampling and keeps our running dashboards in sync.</li>
+                <li>Stored procedures map their parameters to declared variables to guard against parameter sniffing, and each procedure has its own model to avoid cross-sproc coupling.</li>
+            </ul>
+        </MudPaper>
+    </section>
+</div>

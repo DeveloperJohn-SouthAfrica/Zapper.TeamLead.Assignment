@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.Build.Sql/1.1">
+  <PropertyGroup>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureDatabaseSchemaProvider</DSP>
+    <SuppressMissingDependenciesErrors>True</SuppressMissingDependenciesErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="SchemaObjects\Tables\Payment.sql" />
+    <None Include="SchemaObjects\Tables\PaymentChange.sql" />
+    <None Include="SchemaObjects\Tables\NotificationDelivery.sql" />
+    <None Include="SchemaObjects\StoredProcedures\SubmitPayment.sql" />
+  </ItemGroup>
+</Project>

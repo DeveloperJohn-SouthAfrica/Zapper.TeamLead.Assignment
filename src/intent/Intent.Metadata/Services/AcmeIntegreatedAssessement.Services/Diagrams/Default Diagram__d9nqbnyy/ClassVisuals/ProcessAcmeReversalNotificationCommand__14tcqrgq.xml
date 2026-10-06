@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<classVisual id="83deb710-1c48-4dd5-b37c-fa5a63188796" zIndex="0">
+  <name>ProcessAcmeReversalNotificationCommand</name>
+  <position x="350" y="250" />
+  <size width="200" height="80" />
+  <autoResizeEnabled>true</autoResizeEnabled>
+</classVisual>

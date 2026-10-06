@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviationsLog>
+  <files>
+    <file>
+      <correlationId>Intent.Application.MediatR.CommandHandler#0c092780-4609-4b66-bf41-b6eadf746b65</correlationId>
+      <path>AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jvanniekerk@justsa.co.za</updatedByAccountName>
+      <updatedByDisplayName>JohnMark van Niekerk</updatedByDisplayName>
+      <updatedAt>2026-10-06T16:59:39.04523Z</updatedAt>
+      <deviationsHash>668EDC1D1C54A1AE39304442CC7D415FB714594175C87ABDC9183D35DBAB790B</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.Application.MediatR.CommandHandler#83deb710-1c48-4dd5-b37c-fa5a63188796</correlationId>
+      <path>AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jvanniekerk@justsa.co.za</updatedByAccountName>
+      <updatedByDisplayName>JohnMark van Niekerk</updatedByDisplayName>
+      <updatedAt>2026-10-06T16:59:39.0452687Z</updatedAt>
+      <deviationsHash>24698DA757A24726AA78D51290F5B2E3348435A5372497AC6D62FABD2F584C00</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.Application.MediatR.CommandHandler#e2e1bd3a-179c-497c-95ac-26b49c9fcbfe</correlationId>
+      <path>AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jvanniekerk@justsa.co.za</updatedByAccountName>
+      <updatedByDisplayName>JohnMark van Niekerk</updatedByDisplayName>
+      <updatedAt>2026-10-06T16:59:39.045306Z</updatedAt>
+      <deviationsHash>434B4169EF34D93065F6D55EEDC59C51DA8B45CF4AFA7CA63076BD200F3DCE26</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.Application.FluentValidation.Dtos.DTOValidator#b3559064-5a67-4b1d-9526-4d5ecea65a78</correlationId>
+      <path>AcmeIntegreatedAssessement.Application/Contracts/SubmitPaymentRequestDtoValidator.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jvanniekerk@justsa.co.za</updatedByAccountName>
+      <updatedByDisplayName>JohnMark van Niekerk</updatedByDisplayName>
+      <updatedAt>2026-10-06T16:59:39.045183Z</updatedAt>
+      <deviationsHash>7D43A5FED5B97CA995019BCC36641F77A8F21CAFEA81BC4868A3E9E9259375FA</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.Application.MediatR.QueryHandler#92ad2e42-c6b0-43c0-ae1c-0303264c4a39</correlationId>
+      <path>AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jvanniekerk@justsa.co.za</updatedByAccountName>
+      <updatedByDisplayName>JohnMark van Niekerk</updatedByDisplayName>
+      <updatedAt>2026-10-06T16:59:39.0454572Z</updatedAt>
+      <deviationsHash>468A0353C550CE92DD2FC026650791C7FA29CE069B202E6CCE0CC77BCA08394B</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.Infrastructure.DependencyInjection.DependencyInjection#a751dfef-0d93-4ed7-86be-daf78dd494aa</correlationId>
+      <path>AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jvanniekerk@justsa.co.za</updatedByAccountName>
+      <updatedByDisplayName>JohnMark van Niekerk</updatedByDisplayName>
+      <updatedAt>2026-10-06T16:59:39.0465265Z</updatedAt>
+      <deviationsHash>E7741DB5D5489FBCF3727CEECD4AABA8A91DEFE612FC083816B03171CCCCA1E7</deviationsHash>
+    </file>
+  </files>
+  <customFiles>
+    <customFile>
+      <path>AcmeIntegreatedAssessement/.mcp.json</path>
+      <approvedByAccountName>jvanniekerk@justsa.co.za</approvedByAccountName>
+      <approvedByDisplayName>JohnMark van Niekerk</approvedByDisplayName>
+      <approvedAt>2026-10-04T18:11:45.6021788Z</approvedAt>
+    </customFile>
+  </customFiles>
+</deviationsLog>

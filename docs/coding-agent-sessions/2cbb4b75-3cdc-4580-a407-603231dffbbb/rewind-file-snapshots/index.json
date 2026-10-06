@@ -1,0 +1,699 @@
+{
+  "schema": 1,
+  "snapshots": [
+    {
+      "snapshotId": "70adc6d3-0df6-4c4e-88c4-6b03bc044289",
+      "eventId": "79a36f3b-51d5-491a-a166-761735aaabe1",
+      "userMessage": "Take the spec driven development information under: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/intent/.specs/zapper-team-lead-assignment\n\nLook at /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/intent/docs and complete the assignment task under /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/intent/docs/Zapper\\ -\\ Team_Lead\\ Assignment.md \n\nOur solution lives here /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement. Complete everything in the assignment withing the framework of our application. use context7 if you need to understand a technology and use the /impeccable skill to complete the front end",
+      "timestamp": "2026-10-05T02:31:30.451Z",
+      "files": {
+        "f4875d54a1ff7b5d3b5cc0f3070f6ae8": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/PRODUCT.md",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "3919c08956ae3a40dd81604e2899bd5678d5ea4b4679833e8df97eca7079df5e",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/PRODUCT.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f50524f445543542e6d64"
+            }
+          },
+          "linesAdded": 40,
+          "linesRemoved": 0
+        }
+      },
+      "backupFiles": [],
+      "fileCount": 1,
+      "linesAdded": 40,
+      "linesRemoved": 0
+    },
+    {
+      "snapshotId": "48b75110-f047-494e-b071-0baf959a8131",
+      "eventId": "7e70ad43-a366-4b06-8c6a-c6e09f646b14",
+      "userMessage": "you know better than I do. go, be, do.",
+      "timestamp": "2026-10-05T06:06:55.912Z",
+      "files": {
+        "f0981cbd7563338e6406423214943abf": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/IAcmePayClient.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "4017010cfa7eb88b2a1f36763e53c4dda42eec396a1adcab62d264cc28111f2d",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/IAcmePayClient.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d6f6e2f496e74657266616365732f4941636d65506179436c69656e742e6373"
+            }
+          },
+          "linesAdded": 19,
+          "linesRemoved": 0
+        },
+        "fd7ff1532a5b0ffd725ebd56ff727c29": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Services/AcmePayClient.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "753233bcaa48dda4737d3a865b6d678c842fe5d1eca57c63af624ff8e305c758",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Services/AcmePayClient.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f53657276696365732f41636d65506179436c69656e742e6373"
+            }
+          },
+          "linesAdded": 62,
+          "linesRemoved": 0
+        },
+        "18090b7470c3e280eb76a90ac86fa422": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "dc24799de83663879ebf339f72e538664b0bf8f6699cba6bfea4f3fafd3d4ebb",
+            "backupFile": "dc24799de83663879ebf339f72e538664b0bf8f6699cba6bfea4f3fafd3d4ebb",
+            "mode": 33204,
+            "size": 3071,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f446570656e64656e6379496e6a656374696f6e2e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "d878f15384f336c72b314f7e8456e29d22ac9fb7ad562da661c66889d0cad212",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f446570656e64656e6379496e6a656374696f6e2e6373"
+            }
+          },
+          "linesAdded": 14,
+          "linesRemoved": 0
+        },
+        "35520f66fa9631d3cae973586b01f84c": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "dc8c140f2d0f5b5c7e8ccc5dcbf223d7f4b0372b135d03f853045826a4c9db91",
+            "backupFile": "dc8c140f2d0f5b5c7e8ccc5dcbf223d7f4b0372b135d03f853045826a4c9db91",
+            "mode": 33204,
+            "size": 854,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f5375626d69745061796d656e742f5375626d69745061796d656e74436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "b8b1be2955db17dd4fa663dbaabc2c136887e43f558c38c41e610dac56c988bf",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f5375626d69745061796d656e742f5375626d69745061796d656e74436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "linesAdded": 82,
+          "linesRemoved": 3
+        },
+        "72bea69ce0161820a9ee692f8700c4f5": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/Solution.md",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "2a1a581af03d7a82aaeb788b66a740546038e494913d62a16cba9b386510cacb",
+            "backupFile": "2a1a581af03d7a82aaeb788b66a740546038e494913d62a16cba9b386510cacb",
+            "mode": 33204,
+            "size": 2728,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/Solution.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f536f6c7574696f6e2e6d64"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "0eced54511096aa8fef60920181078fc068c27d0c81ba8d283e70ad2bbf72a4c",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/Solution.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f536f6c7574696f6e2e6d64"
+            }
+          },
+          "linesAdded": 4,
+          "linesRemoved": 1
+        },
+        "eb1693851a9ce5c99de83c26de1f2cb0": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "a945204cd7e62978b7a4dcbe76e07fadb94c7ab9dfd5f901d8366af9ddf5b756",
+            "backupFile": "a945204cd7e62978b7a4dcbe76e07fadb94c7ab9dfd5f901d8366af9ddf5b756",
+            "mode": 33204,
+            "size": 962,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e2f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "7b9d8dd1b15b6d0583c40c917142b547653aab4c125e9462f61a216dd060ca35",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e2f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "linesAdded": 55,
+          "linesRemoved": 3
+        },
+        "ff6f8d2569b8cf2e05d3fef1966222cf": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "47f831fbae3e995a1a6f98c0c5bfa2905c0199ce8a23260a94e7a48c3b28e21e",
+            "backupFile": "47f831fbae3e995a1a6f98c0c5bfa2905c0199ce8a23260a94e7a48c3b28e21e",
+            "mode": 33204,
+            "size": 962,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e2f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "de3360585f4af6c8dac6c0af25870ab5f4bed2a14e977de33ca939defdf85234",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e2f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "linesAdded": 55,
+          "linesRemoved": 3
+        },
+        "797caf7159aedaaf95339584a1fd5bc0": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "e800e99f479924f5fe5a6d8cd1127a3f2064d246d65b8cf4577e91fbca842e38",
+            "backupFile": "e800e99f479924f5fe5a6d8cd1127a3f2064d246d65b8cf4577e91fbca842e38",
+            "mode": 33204,
+            "size": 863,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f517565726965732f4765745061796d656e7453746174652f4765745061796d656e745374617465517565727948616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "ce9441d6c78277ef820cdaecadd192fd1e4dc183e0f78399e994c16b1bedf2ff",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f517565726965732f4765745061796d656e7453746174652f4765745061796d656e745374617465517565727948616e646c65722e6373"
+            }
+          },
+          "linesAdded": 24,
+          "linesRemoved": 3
+        },
+        "e9074b03f596918502a370ef38b1cecc": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "b92cd8f431aa0c48cb6bf325bef6de6b36b0109956d21d94431cfbbc4a7d7f68",
+            "backupFile": "b92cd8f431aa0c48cb6bf325bef6de6b36b0109956d21d94431cfbbc4a7d7f68",
+            "mode": 33204,
+            "size": 1217,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2e637370726f6a"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "b27d33a78501389ce0aaf086dcce21bd03e73a9321faed3f0750952291540e68",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2e637370726f6a"
+            }
+          },
+          "linesAdded": 3,
+          "linesRemoved": 0
+        }
+      },
+      "backupFiles": [
+        "dc24799de83663879ebf339f72e538664b0bf8f6699cba6bfea4f3fafd3d4ebb",
+        "dc8c140f2d0f5b5c7e8ccc5dcbf223d7f4b0372b135d03f853045826a4c9db91",
+        "2a1a581af03d7a82aaeb788b66a740546038e494913d62a16cba9b386510cacb",
+        "a945204cd7e62978b7a4dcbe76e07fadb94c7ab9dfd5f901d8366af9ddf5b756",
+        "47f831fbae3e995a1a6f98c0c5bfa2905c0199ce8a23260a94e7a48c3b28e21e",
+        "e800e99f479924f5fe5a6d8cd1127a3f2064d246d65b8cf4577e91fbca842e38",
+        "b92cd8f431aa0c48cb6bf325bef6de6b36b0109956d21d94431cfbbc4a7d7f68"
+      ],
+      "fileCount": 9,
+      "linesAdded": 318,
+      "linesRemoved": 13
+    },
+    {
+      "snapshotId": "495fec19-6160-457b-82cf-19b817974a1f",
+      "eventId": "6212e1c9-5f17-45f3-94b2-37aa7fa2c777",
+      "userMessage": "Repo interfaces, also create the Database project, our repo will a facade for stored procedures, and will deploy as a DACPAC using SQL Dac deploy",
+      "timestamp": "2026-10-05T06:18:33.564Z",
+      "files": {
+        "4496d54eac02b455a7d5cb90efe18d33": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/IPaymentRepository.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "96e2dd3f7079a4f9a6906e56325e79668878879bb7d7de9e8d315c1bbc34dabe",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/IPaymentRepository.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d6f6e2f496e74657266616365732f495061796d656e745265706f7369746f72792e6373"
+            }
+          },
+          "linesAdded": 13,
+          "linesRemoved": 0
+        },
+        "db03035304529f54938aa4cfe5e97815": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/IPaymentChangeRepository.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "9f7ccc82d673430dc4070faa9258997b6d5c149b04688a6892f3fe2fcaeffa3e",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/IPaymentChangeRepository.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d6f6e2f496e74657266616365732f495061796d656e744368616e67655265706f7369746f72792e6373"
+            }
+          },
+          "linesAdded": 11,
+          "linesRemoved": 0
+        },
+        "240fccb9c0b090b5f122261feb4a3d5c": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/INotificationDeliveryRepository.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "aba952327e2e5a6abb867a3fc709a6318bc8372e4e5953ffa9e92a2aefadaed2",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Common/Interfaces/INotificationDeliveryRepository.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d6f6e2f496e74657266616365732f494e6f74696669636174696f6e44656c69766572795265706f7369746f72792e6373"
+            }
+          },
+          "linesAdded": 12,
+          "linesRemoved": 0
+        },
+        "35520f66fa9631d3cae973586b01f84c": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "b8b1be2955db17dd4fa663dbaabc2c136887e43f558c38c41e610dac56c988bf",
+            "backupFile": "b8b1be2955db17dd4fa663dbaabc2c136887e43f558c38c41e610dac56c988bf",
+            "mode": 33204,
+            "size": 4353,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f5375626d69745061796d656e742f5375626d69745061796d656e74436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "707777bead65a5594688b4e92ab76641fd2b9792d717e82fe8037660a6e22421",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f5375626d69745061796d656e742f5375626d69745061796d656e74436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "linesAdded": 9,
+          "linesRemoved": 20
+        },
+        "eb1693851a9ce5c99de83c26de1f2cb0": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "7b9d8dd1b15b6d0583c40c917142b547653aab4c125e9462f61a216dd060ca35",
+            "backupFile": "7b9d8dd1b15b6d0583c40c917142b547653aab4c125e9462f61a216dd060ca35",
+            "mode": 33204,
+            "size": 3306,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e2f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "f165d5e093b9739242bd740a6049527752c1a8f773ed1a85dca2188d5800162f",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e2f50726f6365737341636d65417070726f7665644e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "linesAdded": 16,
+          "linesRemoved": 16
+        },
+        "ff6f8d2569b8cf2e05d3fef1966222cf": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "de3360585f4af6c8dac6c0af25870ab5f4bed2a14e977de33ca939defdf85234",
+            "backupFile": "de3360585f4af6c8dac6c0af25870ab5f4bed2a14e977de33ca939defdf85234",
+            "mode": 33204,
+            "size": 3279,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e2f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "220f7f306d43717d0e64e2e7f84728f9be0efb7c9919a65e6f7b039f9bc9dccd",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e2f50726f6365737341636d65526576657273616c4e6f74696669636174696f6e436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "linesAdded": 16,
+          "linesRemoved": 16
+        },
+        "797caf7159aedaaf95339584a1fd5bc0": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "ce9441d6c78277ef820cdaecadd192fd1e4dc183e0f78399e994c16b1bedf2ff",
+            "backupFile": "ce9441d6c78277ef820cdaecadd192fd1e4dc183e0f78399e994c16b1bedf2ff",
+            "mode": 33204,
+            "size": 1694,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f517565726965732f4765745061796d656e7453746174652f4765745061796d656e745374617465517565727948616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "43210e2e7533f71047f193b887d5c519e00ff1c240d77f64075545916234233e",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f517565726965732f4765745061796d656e7453746174652f4765745061796d656e745374617465517565727948616e646c65722e6373"
+            }
+          },
+          "linesAdded": 4,
+          "linesRemoved": 7
+        },
+        "6871e83027100e90aa0bee32edb71fa2": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Repositories/PaymentRepository.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "0225ebf41299abaf205dae8bd1f1143a616a47fa840668cbec6f757f9dbd5177",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Repositories/PaymentRepository.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f5265706f7369746f726965732f5061796d656e745265706f7369746f72792e6373"
+            }
+          },
+          "linesAdded": 40,
+          "linesRemoved": 0
+        },
+        "dca01bef688b8b67cbdbe850b390efea": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Repositories/PaymentChangeRepository.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "8695bb8add0603ebf7ccb14babb184305e9400b68bdff7c0013b55880f9fddab",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Repositories/PaymentChangeRepository.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f5265706f7369746f726965732f5061796d656e744368616e67655265706f7369746f72792e6373"
+            }
+          },
+          "linesAdded": 25,
+          "linesRemoved": 0
+        },
+        "3334f90876357917462349d83dec1cc3": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Repositories/NotificationDeliveryRepository.cs",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "c26af7656c40e0828c165662a555b6ee5a0f747b9622d508d1b28c902c4b46d7",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/Repositories/NotificationDeliveryRepository.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f5265706f7369746f726965732f4e6f74696669636174696f6e44656c69766572795265706f7369746f72792e6373"
+            }
+          },
+          "linesAdded": 31,
+          "linesRemoved": 0
+        },
+        "18090b7470c3e280eb76a90ac86fa422": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "d878f15384f336c72b314f7e8456e29d22ac9fb7ad562da661c66889d0cad212",
+            "backupFile": "d878f15384f336c72b314f7e8456e29d22ac9fb7ad562da661c66889d0cad212",
+            "mode": 33204,
+            "size": 3820,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f446570656e64656e6379496e6a656374696f6e2e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "a2c69116145af2dde60fc3f5f28c9804fb7eb2ada8a618fbef0505c5a7782121",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f446570656e64656e6379496e6a656374696f6e2e6373"
+            }
+          },
+          "linesAdded": 4,
+          "linesRemoved": 0
+        },
+        "c1999ae4d78d3b3a977c1a34a87dc068": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "b8ed896ee15f7d629106a0209f6288df13c0d5f7988d073ef237b4a2160cdeff",
+            "backupFile": "b8ed896ee15f7d629106a0209f6288df13c0d5f7988d073ef237b4a2160cdeff",
+            "mode": 33204,
+            "size": 1721,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652e637370726f6a"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "867466bf69b6d54da90210ee23961d684cd6916eae461348a92db97db4c39a7c",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652e637370726f6a"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 0
+        },
+        "e9074b03f596918502a370ef38b1cecc": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "b27d33a78501389ce0aaf086dcce21bd03e73a9321faed3f0750952291540e68",
+            "backupFile": "b27d33a78501389ce0aaf086dcce21bd03e73a9321faed3f0750952291540e68",
+            "mode": 33204,
+            "size": 1327,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2e637370726f6a"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "10a7113ede462037f52703bb548b4c64b1260d1165457030dc0217999660e648",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2e637370726f6a"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 3
+        },
+        "5d5f757eb97af730bf89f518015eaf38": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/AcmeIntegreatedAssessement.Database.sqlproj",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "9535c8095aa2ac8f1e3ba3d38d1b6f3d0578e13e44c39a84458f8636dcdc0621",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/AcmeIntegreatedAssessement.Database.sqlproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e44617461626173652f41636d65496e746567726561746564417373657373656d656e742e44617461626173652e73716c70726f6a"
+            }
+          },
+          "linesAdded": 12,
+          "linesRemoved": 0
+        },
+        "133992730ac24ee328a2a36dccf044e3": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/Tables/Payment.sql",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "f323b0bcfd48a433c0c924f3f372f0225f2c1bb9870a02add2b14c57551e7b1b",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/Tables/Payment.sql",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e44617461626173652f536368656d614f626a656374732f5461626c65732f5061796d656e742e73716c"
+            }
+          },
+          "linesAdded": 12,
+          "linesRemoved": 0
+        },
+        "d952e48339f9b209c9e203b7d00ca3d0": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/Tables/PaymentChange.sql",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "19faca66b2cc79ba1581c8c3e30ce700731727c80e7dca4054a555140798e420",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/Tables/PaymentChange.sql",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e44617461626173652f536368656d614f626a656374732f5461626c65732f5061796d656e744368616e67652e73716c"
+            }
+          },
+          "linesAdded": 12,
+          "linesRemoved": 0
+        },
+        "35e4ead0a1191fe5e137c226c86d1708": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/Tables/NotificationDelivery.sql",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "6ddf467c884a13578947985de2aec093a5e8089e43f24f5516e3a3019051ac1e",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/Tables/NotificationDelivery.sql",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e44617461626173652f536368656d614f626a656374732f5461626c65732f4e6f74696669636174696f6e44656c69766572792e73716c"
+            }
+          },
+          "linesAdded": 11,
+          "linesRemoved": 0
+        },
+        "93674e3dcb185bb2e70e396ed3ccb8e7": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/StoredProcedures/SubmitPayment.sql",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "e95f8fad38d56c36e1d145ee95e4d7db6b492f0ab38596217d5ac26e5e22ad84",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/SchemaObjects/StoredProcedures/SubmitPayment.sql",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e44617461626173652f536368656d614f626a656374732f53746f72656450726f636564757265732f5375626d69745061796d656e742e73716c"
+            }
+          },
+          "linesAdded": 13,
+          "linesRemoved": 0
+        }
+      },
+      "backupFiles": [
+        "b8b1be2955db17dd4fa663dbaabc2c136887e43f558c38c41e610dac56c988bf",
+        "7b9d8dd1b15b6d0583c40c917142b547653aab4c125e9462f61a216dd060ca35",
+        "de3360585f4af6c8dac6c0af25870ab5f4bed2a14e977de33ca939defdf85234",
+        "ce9441d6c78277ef820cdaecadd192fd1e4dc183e0f78399e994c16b1bedf2ff",
+        "d878f15384f336c72b314f7e8456e29d22ac9fb7ad562da661c66889d0cad212",
+        "b8ed896ee15f7d629106a0209f6288df13c0d5f7988d073ef237b4a2160cdeff",
+        "b27d33a78501389ce0aaf086dcce21bd03e73a9321faed3f0750952291540e68"
+      ],
+      "fileCount": 18,
+      "linesAdded": 243,
+      "linesRemoved": 62
+    },
+    {
+      "snapshotId": "50d71ef8-ea2b-4990-9278-55803eceedbe",
+      "eventId": "956e671d-40da-4844-b650-3dc3104809cb",
+      "userMessage": "continue",
+      "timestamp": "2026-10-05T08:29:20.885Z",
+      "files": {
+        "35520f66fa9631d3cae973586b01f84c": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "707777bead65a5594688b4e92ab76641fd2b9792d717e82fe8037660a6e22421",
+            "backupFile": "707777bead65a5594688b4e92ab76641fd2b9792d717e82fe8037660a6e22421",
+            "mode": 33204,
+            "size": 3980,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f5375626d69745061796d656e742f5375626d69745061796d656e74436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "bd03b69c79db3a7fe9a48d3b68395fd0aba37f2747bc86e618e2f9859bcf798b",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f436f6d6d616e64732f5375626d69745061796d656e742f5375626d69745061796d656e74436f6d6d616e6448616e646c65722e6373"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 1
+        }
+      },
+      "backupFiles": [
+        "707777bead65a5594688b4e92ab76641fd2b9792d717e82fe8037660a6e22421"
+      ],
+      "fileCount": 1,
+      "linesAdded": 1,
+      "linesRemoved": 1
+    }
+  ]
+}

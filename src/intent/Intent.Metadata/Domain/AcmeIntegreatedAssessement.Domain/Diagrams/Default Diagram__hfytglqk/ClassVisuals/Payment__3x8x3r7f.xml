@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<classVisual id="5b469c38-f093-4b67-a21f-79546c316c55" zIndex="0">
+  <name>Payment</name>
+  <position x="400" y="125" />
+  <size width="200" height="210" />
+  <autoResizeEnabled>true</autoResizeEnabled>
+</classVisual>

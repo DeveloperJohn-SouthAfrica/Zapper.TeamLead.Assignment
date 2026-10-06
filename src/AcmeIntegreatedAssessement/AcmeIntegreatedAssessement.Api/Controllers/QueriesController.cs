@@ -1,0 +1,57 @@
+using System;
+using AcmeIntegreatedAssessement.Application.Queries.GetPaymentState;
+using AcmeIntegreatedAssessement.Application.Queries.GetDailyPaymentSummary;
+using Intent.RoslynWeaver.Attributes;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
+[assembly: IntentTemplate("Intent.AspNetCore.Controllers.Controller", Version = "1.0")]
+
+namespace AcmeIntegreatedAssessement.Api.Controllers
+{
+    [ApiController]
+    [Route("api")]
+    public class QueriesController : ControllerBase
+    {
+        private readonly ISender _mediator;
+
+        public QueriesController(ISender mediator)
+        {
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <response code="200">Returns the specified int.</response>
+        /// <response code="400">One or more validation errors have occurred.</response>
+        /// <response code="404">One or more entities could not be found with the provided parameters.</response>
+        [HttpGet("payments/{appPaymentId}")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<int>> GetPaymentState(
+            [FromRoute] string appPaymentId,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await _mediator.Send(new GetPaymentStateQuery(appPaymentId: appPaymentId), cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpGet("reports/daily-summary")]
+        [ProducesResponseType(typeof(DailyPaymentSummaryResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<DailyPaymentSummaryResponse>> GetDailyPaymentSummary(
+            [FromQuery] DateTime? reportDate = null,
+            CancellationToken cancellationToken = default)
+        {
+            var effectiveDate = reportDate ?? DateTime.UtcNow;
+            var dateOnly = DateOnly.FromDateTime(effectiveDate.Date);
+            var result = await _mediator.Send(new GetDailyPaymentSummaryQuery(dateOnly), cancellationToken);
+            return Ok(result);
+        }
+    }
+}

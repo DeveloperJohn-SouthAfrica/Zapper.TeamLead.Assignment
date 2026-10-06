@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[SubMerchant]
+(
+    [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    [ZapperMerchantId] NVARCHAR(100) NOT NULL,
+    [TradingName] NVARCHAR(200) NOT NULL,
+    [City] NVARCHAR(100) NOT NULL,
+    [Region] NVARCHAR(100) NOT NULL,
+    [Country] NVARCHAR(100) NOT NULL,
+    [MerchantCategoryCode] NVARCHAR(10) NOT NULL,
+    [CreatedAt] DATETIME2 NOT NULL CONSTRAINT DF_SubMerchant_CreatedAt DEFAULT SYSUTCDATETIME(),
+    [UpdatedAt] DATETIME2 NOT NULL CONSTRAINT DF_SubMerchant_UpdatedAt DEFAULT SYSUTCDATETIME(),
+    [CreatedBy] NVARCHAR(100) NOT NULL,
+    [UpdatedBy] NVARCHAR(100) NOT NULL
+);
+
+CREATE UNIQUE INDEX UX_SubMerchant_ZapperMerchantId ON [dbo].[SubMerchant](ZapperMerchantId);

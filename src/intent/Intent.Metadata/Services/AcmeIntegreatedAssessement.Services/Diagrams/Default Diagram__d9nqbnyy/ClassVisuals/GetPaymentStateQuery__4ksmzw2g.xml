@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<classVisual id="92ad2e42-c6b0-43c0-ae1c-0303264c4a39" zIndex="0">
+  <name>GetPaymentStateQuery</name>
+  <position x="50" y="250" />
+  <size width="200" height="80" />
+  <autoResizeEnabled>true</autoResizeEnabled>
+</classVisual>

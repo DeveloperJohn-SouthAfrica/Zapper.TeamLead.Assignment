@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<associationVisual id="951c799b-a37b-4551-bbbd-e54076c0c769" zIndex="0">
+  <name>StoredCardTokens_to_Payment</name>
+  <sourceId>0f89812e-06c2-477f-9d63-c6a0b91617c0</sourceId>
+  <targetId>5b469c38-f093-4b67-a21f-79546c316c55</targetId>
+  <targetPrefPoint x="100" y="132" />
+</associationVisual>

@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "snapshots": [
+    {
+      "snapshotId": "7a2be5be-2d29-4615-a5a8-89f37c29c06b",
+      "eventId": "8a813b07-8954-4c1e-9dff-6721b4538fdf",
+      "userMessage": "Create a Kiro / SpecKit / BMAD / OpenSpec folder under `/docs` and populate the contents with the appropriate assets for a spec driven development import",
+      "timestamp": "2026-10-04T22:59:27.490Z",
+      "files": {
+        "7da132843f472d0282355d102b26007a": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/schema.yaml",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "8b0b41ba87ab928b27a6cf812bc944e99cbf5aebd5bc5e1d6db117341b3e1f46",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/schema.yaml",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f736368656d612e79616d6c"
+            }
+          },
+          "linesAdded": 40,
+          "linesRemoved": 0
+        },
+        "824b3197acacd0f866eb3b96ab9fffa5": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/proposal.md",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "d4b6fe849c8e18c8f75ce1dbcbe44a6da17ef6b668c780cd9937843341b840fe",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/proposal.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f74656d706c617465732f70726f706f73616c2e6d64"
+            }
+          },
+          "linesAdded": 32,
+          "linesRemoved": 0
+        },
+        "b2778012e177e4fab334abdec5afd120": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/spec.md",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "1cccfb573f031c6352bed2a879b7035ff710bc909112fc23d10bdcfcdd8d4318",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/spec.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f74656d706c617465732f737065632e6d64"
+            }
+          },
+          "linesAdded": 13,
+          "linesRemoved": 0
+        },
+        "504d0601efbaa0d5e84bd092068ca6ae": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/design.md",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "6ccc87f5017fb190e69e8759dd4e20d5ac3320cc4dabf152708bf8f2aa5205f8",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/design.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f74656d706c617465732f64657369676e2e6d64"
+            }
+          },
+          "linesAdded": 21,
+          "linesRemoved": 0
+        },
+        "4929835b7ad8d771c9162d95a2cd0fb8": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/tasks.md",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "fa67d99fb4a93b12d702f89ea83e1838219d1cad1c90a4192c402278001cd30e",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/tasks.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f74656d706c617465732f7461736b732e6d64"
+            }
+          },
+          "linesAdded": 11,
+          "linesRemoved": 0
+        }
+      },
+      "backupFiles": [],
+      "fileCount": 5,
+      "linesAdded": 117,
+      "linesRemoved": 0
+    },
+    {
+      "snapshotId": "d90141b7-2ed7-45f3-bccb-22018a2906fb",
+      "eventId": "24fcb244-81c1-420e-a1e9-fe6e0f9bbd30",
+      "userMessage": "great now populate the below  folder structure from the markdown files in the docs folder excluding the OpennSpec folder \n\ni.e \n\nfill this in from what we have \nThe folder structure is:                                                                                                                                                                                                       ┃\n                                                                                                                                                                                                                                  ┃\n   docs/OpenSpec/spec-driven/                                                                                                                                                                                                     ┃\n   ├── schema.yaml                                                                                                                                                                                                                ┃\n   └── templates/                                                                                                                                                                                                                 ┃\n       ├── proposal.md                                                                                                                                                                                                            ┃\n       ├── spec.md                                                                                                                                                                                                                ┃\n       ├── design.md                                                                                                                                                                                                              ┃\n       └── tasks.md",
+      "timestamp": "2026-10-04T23:04:52.398Z",
+      "files": {
+        "824b3197acacd0f866eb3b96ab9fffa5": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/proposal.md",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "d4b6fe849c8e18c8f75ce1dbcbe44a6da17ef6b668c780cd9937843341b840fe",
+            "backupFile": "d4b6fe849c8e18c8f75ce1dbcbe44a6da17ef6b668c780cd9937843341b840fe",
+            "mode": 33204,
+            "size": 1261,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/proposal.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f74656d706c617465732f70726f706f73616c2e6d64"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "05a19babe308ec20a7797d09ac2258420a9db838cd40d7eeffc537ec40415946",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/templates/proposal.md",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f74656d706c617465732f70726f706f73616c2e6d64"
+            }
+          },
+          "linesAdded": 648,
+          "linesRemoved": 22
+        }
+      },
+      "backupFiles": [
+        "d4b6fe849c8e18c8f75ce1dbcbe44a6da17ef6b668c780cd9937843341b840fe"
+      ],
+      "fileCount": 1,
+      "linesAdded": 648,
+      "linesRemoved": 22
+    },
+    {
+      "snapshotId": "ff126554-aebc-433e-ab13-803ec510aaab",
+      "eventId": "043d73e7-a5a5-466b-8934-8aa3bbef0f90",
+      "userMessage": "still not right getting the following error \nImported 0 of 1 detected source folder(s) under OpenSpec. Detected a openspec source in \"OpenSpec\" but parsed 0 requirements.",
+      "timestamp": "2026-10-05T02:13:02.538Z",
+      "files": {
+        "92395bd83623407bfad9314835596237": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/.openspec.yaml",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "e2a895a3fa03df15f25526c8ec094670566a7436fd86992e36b2798e1680b738",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/OpenSpec/spec-driven/.openspec.yaml",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f646f63732f4f70656e537065632f737065632d64726976656e2f2e6f70656e737065632e79616d6c"
+            }
+          },
+          "linesAdded": 0,
+          "linesRemoved": 0
+        }
+      },
+      "backupFiles": [],
+      "fileCount": 1,
+      "linesAdded": 0,
+      "linesRemoved": 0
+    }
+  ]
+}

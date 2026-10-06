@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[StoredCardToken]
+(
+    [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    [StoredCardTokenId] NVARCHAR(100) NOT NULL,
+    [AcmeToken] NVARCHAR(200) NOT NULL,
+    [CustomerId] NVARCHAR(100) NOT NULL,
+    [CustomerEmail] NVARCHAR(200) NOT NULL,
+    [PaymentId] UNIQUEIDENTIFIER NULL,
+    [CreatedAt] DATETIME2 NOT NULL CONSTRAINT DF_StoredCardToken_CreatedAt DEFAULT SYSUTCDATETIME(),
+    [UpdatedAt] DATETIME2 NOT NULL CONSTRAINT DF_StoredCardToken_UpdatedAt DEFAULT SYSUTCDATETIME(),
+    [CreatedBy] NVARCHAR(100) NOT NULL,
+    [UpdatedBy] NVARCHAR(100) NOT NULL
+);
+
+CREATE UNIQUE INDEX UX_StoredCardToken_StoredCardTokenId ON [dbo].[StoredCardToken](StoredCardTokenId);
+CREATE INDEX IX_StoredCardToken_CustomerId ON [dbo].[StoredCardToken](CustomerId);

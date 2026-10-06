@@ -1,0 +1,488 @@
+Trusting the HTTPS development certificate was requested. Trust is per-user and may require additional configuration. See https://aka.ms/dev-certs-trust for more information.
+[110] For OpenSSL trust to take effect, '$HOME/.aspnet/dev-certs/trust' must be listed in the SSL_CERT_DIR environment variable. For example, `export SSL_CERT_DIR="$HOME/.aspnet/dev-certs/trust:/usr/lib/ssl/certs"`. See https://aka.ms/dev-certs-trust for more information.
+There was an error trusting the HTTPS developer certificate. It will be trusted by some clients but not by others.
+Linux client trust uses SSL_CERT_DIR=/home/jvanniekerk/.aspnet/dev-certs/trust:/usr/lib/ssl/certs; some browsers may need this development certificate imported into their certificate store.
+A valid HTTPS certificate is already present.
+Building the database project...
+  Determining projects to restore...
+/home/jvanniekerk/.nuget/packages/microsoft.build.sql/2.2.0/sdk/Sdk.targets(262,5): warning : A newer version of Microsoft.Build.Sql is available: 2.3.0. You are using 2.2.0. [/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/AcmeIntegreatedAssessement.Database.sqlproj]
+  All projects are up-to-date for restore.
+  AcmeIntegreatedAssessement.Database -> /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/bin/Release/AcmeIntegreatedAssessement.Database.dacpac
+
+Build succeeded.
+
+/home/jvanniekerk/.nuget/packages/microsoft.build.sql/2.2.0/sdk/Sdk.targets(262,5): warning : A newer version of Microsoft.Build.Sql is available: 2.3.0. You are using 2.2.0. [/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/AcmeIntegreatedAssessement.Database.sqlproj]
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.55
+Starting SQL Server Developer and Redis...
+time="2026-10-06T14:46:20+02:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image zapperteamleadassignment-sqlserver Building 
+ Image zapperteamleadassignment-redis Building 
+ Image zapperteamleadassignment-redis Building 
+ Image zapperteamleadassignment-sqlserver Building 
+Sending build context to Docker daemon     566B
+Sending build context to Docker daemon     472B
+Step 1/9 : FROM redis:7.0-alpine
+Step 1/10 : FROM mcr.microsoft.com/mssql/server:2022-latest
+ ---> 4402d880dd4c
+Step 2/10 : USER root
+ ---> c9d92d840fd0
+Step 2/9 : RUN apk add --no-cache openssh     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> 517d8500c9d8
+Step 3/10 : RUN apt-get update     && apt-get install -y --no-install-recommends openssh-server     && rm -rf /var/lib/apt/lists/*     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> 20c69002520e
+Step 3/9 : COPY scripts/run-redis.sh /usr/local/bin/run-redis.sh
+ ---> Using cache
+ ---> eac0e17f6159
+Step 4/10 : COPY scripts/run-sqlserver.sh /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> d097914e13ca
+Step 4/9 : RUN chmod +x /usr/local/bin/run-redis.sh
+ ---> Using cache
+ ---> 23fa0040b338
+Step 5/10 : RUN chmod +x /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> bd27f9189f73
+Step 6/10 : ENV SQL_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> f2c906e65214
+Step 5/9 : ENV REDIS_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> 650af079190d
+Step 7/10 : EXPOSE 1433
+ ---> Using cache
+ ---> 532da2eade2f
+Step 6/9 : EXPOSE 6379
+ ---> Using cache
+ ---> da8bf354ba53
+Step 8/10 : EXPOSE 2223
+ ---> Using cache
+ ---> 0975087163ea
+Step 7/9 : EXPOSE 2224
+ ---> Using cache
+ ---> 9bdf745630d2
+Step 9/10 : CMD ["/usr/local/bin/run-sqlserver.sh"]
+ ---> Using cache
+ ---> 44136ee08b21
+Step 8/9 : ENTRYPOINT ["/usr/local/bin/run-redis.sh"]
+ ---> Using cache
+ ---> 56a76a605a99
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 9a5af0cba155
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 00d4c04f02c0
+ ---> Running in 5e2eb5b87a26
+ ---> Removed intermediate container 5e2eb5b87a26
+ ---> 263e167be8e7
+Successfully built 263e167be8e7
+Successfully tagged zapperteamleadassignment-redis:latest
+ Image zapperteamleadassignment-redis Built 
+ Image zapperteamleadassignment-redis Built 
+ ---> Removed intermediate container 00d4c04f02c0
+ ---> c7d16a18cd4e
+Successfully built c7d16a18cd4e
+Successfully tagged zapperteamleadassignment-sqlserver:latest
+ Image zapperteamleadassignment-sqlserver Built 
+ Image zapperteamleadassignment-sqlserver Built 
+ Network zapperteamleadassignment_default Creating 
+ Network zapperteamleadassignment_default Creating 
+ Network zapperteamleadassignment_default Created 
+ Network zapperteamleadassignment_default Created 
+ Container zapperteamleadassignment-sqlserver-1 Creating 
+ Container zapperteamleadassignment-redis-1 Creating 
+ Container zapperteamleadassignment-sqlserver-1 Created 
+ Container zapperteamleadassignment-redis-1 Created 
+ Container zapperteamleadassignment-sqlserver-1 Starting 
+ Container zapperteamleadassignment-redis-1 Starting 
+ Container zapperteamleadassignment-sqlserver-1 Started 
+ Container zapperteamleadassignment-redis-1 Started 
+ Container zapperteamleadassignment-sqlserver-1 Waiting 
+ Container zapperteamleadassignment-redis-1 Waiting 
+ Container zapperteamleadassignment-redis-1 Healthy 
+ Container zapperteamleadassignment-sqlserver-1 Healthy 
+Deploying the database schema...
+time="2026-10-06T14:46:29+02:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image zapperteamleadassignment-sqlserver Building 
+ Image zapperteamleadassignment-sqlserver Building 
+Sending build context to Docker daemon     566B
+Step 1/10 : FROM mcr.microsoft.com/mssql/server:2022-latest
+ ---> 4402d880dd4c
+Step 2/10 : USER root
+ ---> Using cache
+ ---> 517d8500c9d8
+Step 3/10 : RUN apt-get update     && apt-get install -y --no-install-recommends openssh-server     && rm -rf /var/lib/apt/lists/*     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> eac0e17f6159
+Step 4/10 : COPY scripts/run-sqlserver.sh /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> 23fa0040b338
+Step 5/10 : RUN chmod +x /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> bd27f9189f73
+Step 6/10 : ENV SQL_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> 650af079190d
+Step 7/10 : EXPOSE 1433
+ ---> Using cache
+ ---> da8bf354ba53
+Step 8/10 : EXPOSE 2223
+ ---> Using cache
+ ---> 9bdf745630d2
+Step 9/10 : CMD ["/usr/local/bin/run-sqlserver.sh"]
+ ---> Using cache
+ ---> 56a76a605a99
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c7d16a18cd4e
+Successfully built c7d16a18cd4e
+ Image zapperteamleadassignment-sqlserver Built 
+ Image zapperteamleadassignment-sqlserver Built 
+Successfully tagged zapperteamleadassignment-sqlserver:latest
+ Container zapperteamleadassignment-sqlserver-1 Running 
+time="2026-10-06T14:46:29+02:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image zapperteamleadassignment-dacpac Building 
+ Image zapperteamleadassignment-dacpac Building 
+Sending build context to Docker daemon     234B
+Step 1/5 : FROM mcr.microsoft.com/dotnet/sdk:10.0
+ ---> e70cdb7f80b0
+Step 2/5 : RUN dotnet tool install --tool-path /tools Microsoft.SqlPackage
+ ---> Running in 9ce4b7f2d6b5
+You can invoke the tool using the following command: sqlpackage
+Tool 'microsoft.sqlpackage' (version '170.5.96') was successfully installed.
+ ---> Removed intermediate container 9ce4b7f2d6b5
+ ---> d182c434cb9c
+Step 3/5 : ENV PATH="/tools:${PATH}"
+ ---> Running in 7dd42779d633
+ ---> Removed intermediate container 7dd42779d633
+ ---> 90fbb6ec5708
+Step 4/5 : ENTRYPOINT ["sqlpackage"]
+ ---> Running in 6ec578f7b194
+ ---> Removed intermediate container 6ec578f7b194
+ ---> 872ca9f78121
+Step 5/5 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 5f0fe24cff35
+ ---> Removed intermediate container 5f0fe24cff35
+ ---> be281c31252d
+Successfully built be281c31252d
+Successfully tagged zapperteamleadassignment-dacpac:latest
+ Image zapperteamleadassignment-dacpac Built 
+ Image zapperteamleadassignment-dacpac Built 
+ Container zapperteamleadassignment-sqlserver-1 Waiting 
+ Container zapperteamleadassignment-sqlserver-1 Healthy 
+ Container zapperteamleadassignment-dacpac-run-01f9082b2a41 Creating 
+ Container zapperteamleadassignment-dacpac-run-01f9082b2a41 Created 
+Publishing to database 'Payments' on server 'sqlserver,1433'.
+Initializing deployment (Start)
+Initializing deployment (Complete)
+Analyzing deployment plan (Start)
+Analyzing deployment plan (Complete)
+Updating database (Start)
+Creating database Payments...
+Creating Table [dbo].[NotificationDelivery]...
+Creating Index [dbo].[NotificationDelivery].[UX_NotificationDelivery_NotificationId]...
+Creating Table [dbo].[Payment]...
+Creating Index [dbo].[Payment].[IX_Payment_SubMerchantRrn]...
+Creating Index [dbo].[Payment].[UX_Payment_AppPaymentId]...
+Creating Table [dbo].[PaymentChange]...
+Creating Index [dbo].[PaymentChange].[IX_PaymentChange_PaymentId]...
+Creating Table [dbo].[StoredCardToken]...
+Creating Index [dbo].[StoredCardToken].[UX_StoredCardToken_StoredCardTokenId]...
+Creating Index [dbo].[StoredCardToken].[IX_StoredCardToken_CustomerId]...
+Creating Table [dbo].[SubMerchant]...
+Creating Index [dbo].[SubMerchant].[UX_SubMerchant_ZapperMerchantId]...
+Creating Default Constraint [dbo].[DF_NotificationDelivery_CreatedAt]...
+Creating Default Constraint [dbo].[DF_Payment_UpdatedAt]...
+Creating Default Constraint [dbo].[DF_Payment_CreatedAt]...
+Creating Default Constraint [dbo].[DF_PaymentChange_CreatedAt]...
+Creating Default Constraint [dbo].[DF_StoredCardToken_UpdatedAt]...
+Creating Default Constraint [dbo].[DF_StoredCardToken_CreatedAt]...
+Creating Default Constraint [dbo].[DF_SubMerchant_UpdatedAt]...
+Creating Default Constraint [dbo].[DF_SubMerchant_CreatedAt]...
+Creating Foreign Key [dbo].[FK_NotificationDelivery_Payment]...
+Creating Foreign Key [dbo].[FK_Payment_SubMerchant]...
+Creating Foreign Key [dbo].[FK_PaymentChange_Payment]...
+Creating Procedure [dbo].[GetDailyPaymentSummary]...
+Creating Procedure [dbo].[GetNotificationDeliveryByNotificationId]...
+Creating Procedure [dbo].[GetPaymentByAppPaymentId]...
+Creating Procedure [dbo].[InsertNotificationDelivery]...
+Creating Procedure [dbo].[InsertPayment]...
+Creating Procedure [dbo].[InsertPaymentChange]...
+Creating Procedure [dbo].[SeedTestData]...
+Creating Procedure [dbo].[SubmitPayment]...
+Creating Procedure [dbo].[UpdatePaymentStatus]...
+Update complete.
+Updating database (Complete)
+Successfully published database.
+Time elapsed 0:00:20.98
+Starting the application container at https://localhost:8081...
+time="2026-10-06T14:47:25+02:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image zapperteamleadassignment-sqlserver Building 
+ Image zapperteamleadassignment-redis Building 
+ Image zapperteamleadassignment-sqlserver Building 
+ Image zapperteamleadassignment-redis Building 
+Sending build context to Docker daemon     566B
+Sending build context to Docker daemon     472B
+Step 1/10 : FROM mcr.microsoft.com/mssql/server:2022-latest
+Step 1/9 : FROM redis:7.0-alpine
+ ---> 4402d880dd4c
+Step 2/10 : USER root
+ ---> c9d92d840fd0
+Step 2/9 : RUN apk add --no-cache openssh     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> 517d8500c9d8
+Step 3/10 : RUN apt-get update     && apt-get install -y --no-install-recommends openssh-server     && rm -rf /var/lib/apt/lists/*     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> 20c69002520e
+Step 3/9 : COPY scripts/run-redis.sh /usr/local/bin/run-redis.sh
+ ---> Using cache
+ ---> eac0e17f6159
+Step 4/10 : COPY scripts/run-sqlserver.sh /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> d097914e13ca
+Step 4/9 : RUN chmod +x /usr/local/bin/run-redis.sh
+ ---> Using cache
+ ---> 23fa0040b338
+Step 5/10 : RUN chmod +x /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> f2c906e65214
+Step 5/9 : ENV REDIS_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> bd27f9189f73
+Step 6/10 : ENV SQL_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> 532da2eade2f
+Step 6/9 : EXPOSE 6379
+ ---> Using cache
+ ---> 650af079190d
+Step 7/10 : EXPOSE 1433
+ ---> Using cache
+ ---> 0975087163ea
+Step 7/9 : EXPOSE 2224
+ ---> Using cache
+ ---> da8bf354ba53
+Step 8/10 : EXPOSE 2223
+ ---> Using cache
+ ---> 44136ee08b21
+Step 8/9 : ENTRYPOINT ["/usr/local/bin/run-redis.sh"]
+ ---> Using cache
+ ---> 9bdf745630d2
+Step 9/10 : CMD ["/usr/local/bin/run-sqlserver.sh"]
+ ---> Using cache
+ ---> 9a5af0cba155
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 56a76a605a99
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 263e167be8e7
+Successfully built 263e167be8e7
+ ---> Using cache
+ ---> c7d16a18cd4e
+Successfully built c7d16a18cd4e
+Successfully tagged zapperteamleadassignment-redis:latest
+ Image zapperteamleadassignment-redis Built 
+ Image zapperteamleadassignment-redis Built 
+Successfully tagged zapperteamleadassignment-sqlserver:latest
+ Image zapperteamleadassignment-sqlserver Built 
+ Image zapperteamleadassignment-sqlserver Built 
+ Image zapperteamleadassignment-acme-web Building 
+ Image zapperteamleadassignment-acme-web Building 
+Sending build context to Docker daemon  524.4kBSending build context to Docker daemon  1.573MBSending build context to Docker daemon  2.098MBSending build context to Docker daemon  2.622MBSending build context to Docker daemon  3.146MBSending build context to Docker daemon  3.671MBSending build context to Docker daemon  4.195MBSending build context to Docker daemon   4.72MBSending build context to Docker daemon  5.244MBSending build context to Docker daemon  5.768MBSending build context to Docker daemon  6.817MBSending build context to Docker daemon  7.342MBSending build context to Docker daemon  7.866MBSending build context to Docker daemon  8.915MBSending build context to Docker daemon  9.439MBSending build context to Docker daemon  9.964MBSending build context to Docker daemon  10.49MBSending build context to Docker daemon  11.01MBSending build context to Docker daemon  11.54MBSending build context to Docker daemon  12.06MBSending build context to Docker daemon  12.59MBSending build context to Docker daemon  13.11MBSending build context to Docker daemon  13.63MBSending build context to Docker daemon  14.16MBSending build context to Docker daemon  14.68MBSending build context to Docker daemon  15.21MBSending build context to Docker daemon  15.73MBSending build context to Docker daemon  16.26MBSending build context to Docker daemon  16.78MBSending build context to Docker daemon  17.31MBSending build context to Docker daemon  17.83MBSending build context to Docker daemon  18.35MBSending build context to Docker daemon  18.88MBSending build context to Docker daemon   19.4MBSending build context to Docker daemon  19.93MBSending build context to Docker daemon  20.45MBSending build context to Docker daemon  21.51MBSending build context to Docker daemon  22.56MBSending build context to Docker daemon  23.08MBSending build context to Docker daemon  23.61MBSending build context to Docker daemon  24.13MBSending build context to Docker daemon  24.66MBSending build context to Docker daemon  25.18MBSending build context to Docker daemon   25.7MBSending build context to Docker daemon  26.23MBSending build context to Docker daemon  27.28MBSending build context to Docker daemon   27.8MBSending build context to Docker daemon  28.85MBSending build context to Docker daemon  29.38MBSending build context to Docker daemon   29.9MBSending build context to Docker daemon  30.95MBSending build context to Docker daemon  31.47MBSending build context to Docker daemon     32MBSending build context to Docker daemon  32.52MBSending build context to Docker daemon  33.05MBSending build context to Docker daemon  33.57MBSending build context to Docker daemon  34.09MBSending build context to Docker daemon  35.14MBSending build context to Docker daemon  35.67MBSending build context to Docker daemon  36.19MBSending build context to Docker daemon  37.25MBSending build context to Docker daemon  37.78MBSending build context to Docker daemon  38.83MBSending build context to Docker daemon  39.35MBSending build context to Docker daemon  39.88MBSending build context to Docker daemon   40.4MBSending build context to Docker daemon  40.93MBSending build context to Docker daemon  41.45MBSending build context to Docker daemon  41.97MBSending build context to Docker daemon   42.5MBSending build context to Docker daemon  43.02MBSending build context to Docker daemon  43.55MBSending build context to Docker daemon  44.07MBSending build context to Docker daemon   44.6MBSending build context to Docker daemon  45.12MBSending build context to Docker daemon  45.65MBSending build context to Docker daemon  46.17MBSending build context to Docker daemon  47.22MBSending build context to Docker daemon  47.74MBSending build context to Docker daemon  48.27MBSending build context to Docker daemon  48.79MBSending build context to Docker daemon  49.32MBSending build context to Docker daemon  49.84MBSending build context to Docker daemon  50.38MBSending build context to Docker daemon  51.43MBSending build context to Docker daemon  51.96MBSending build context to Docker daemon  52.48MBSending build context to Docker daemon  53.01MBSending build context to Docker daemon  53.53MBSending build context to Docker daemon  54.06MBSending build context to Docker daemon  54.58MBSending build context to Docker daemon   55.1MBSending build context to Docker daemon  55.63MBSending build context to Docker daemon  56.15MBSending build context to Docker daemon  56.68MBSending build context to Docker daemon   57.2MBSending build context to Docker daemon  57.73MBSending build context to Docker daemon  58.25MBSending build context to Docker daemon  58.77MBSending build context to Docker daemon   59.3MBSending build context to Docker daemon  60.35MBSending build context to Docker daemon  60.87MBSending build context to Docker daemon   61.4MBSending build context to Docker daemon  62.45MBSending build context to Docker daemon  63.49MBSending build context to Docker daemon  64.54MBSending build context to Docker daemon  65.59MBSending build context to Docker daemon  66.64MBSending build context to Docker daemon  67.69MBSending build context to Docker daemon  68.21MBSending build context to Docker daemon  69.27MBSending build context to Docker daemon  69.79MBSending build context to Docker daemon  70.28MB
+Step 1/32 : FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
+ ---> 222759b391a1
+Step 2/32 : USER $APP_UID
+ ---> Using cache
+ ---> 2b4a5e76f65b
+Step 3/32 : WORKDIR /app
+ ---> Using cache
+ ---> 41a803d9b448
+Step 4/32 : EXPOSE 8080
+ ---> Using cache
+ ---> e21fcaf49432
+Step 5/32 : EXPOSE 8081
+ ---> Using cache
+ ---> f6a3dbd25190
+Step 6/32 : FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+ ---> e70cdb7f80b0
+Step 7/32 : ARG BUILD_CONFIGURATION=Release
+ ---> Using cache
+ ---> 59161d6aff45
+Step 8/32 : WORKDIR /src
+ ---> Using cache
+ ---> 720c1c964f23
+Step 9/32 : COPY ["AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj", "AcmeIntegreatedAssessement.Api/"]
+ ---> Using cache
+ ---> 0c423fd18a3a
+Step 10/32 : COPY ["AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj", "AcmeIntegreatedAssessement.Application/"]
+ ---> Using cache
+ ---> e2ea629e505a
+Step 11/32 : COPY ["AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj", "AcmeIntegreatedAssessement.Infrastructure/"]
+ ---> Using cache
+ ---> 21e175ecba9a
+Step 12/32 : COPY ["AcmeIntegreatedAssessement.Domain/AcmeIntegreatedAssessement.Domain.csproj", "AcmeIntegreatedAssessement.Domain/"]
+ ---> Using cache
+ ---> 40e09dd74b4a
+Step 13/32 : RUN dotnet restore "./AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj"
+ ---> Using cache
+ ---> d151840b4e95
+Step 14/32 : COPY . .
+ ---> 272a6b1fa0c5
+Step 15/32 : WORKDIR "/src/AcmeIntegreatedAssessement.Api"
+ ---> Running in d25cd64ae18c
+ ---> Removed intermediate container d25cd64ae18c
+ ---> 4c77fa438bc8
+Step 16/32 : RUN dotnet build "./AcmeIntegreatedAssessement.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+ ---> Running in 3e70639a9e46
+  Determining projects to restore...
+  Restored /src/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj (in 595 ms).
+  Restored /src/AcmeIntegreatedAssessement.Domain/AcmeIntegreatedAssessement.Domain.csproj (in 588 ms).
+  Restored /src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj (in 697 ms).
+  Restored /src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj (in 1.26 sec).
+/src/AcmeIntegreatedAssessement.Domain/ValueObject.cs(14,37): warning S3875: Remove this overload of 'operator =='. [/src/AcmeIntegreatedAssessement.Domain/AcmeIntegreatedAssessement.Domain.csproj]
+  AcmeIntegreatedAssessement.Domain -> /app/build/AcmeIntegreatedAssessement.Domain.dll
+/src/AcmeIntegreatedAssessement.Application/Common/Eventing/IMessageBus.cs(10,111): warning CS0419: Ambiguous reference in cref attribute: 'Send{TMessage}'. Assuming 'AcmeIntegreatedAssessement.Application.Common.Eventing.IMessageBus.Send<TMessage>(TMessage)', but could have also matched other overloads including 'AcmeIntegreatedAssessement.Application.Common.Eventing.IMessageBus.Send<TMessage>(TMessage, System.Uri)'. [/src/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj]
+  AcmeIntegreatedAssessement.Application -> /app/build/AcmeIntegreatedAssessement.Application.dll
+/src/AcmeIntegreatedAssessement.Infrastructure/Caching/DistributedCacheWithUnitOfWork.cs(134,23): warning S3260: Private classes which are not derived in the current assembly should be marked as 'sealed'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Configuration/HttpClientConfiguration.cs(21,29): warning S1144: Remove the unused private method 'ApplyAppSettings'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/ApplicationDbContext.cs(62,1): warning S125: Remove this commented out code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(12,50): warning S4487: Remove this unread private field '_provider' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Caching/DistributedCacheWithUnitOfWork.cs(134,23): warning S3881: Fix this implementation of 'IDisposable' to conform to the dispose pattern. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(194,23): warning S3260: Private classes which are not derived in the current assembly should be marked as 'sealed'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Data/SqlStoredProcedureInvoker.cs(27,28): warning S2325: Make 'CreateCommand' a static method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(19,74): warning S1006: Remove the default parameter value to match the signature of overridden method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(23,67): warning S1006: Remove the default parameter value to match the signature of overridden method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/DomainEventService.cs(26,36): warning S6678: Use PascalCase for named placeholders. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/Documents/ReflectionHelper.cs(13,106): warning S3011: Make sure that this accessibility bypass is safe here. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/DomainEventService.cs(36,25): warning S112: 'System.Exception' should not be thrown by user code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(31,40): warning S112: 'System.Exception' should not be thrown by user code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/Documents/ReflectionHelper.cs(22,98): warning S3011: Make sure that this accessibility bypass is safe here. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Configuration/MassTransitConfiguration.cs(46,29): warning S1186: Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(217,155): warning S6608: Indexing at 0 should be used instead of the "Enumerable" extension method "First" [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+  AcmeIntegreatedAssessement.Infrastructure -> /app/build/AcmeIntegreatedAssessement.Infrastructure.dll
+/src/AcmeIntegreatedAssessement.Api/Configuration/AwsSecretsManagerOptions.cs(16,23): warning CS8618: Non-nullable property 'Region' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/AwsSecretsManagerOptions.cs(17,23): warning CS8618: Non-nullable property 'SecretName' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(37,42): warning CS8602: Dereference of a possibly null reference. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(21,44): warning CS0169: The field 'IdentityRevalidatingAuthenticationStateProvider.authenticationStateTask' is never used [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(19,63): warning CS0169: The field 'IdentityRevalidatingAuthenticationStateProvider.subscription' is never used [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Program.cs(16,26): warning S1118: Add a 'protected' constructor or the 'static' keyword to the class declaration. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/ApplicationSecurityConfiguration.cs(45,13): warning S125: Remove this commented out code. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(19,9): warning S1144: Remove the unused private field 'subscription'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(21,9): warning S1144: Remove the unused private field 'authenticationStateTask'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(18,42): warning S4487: Remove this unread private field 'options' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(20,47): warning S4487: Remove this unread private field '_serviceScopeFactory' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Layout/MainLayout.razor.cs(21,21): warning S2953: Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Pages/Home.razor.cs(132,21): warning S1144: Remove the unused private property 'EventCount'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Services/CurrentUserService.cs(34,33): warning S1940: Use the opposite operator ('!=') instead. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Controllers/CommandsController.cs(16,18): warning S6934: Specify the RouteAttribute when an HttpMethodAttribute or RouteAttribute is specified at an action level. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/SignalRConfiguration.cs(22,29): warning S1186: Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+  AcmeIntegreatedAssessement.Api -> /app/build/AcmeIntegreatedAssessement.Api.dll
+
+Build succeeded.
+
+/src/AcmeIntegreatedAssessement.Domain/ValueObject.cs(14,37): warning S3875: Remove this overload of 'operator =='. [/src/AcmeIntegreatedAssessement.Domain/AcmeIntegreatedAssessement.Domain.csproj]
+/src/AcmeIntegreatedAssessement.Application/Common/Eventing/IMessageBus.cs(10,111): warning CS0419: Ambiguous reference in cref attribute: 'Send{TMessage}'. Assuming 'AcmeIntegreatedAssessement.Application.Common.Eventing.IMessageBus.Send<TMessage>(TMessage)', but could have also matched other overloads including 'AcmeIntegreatedAssessement.Application.Common.Eventing.IMessageBus.Send<TMessage>(TMessage, System.Uri)'. [/src/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Caching/DistributedCacheWithUnitOfWork.cs(134,23): warning S3260: Private classes which are not derived in the current assembly should be marked as 'sealed'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Configuration/HttpClientConfiguration.cs(21,29): warning S1144: Remove the unused private method 'ApplyAppSettings'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/ApplicationDbContext.cs(62,1): warning S125: Remove this commented out code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(12,50): warning S4487: Remove this unread private field '_provider' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Caching/DistributedCacheWithUnitOfWork.cs(134,23): warning S3881: Fix this implementation of 'IDisposable' to conform to the dispose pattern. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(194,23): warning S3260: Private classes which are not derived in the current assembly should be marked as 'sealed'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Data/SqlStoredProcedureInvoker.cs(27,28): warning S2325: Make 'CreateCommand' a static method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(19,74): warning S1006: Remove the default parameter value to match the signature of overridden method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(23,67): warning S1006: Remove the default parameter value to match the signature of overridden method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/DomainEventService.cs(26,36): warning S6678: Use PascalCase for named placeholders. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/Documents/ReflectionHelper.cs(13,106): warning S3011: Make sure that this accessibility bypass is safe here. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/DomainEventService.cs(36,25): warning S112: 'System.Exception' should not be thrown by user code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(31,40): warning S112: 'System.Exception' should not be thrown by user code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/Documents/ReflectionHelper.cs(22,98): warning S3011: Make sure that this accessibility bypass is safe here. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Configuration/MassTransitConfiguration.cs(46,29): warning S1186: Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(217,155): warning S6608: Indexing at 0 should be used instead of the "Enumerable" extension method "First" [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/AwsSecretsManagerOptions.cs(16,23): warning CS8618: Non-nullable property 'Region' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/AwsSecretsManagerOptions.cs(17,23): warning CS8618: Non-nullable property 'SecretName' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(37,42): warning CS8602: Dereference of a possibly null reference. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(21,44): warning CS0169: The field 'IdentityRevalidatingAuthenticationStateProvider.authenticationStateTask' is never used [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(19,63): warning CS0169: The field 'IdentityRevalidatingAuthenticationStateProvider.subscription' is never used [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Program.cs(16,26): warning S1118: Add a 'protected' constructor or the 'static' keyword to the class declaration. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/ApplicationSecurityConfiguration.cs(45,13): warning S125: Remove this commented out code. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(19,9): warning S1144: Remove the unused private field 'subscription'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(21,9): warning S1144: Remove the unused private field 'authenticationStateTask'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(18,42): warning S4487: Remove this unread private field 'options' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(20,47): warning S4487: Remove this unread private field '_serviceScopeFactory' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Layout/MainLayout.razor.cs(21,21): warning S2953: Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Pages/Home.razor.cs(132,21): warning S1144: Remove the unused private property 'EventCount'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Services/CurrentUserService.cs(34,33): warning S1940: Use the opposite operator ('!=') instead. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Controllers/CommandsController.cs(16,18): warning S6934: Specify the RouteAttribute when an HttpMethodAttribute or RouteAttribute is specified at an action level. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/SignalRConfiguration.cs(22,29): warning S1186: Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+    34 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:21.05
+ ---> Removed intermediate container 3e70639a9e46
+ ---> 6c4b44ef9a83
+Step 17/32 : FROM build AS publish
+ ---> 6c4b44ef9a83
+Step 18/32 : ARG BUILD_CONFIGURATION=Release
+ ---> Running in 79e0986ef3dd
+ ---> Removed intermediate container 79e0986ef3dd
+ ---> c8371469c501
+Step 19/32 : RUN dotnet publish "./AcmeIntegreatedAssessement.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+ ---> Running in 517977503ccb
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  AcmeIntegreatedAssessement.Domain -> /src/AcmeIntegreatedAssessement.Domain/bin/Release/net10.0/AcmeIntegreatedAssessement.Domain.dll
+/src/AcmeIntegreatedAssessement.Application/Common/Eventing/IMessageBus.cs(10,111): warning CS0419: Ambiguous reference in cref attribute: 'Send{TMessage}'. Assuming 'AcmeIntegreatedAssessement.Application.Common.Eventing.IMessageBus.Send<TMessage>(TMessage)', but could have also matched other overloads including 'AcmeIntegreatedAssessement.Application.Common.Eventing.IMessageBus.Send<TMessage>(TMessage, System.Uri)'. [/src/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj]
+  AcmeIntegreatedAssessement.Application -> /src/AcmeIntegreatedAssessement.Application/bin/Release/net10.0/AcmeIntegreatedAssessement.Application.dll
+/src/AcmeIntegreatedAssessement.Infrastructure/Caching/DistributedCacheWithUnitOfWork.cs(134,23): warning S3260: Private classes which are not derived in the current assembly should be marked as 'sealed'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Configuration/HttpClientConfiguration.cs(21,29): warning S1144: Remove the unused private method 'ApplyAppSettings'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/ApplicationDbContext.cs(62,1): warning S125: Remove this commented out code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(12,50): warning S4487: Remove this unread private field '_provider' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Caching/DistributedCacheWithUnitOfWork.cs(134,23): warning S3881: Fix this implementation of 'IDisposable' to conform to the dispose pattern. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(194,23): warning S3260: Private classes which are not derived in the current assembly should be marked as 'sealed'. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Data/SqlStoredProcedureInvoker.cs(27,28): warning S2325: Make 'CreateCommand' a static method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/DomainEventService.cs(26,36): warning S6678: Use PascalCase for named placeholders. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/DomainEventService.cs(36,25): warning S112: 'System.Exception' should not be thrown by user code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(19,74): warning S1006: Remove the default parameter value to match the signature of overridden method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Services/IndexCreationService.cs(23,67): warning S1006: Remove the default parameter value to match the signature of overridden method. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(31,40): warning S112: 'System.Exception' should not be thrown by user code. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Configuration/MassTransitConfiguration.cs(46,29): warning S1186: Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/Documents/ReflectionHelper.cs(13,106): warning S3011: Make sure that this accessibility bypass is safe here. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Persistence/Documents/ReflectionHelper.cs(22,98): warning S3011: Make sure that this accessibility bypass is safe here. [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+/src/AcmeIntegreatedAssessement.Infrastructure/Repositories/RedisOmRepositoryBase.cs(217,155): warning S6608: Indexing at 0 should be used instead of the "Enumerable" extension method "First" [/src/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj]
+  AcmeIntegreatedAssessement.Infrastructure -> /src/AcmeIntegreatedAssessement.Infrastructure/bin/Release/net10.0/AcmeIntegreatedAssessement.Infrastructure.dll
+/src/AcmeIntegreatedAssessement.Api/Configuration/AwsSecretsManagerOptions.cs(16,23): warning CS8618: Non-nullable property 'Region' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/AwsSecretsManagerOptions.cs(17,23): warning CS8618: Non-nullable property 'SecretName' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(37,42): warning CS8602: Dereference of a possibly null reference. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(19,63): warning CS0169: The field 'IdentityRevalidatingAuthenticationStateProvider.subscription' is never used [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(21,44): warning CS0169: The field 'IdentityRevalidatingAuthenticationStateProvider.authenticationStateTask' is never used [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Program.cs(16,26): warning S1118: Add a 'protected' constructor or the 'static' keyword to the class declaration. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/ApplicationSecurityConfiguration.cs(45,13): warning S125: Remove this commented out code. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(19,9): warning S1144: Remove the unused private field 'subscription'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(21,9): warning S1144: Remove the unused private field 'authenticationStateTask'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(18,42): warning S4487: Remove this unread private field 'options' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Account/IdentityRevalidatingAuthenticationStateProvider.cs(20,47): warning S4487: Remove this unread private field '_serviceScopeFactory' or refactor the code to use its value. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Layout/MainLayout.razor.cs(21,21): warning S2953: Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Configuration/SignalRConfiguration.cs(22,29): warning S1186: Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Components/Pages/Home.razor.cs(132,21): warning S1144: Remove the unused private property 'EventCount'. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Controllers/CommandsController.cs(16,18): warning S6934: Specify the RouteAttribute when an HttpMethodAttribute or RouteAttribute is specified at an action level. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+/src/AcmeIntegreatedAssessement.Api/Services/CurrentUserService.cs(34,33): warning S1940: Use the opposite operator ('!=') instead. [/src/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj]
+  AcmeIntegreatedAssessement.Api -> /src/AcmeIntegreatedAssessement.Api/bin/Release/net10.0/AcmeIntegreatedAssessement.Api.dll
+  AcmeIntegreatedAssessement.Api -> /app/publish/
+ ---> Removed intermediate container 517977503ccb
+ ---> 7187569f11d8
+Step 20/32 : FROM base AS final
+ ---> f6a3dbd25190
+Step 21/32 : USER root
+ ---> Using cache
+ ---> 1c8c58a25bd1
+Step 22/32 : WORKDIR /app
+ ---> Using cache
+ ---> 84c849d032c4
+Step 23/32 : RUN apt-get update     && apt-get install -y --no-install-recommends openssh-server procps     && rm -rf /var/lib/apt/lists/*     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> e5cf0bed16e7
+Step 24/32 : COPY --from=publish /app/publish .

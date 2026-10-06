@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="efd49cdb-b585-417d-91b1-d8d7ef28771c" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Documents</name>
+  <display>Documents</display>
+  <sort-children>by-type-then-by-name</sort-children>
+  <parentFolderId>56a241f1-e401-4e61-aa9c-0df2d32fcfe2</parentFolderId>
+  <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+  <packageName>root</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="96df2fa6-7361-4e43-9acf-dbcea23b650a" display="Namespace Provider" value="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <children>
+    <element id="5c87e435-2153-486c-96b3-64f28cb41120" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Redis.Om.Repositories.Templates.RedisOmDocument</name>
+      <display>Intent.Redis.Om.Repositories.Templates.RedisOmDocument</display>
+      <externalReference>Intent.Redis.Om.Repositories</externalReference>
+      <parentFolderId>efd49cdb-b585-417d-91b1-d8d7ef28771c</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="6e7b8510-cda5-4333-bcc6-cad4aa8b74a9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Redis.Om.Repositories.Templates.RedisOmDocumentOfTInterface</name>
+      <display>Intent.Redis.Om.Repositories.Templates.RedisOmDocumentOfTInterface</display>
+      <externalReference>Intent.Redis.Om.Repositories</externalReference>
+      <parentFolderId>efd49cdb-b585-417d-91b1-d8d7ef28771c</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="6088ecc3-7a1d-48f1-ba26-ecb61fc52205" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Redis.Om.Repositories.Templates.RedisOmDocumentTypeExtensionMethods</name>
+      <display>Intent.Redis.Om.Repositories.Templates.RedisOmDocumentTypeExtensionMethods</display>
+      <externalReference>Intent.Redis.Om.Repositories</externalReference>
+      <parentFolderId>efd49cdb-b585-417d-91b1-d8d7ef28771c</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="945abf2b-9a91-4835-9aae-2c3be5d3519f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Redis.Om.Repositories.Templates.RedisOmValueObjectDocument</name>
+      <display>Intent.Redis.Om.Repositories.Templates.RedisOmValueObjectDocument</display>
+      <externalReference>Intent.Redis.Om.Repositories</externalReference>
+      <parentFolderId>efd49cdb-b585-417d-91b1-d8d7ef28771c</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="5cdd9b27-37c5-439d-8568-51f1c1d29399" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Redis.Om.Repositories.Templates.ReflectionHelper</name>
+      <display>Intent.Redis.Om.Repositories.Templates.ReflectionHelper</display>
+      <externalReference>Intent.Redis.Om.Repositories</externalReference>
+      <parentFolderId>efd49cdb-b585-417d-91b1-d8d7ef28771c</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+  </children>
+</class>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="2.2.0"/>
+  <PropertyGroup>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureDatabaseSchemaProvider</DSP>
+    <SuppressMissingDependenciesErrors>True</SuppressMissingDependenciesErrors>
+    <TargetDatbaseSet>True</TargetDatbaseSet>
+    <IncludeCompositeObjects>False</IncludeCompositeObjects>
+    <EnableDefaultSqlItems>true</EnableDefaultSqlItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="SchemaObjects/" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
+</Project>

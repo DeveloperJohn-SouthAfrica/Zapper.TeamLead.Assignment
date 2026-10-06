@@ -1,0 +1,12 @@
+{
+  "name": "acme-ui-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test --config=playwright.config.ts",
+    "test:ci": "playwright test --config=playwright.config.ts --reporter=list"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0"
+  }
+}

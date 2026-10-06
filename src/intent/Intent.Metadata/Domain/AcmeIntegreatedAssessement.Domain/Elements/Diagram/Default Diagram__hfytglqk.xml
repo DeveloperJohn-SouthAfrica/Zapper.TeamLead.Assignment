@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="60cb8ddf-fd69-4bc0-8033-74d45b86be21" type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
+  <name>Default Diagram</name>
+  <display>Default Diagram</display>
+  <externalReference>342420d1-973d-4dd0-9c54-32caf2e79c83</externalReference>
+  <parentFolderId>cde13474-026a-419f-b3f4-29543e80f77f</parentFolderId>
+  <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+  <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+  <diagram>
+    <targetPackageId>60cb8ddf-fd69-4bc0-8033-74d45b86be21</targetPackageId>
+  </diagram>
+</class>

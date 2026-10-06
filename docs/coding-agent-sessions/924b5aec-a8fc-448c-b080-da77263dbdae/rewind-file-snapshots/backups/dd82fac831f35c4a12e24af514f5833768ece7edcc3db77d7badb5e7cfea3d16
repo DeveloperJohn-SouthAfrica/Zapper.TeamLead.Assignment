@@ -1,0 +1,58 @@
+# Payment Domain Classes
+
+```mermaid
+classDiagram
+    class PaymentIntakeAPI {
+        +submitPayment(PaymentRequest request)
+    }
+
+    class PaymentOrchestrator {
+        +processPayment(PaymentRequest request)
+        -validateRequest()
+        -assembleAcmePayload()
+    }
+
+    class PaymentAggregate {
+        -paymentId: string
+        -status: TransactionStatus
+        +markPending()
+        +markApproved(ResponseDetail response)
+        +markDeclined(ResponseDetail response)
+        +markReversed()
+        +markRefunded()
+    }
+
+    class PaymentRepository {
+        +save(PaymentAggregate aggregate)
+        +findByAppPaymentId(string appPaymentId)
+        +beginTransaction()
+    }
+
+    class PaymentHistoryRepository {
+        +appendHistory(string paymentId, string eventType, string details)
+    }
+
+    class AcmeGatewayClient {
+        +submitPayment(AcmePaymentPayload payload)
+        +configureTimeouts()
+    }
+
+    class TokenStore {
+        +findToken(string customerId)
+        +storeToken(string token, string customerId)
+    }
+
+    PaymentIntakeAPI --> PaymentOrchestrator
+    PaymentOrchestrator --> PaymentAggregate
+    PaymentOrchestrator --> PaymentRepository
+    PaymentOrchestrator --> PaymentHistoryRepository
+    PaymentOrchestrator --> AcmeGatewayClient
+    PaymentAggregate --> TokenStore
+```
+
+## Notes
+
+- `PaymentIntakeAPI` is the entry controller; it is thin (Single Responsibility) and only marshals requests to the orchestrator.
+- `PaymentOrchestrator` orchestrates validation, persistence, and gateway interaction while keeping `PaymentAggregate` pristine (DRY across status transitions).
+- `PaymentRepository` and `PaymentHistoryRepository` pair in a single ACID transaction so the payment and audit trail move together, satisfying ISO/IEC 25010 reliability.
+- `TokenStore` is an injected dependency that can be swapped for a caching tier or a shared SQL table; this keeps the design open for future scaling.

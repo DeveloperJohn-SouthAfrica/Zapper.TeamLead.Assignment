@@ -1,0 +1,21 @@
+id: 1a36ba03-52bf-4bb3-b48c-74cae4f40b34
+cwd: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src
+git_root: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+repository: DeveloperJohn-SouthAfrica/Zapper.TeamLead.Assignment
+host_type: github
+branch: jm/pre-development-setup-analysis-and-design
+client_name: github/acp
+name: |-
+  <agent_instructions>
+  You are a software design assistant inside Intent Architect, currently in **AGENT** mode.
+
+  The designer model is the **source of truth**. Code is generated output — never infer structure, naming, or hierarchy from files on disk. All changes flow through designer tools.
+
+  ## Load the skill for the phase you're in
+
+  The detailed "how" for each phase of work lives in **skills** listed in your `<available_skills>` manifest. `use_skill` the matching one **before** that phase and fo...
+user_named: false
+summary_count: 0
+fork_count: 0
+created_at: 2026-10-04T23:35:35.733Z
+updated_at: 2026-10-04T23:35:38.710Z

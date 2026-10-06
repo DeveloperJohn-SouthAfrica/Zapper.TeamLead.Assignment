@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f94c24b9-d487-4617-b573-a91069e317a2" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>skills</name>
+  <display>skills</display>
+  <externalReference>bb7f3758-6f78-495a-ba3d-3bf2491809b6</externalReference>
+  <sort-children>by-type-then-by-name</sort-children>
+  <parentFolderId>501f2e9a-a917-4ca0-8b0a-219a4976ccff</parentFolderId>
+  <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+  <packageName>root</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="96df2fa6-7361-4e43-9acf-dbcea23b650a" display="Namespace Provider" value="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <children>
+    <element id="d1c31541-c43a-482c-9c1f-1cd13ee14246" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Application.FluentValidation.CustomValidationSkillTemplate</name>
+      <display>Intent.Application.FluentValidation.CustomValidationSkillTemplate</display>
+      <externalReference>Intent.Application.FluentValidation</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="a4c363c1-8b2f-423d-9edc-b0cc13fcf45c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Application.MediatR.CommandHandlerSkillTemplate</name>
+      <display>Intent.Application.MediatR.CommandHandlerSkillTemplate</display>
+      <externalReference>Intent.Application.MediatR</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="61fe9199-1947-46ed-bf96-1c29612515dd" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Application.MediatR.QueryHandlerSkillTemplate</name>
+      <display>Intent.Application.MediatR.QueryHandlerSkillTemplate</display>
+      <externalReference>Intent.Application.MediatR</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="ff61e3d2-392f-46c6-8d5b-4851e6346fe5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Application.ServiceImplementations.ServiceImplementationSkillTemplate</name>
+      <display>Intent.Application.ServiceImplementations.ServiceImplementationSkillTemplate</display>
+      <externalReference>Intent.Application.ServiceImplementations</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="8805f6ac-d45d-46ec-aff8-2836a25bda2d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.AspNetCore.IntegrationTesting.IntegrationTestSkillTemplate</name>
+      <display>Intent.AspNetCore.IntegrationTesting.IntegrationTestSkillTemplate</display>
+      <externalReference>Intent.AspNetCore.IntegrationTesting</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="6b2b2692-2ebf-47eb-894d-cc0b6d020a49" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorAppMenuSkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorAppMenuSkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="2415a197-8a84-4567-bdf2-7b0181c032ae" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorDialogAddingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorDialogAddingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="3a6d610f-8e84-4211-aa6b-a316de09168e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorDialogEditingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorDialogEditingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="a8c4c0a4-e767-45dd-adce-329c24fbd03e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorPageAddingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorPageAddingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="27e88390-4dba-4ef7-aa14-1494c1a3b031" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorPageEditingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorPageEditingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="3f4bdd80-2188-4c8a-828b-995dc718e70c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorPageSearchEntitySkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorPageSearchEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="905d18bb-6dcd-4810-8b45-b00601f4a0fd" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorPageViewEntitySkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorPageViewEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="39fff69b-bd89-4dbf-8474-2496c1613915" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Components.MudBlazor.MudBlazorUxThemeSyncSkillTemplate</name>
+      <display>Intent.Blazor.Components.MudBlazor.MudBlazorUxThemeSyncSkillTemplate</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="0ceb79da-5ec5-43b9-9129-86e80928a539" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorAppMenuSkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorAppMenuSkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="a0a1f7b9-143a-42d5-afd5-00ac1194d9c2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorDialogAddingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorDialogAddingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="a8046a19-4810-4094-964b-ebcb51f9f3c9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorDialogEditingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorDialogEditingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="92ac6f1d-643a-4335-808f-8f98b601c344" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorPageAddingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorPageAddingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="c09422e1-1827-4344-b291-ec30fd58201d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorPageEditingEntitySkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorPageEditingEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="45337ba5-58a5-4bd4-822c-594fdd519411" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorPageSearchEntitySkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorPageSearchEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="09cfd35c-853b-4b12-b55d-188f8ffb6787" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorPageViewEntitySkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorPageViewEntitySkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="059b0294-03e7-4280-b558-549e09b72889" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorUpdatingStylingSkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorUpdatingStylingSkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="9dc1d57f-4468-4742-b5d4-2e889b371d35" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Blazor.Templates.AI.BlazorUxThemeSyncSkillTemplate</name>
+      <display>Intent.Blazor.Templates.AI.BlazorUxThemeSyncSkillTemplate</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="dda4f74e-7e35-4785-a071-ee7c7fba1fa7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.DomainServices.DomainServiceSkill</name>
+      <display>Intent.DomainServices.DomainServiceSkill</display>
+      <externalReference>Intent.DomainServices</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="047d6dd5-ce48-4edc-ad5c-04e69b1a551c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Entities.DomainEntitySkill</name>
+      <display>Intent.Entities.DomainEntitySkill</display>
+      <externalReference>Intent.Entities</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="71bc7cac-661c-4692-bfb9-6bad69dd0a36" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.EntityFrameworkCore.Repositories.EFRepositorySkillTemplate</name>
+      <display>Intent.EntityFrameworkCore.Repositories.EFRepositorySkillTemplate</display>
+      <externalReference>Intent.EntityFrameworkCore.Repositories</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="7d10cd65-3654-46c4-a385-7fc0957d3db3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.MediatR.DomainEvents.DomainEventHandlerSkill</name>
+      <display>Intent.MediatR.DomainEvents.DomainEventHandlerSkill</display>
+      <externalReference>Intent.MediatR.DomainEvents</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="2b471d9a-d866-4873-8b7c-ad953a302c55" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorDialogAddingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorDialogAddingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="9848101a-89e8-4dbc-bf49-9f75511d15a3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorDialogEditingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorDialogEditingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="0820fd1b-f5dc-4dc7-aacd-cec6e887c6c9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageAddingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageAddingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="ea3d4d5e-0eb1-4f91-be20-3766ba19bfa1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageEditingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageEditingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="66476915-3f7e-4f42-ace4-3d3f4283f8fa" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageSearchEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageSearchEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="775d16c0-895e-4d38-811b-6489da8aa978" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageViewEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorPageViewEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="de870b4e-c933-44d3-a851-9ead7e6cdd63" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorSkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Components.MudBlazor.Templates.StaticContentTemplateRegistrations.MudBlazorSkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor.Components.MudBlazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="dfc126e2-8c34-4238-9e3b-7ddcdcbab945" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorDialogAddingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorDialogAddingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="309b0b57-0aba-4a48-87d6-6be86e0f63e5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorDialogEditingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorDialogEditingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="56369cf5-ded8-4ce9-a6f9-549e60f094a6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageAddingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageAddingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="f6504a1f-7716-4b58-9350-69ca8568abad" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageEditingEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageEditingEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="bc4a08b7-f625-46fa-993c-9dee8a96a50a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageSearchEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageSearchEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="03f4a5fe-409b-4ccf-b0de-1bf2f65d47a0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageViewEntitySkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorPageViewEntitySkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="17910a54-f4c6-48a3-adbe-1dfd07253440" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorSkillSampleFilesStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Blazor.Templates.Templates.StaticContentTemplateRegistrations.BlazorSkillSampleFilesStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Blazor</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+    </element>
+    <element id="493802cb-71df-441e-b861-1b6a5a8a8f81" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>AI.Context.Skills</name>
+      <display>AI.Context.Skills</display>
+      <externalReference>245d4dc1-a41f-43b4-a968-7548a2c67249</externalReference>
+      <parentFolderId>f94c24b9-d487-4617-b573-a91069e317a2</parentFolderId>
+      <packageId>d7ff0b2f-bd91-4e9d-9ab6-9f146780cf7e</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="a23c7901-31a5-4cbf-b8bf-1be128977e6d" name="Output Anchor Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="8d79a350-96f1-4d50-bb0a-f65a5c53ec62" display="Create Sub-Folders" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+  </children>
+</class>

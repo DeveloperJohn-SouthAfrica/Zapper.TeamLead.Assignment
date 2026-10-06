@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3c466a81-6bb0-4959-8baf-c217ce39f09a" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+  <comment>Acme transaction lifecycle notification (approved/declined).</comment>
+  <name>AcmeTransactionNotification</name>
+  <display>AcmeTransactionNotification</display>
+  <sort-children>by-type-then-manually</sort-children>
+  <parentFolderId>cde13474-026a-419f-b3f4-29543e80f77f</parentFolderId>
+  <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+  <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+  <children>
+    <element id="5b42a44b-0007-4414-87e3-94abcd1751f0" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>RequestType</name>
+      <display>RequestType: string</display>
+      <typeReference id="ef2340ae-29a8-4cc2-a271-0440146b8df9">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="a120c04f-55c1-4d84-8892-4a5a58e3add8" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>MerchantID</name>
+      <display>MerchantID: string</display>
+      <typeReference id="787fd30b-f5df-401a-aa6f-b8a88ced0bed">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="6c6db9f8-b638-4450-b4cd-917bf3297055" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>TransactionID</name>
+      <display>TransactionID: string</display>
+      <typeReference id="da3a80dd-e686-42e2-bca6-60cf18c94890">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="84b27679-1a39-4d18-a3d9-3629ba5b8f64" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>TransactionDateTime</name>
+      <display>TransactionDateTime: datetime</display>
+      <typeReference id="8c47ea27-b930-4941-84e4-179e8601032d">
+        <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
+        <typeName>datetime</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+    </element>
+    <element id="83d0eecb-aaf1-446f-8d0a-11b3e53891f2" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>OrderNumber</name>
+      <display>OrderNumber: string</display>
+      <typeReference id="a7673fe4-7530-42fa-9999-909e185effd2">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="c6dd36ac-137b-4805-837e-a07bc7ecfc7c" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>ReconID</name>
+      <display>ReconID: string</display>
+      <typeReference id="5139f61f-43e6-4fc0-9200-87f28267c970">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="86d3a121-f3b6-4e35-bccb-dd0bfcd3a529" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>RetrievalReferenceNumber</name>
+      <display>RetrievalReferenceNumber: string</display>
+      <typeReference id="ba008ae5-d282-4867-9ca8-f503c5a1e23e">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="a862dea6-6765-4a01-870a-de245e13b79e" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>SystemsTraceAuditNumber</name>
+      <display>SystemsTraceAuditNumber: string</display>
+      <typeReference id="93fd8371-b8b0-4cb1-b94d-2c94589fa44a">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="e6fcd994-96eb-4305-ba3a-9e77db0f4b16" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>Amount</name>
+      <display>Amount: long</display>
+      <typeReference id="a3834cec-eb5d-4f37-87ee-fb0c6121880f">
+        <typeId>33013006-E404-48C2-AC46-24EF5A5774FD</typeId>
+        <typeName>long</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+    </element>
+    <element id="ace939b7-1faa-4473-8610-a2c0fecd3b58" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>CurrencyCode</name>
+      <display>CurrencyCode: string</display>
+      <typeReference id="4b4cf07f-ad88-470c-9923-df3027e84bac">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="91691b50-8e43-4630-ad75-e1979a4881fd" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>PaymentService</name>
+      <display>PaymentService: string</display>
+      <typeReference id="063a0e89-8e7b-4d54-8c2c-b689bab0cf61">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="f812ff08-c7f6-4e71-9bd5-995a3b054381" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>TransactionStatus</name>
+      <display>TransactionStatus: string</display>
+      <typeReference id="e55c91d1-5fa4-47bf-8aae-2c088deef3ad">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="795766ee-3370-41a5-b569-35c082d874bf" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>ResponseSource</name>
+      <display>ResponseSource: string</display>
+      <typeReference id="3a8d1c6c-1689-4c95-afd4-525e9c0b5ca1">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="fc09fcb0-5a68-4b7b-b322-22cc9a061cbc" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>ResponseCode</name>
+      <display>ResponseCode: string</display>
+      <typeReference id="c7c43d89-b11c-4843-9964-03c5849f4c6c">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="99145d33-bcf1-4048-9ac6-4b60ad412d68" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>ResponseDescription</name>
+      <display>ResponseDescription: string</display>
+      <typeReference id="5723d969-7776-465e-913e-92e45db96c0b">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="8f7dd6c3-390f-4a3e-9841-fa25d728f2da" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>AuthCode</name>
+      <display>AuthCode: string</display>
+      <typeReference id="89658055-0dd1-425a-b2d9-9124341a7f91">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="2f5b37dc-6ef1-4dcc-992c-db54d3dfc955" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>MaskedCardNumber</name>
+      <display>MaskedCardNumber: string</display>
+      <typeReference id="0b487075-aaf8-40a6-b5ee-b377a38fe943">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+    <element id="295f2e45-794b-4c83-b78f-b0ec56570edd" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>CommProtocol</name>
+      <display>CommProtocol: string</display>
+      <typeReference id="82e825ea-c803-45c9-bc2c-d070868a4685">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <typeName>string</typeName>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+      </typeReference>
+      <parentFolderId>3c466a81-6bb0-4959-8baf-c217ce39f09a</parentFolderId>
+      <packageId>cde13474-026a-419f-b3f4-29543e80f77f</packageId>
+      <packageName>AcmeIntegreatedAssessement.Domain</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="13649b19-4dfe-43ec-967f-0b85a5801dd6" name="Text Limits">
+          <definitionPackageName>Intent.Metadata.Domain.Constraints</definitionPackageName>
+          <definitionPackageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</definitionPackageId>
+          <properties>
+            <property name="97720240-6daf-4cdd-a498-c4e989427e44" display="Min Length" />
+            <property name="e1a84061-6203-4843-b21e-eef5db195803" display="Max Length" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </element>
+  </children>
+</class>

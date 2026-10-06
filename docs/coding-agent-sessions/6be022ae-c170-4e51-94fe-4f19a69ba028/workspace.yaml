@@ -1,0 +1,17 @@
+id: 6be022ae-c170-4e51-94fe-4f19a69ba028
+cwd: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+git_root: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+repository: DeveloperJohn-SouthAfrica/Zapper.TeamLead.Assignment
+host_type: github
+branch: j/sdd-solution-scaffold-and-implementation
+client_name: github/cli
+name: "in the folder /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/intent/.specs you will find a SDD collection of resources the tasks.md file and traceability.json file serve as trackers on where we are in the developmet of the coding assignment\n\nThe really important stuff intems of analysis and design is in this folder with the primary source of truth being Zapper - Team_lead Assignment.pdf/.md  \n/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/intent/docs\n\nPlease go th..."
+user_named: false
+summary_count: 14
+fork_count: 0
+created_at: 2026-10-05T10:50:51.705Z
+updated_at: 2026-10-05T19:17:44.417Z
+remote_steerable: false
+mc_task_id: 9960ec17-494b-4ade-9e64-62f8d3e433d6
+mc_session_id: 6be022ae-c170-4e51-94fe-4f19a69ba028
+mc_last_event_id: 1627f832-11f2-47c5-88ce-6a51c40c4d3c

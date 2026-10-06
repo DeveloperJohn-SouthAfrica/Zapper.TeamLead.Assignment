@@ -1,0 +1,16 @@
+id: 5b2da58a-9d34-477a-b398-e4516b4cf982
+cwd: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+git_root: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+repository: DeveloperJohn-SouthAfrica/Zapper.TeamLead.Assignment
+host_type: github
+branch: j/sdd-solution-scaffold-and-implementation
+client_name: github/cli
+name: under /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs add a coding agent sessions file and extract all sessions starting from and including 924b5aec-a8fc-448c-b080-da77263dbdae and put them into a folder under docs
+user_named: false
+summary_count: 0
+fork_count: 0
+created_at: 2026-10-06T15:39:36.200Z
+updated_at: 2026-10-06T15:41:25.689Z
+mc_session_id: 5b2da58a-9d34-477a-b398-e4516b4cf982
+mc_task_id: 4530080f-c97d-48b0-8b46-b4f131b33e78
+remote_steerable: false

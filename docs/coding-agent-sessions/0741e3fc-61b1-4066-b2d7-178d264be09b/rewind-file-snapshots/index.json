@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "snapshots": [
+    {
+      "snapshotId": "5929450c-adab-4da1-a956-5f2904b24f32",
+      "eventId": "1a3e828f-b7d2-48df-a132-1360e2b0e420",
+      "userMessage": "/graphify init",
+      "timestamp": "2026-10-04T22:45:21.353Z",
+      "files": {
+        "c62ca51aa084d4b9c30c6bfa3c6eebdf": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/graph.json",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "adee6ba0cc81d606488f9cf35deccf76930f34171bebcd690b38bb88cb761203",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/graph.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f67726170686966792d6f75742f67726170682e6a736f6e"
+            }
+          },
+          "linesAdded": 0,
+          "linesRemoved": 0
+        },
+        "dc2b17953aeb0cace7f1ef2b6ac44327": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/.graphify_chunk_001.json",
+          "preimage": {
+            "kind": "absent"
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "b2bafb84ffdac58c070aacdbfe8edaf06b87eb76a223bac23d0f0f5ce5613194",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/.graphify_chunk_001.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f67726170686966792d6f75742f2e67726170686966795f6368756e6b5f3030312e6a736f6e"
+            }
+          },
+          "linesAdded": 0,
+          "linesRemoved": 0
+        },
+        "5525b95f8482e50832b1d6e04c982439": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/.graphify_uncached.txt",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "e2b26f0c0bdcfe4d8bed90fcb47a7a7b768f64011d98e1f60ebc9408a767b56b",
+            "backupFile": "e2b26f0c0bdcfe4d8bed90fcb47a7a7b768f64011d98e1f60ebc9408a767b56b",
+            "mode": 33204,
+            "size": 3002,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/.graphify_uncached.txt",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f67726170686966792d6f75742f2e67726170686966795f756e6361636865642e747874"
+            }
+          },
+          "postimage": {
+            "kind": "absent"
+          },
+          "linesAdded": 0,
+          "linesRemoved": 22
+        },
+        "2df60ac647016d94ad5eda77f8840e4c": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/.graphify_semantic_new.json",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "4e2b87e5879147ee11c4c0a9ec89949be0dd59284d6aff00291362457fb3cc34",
+            "backupFile": "4e2b87e5879147ee11c4c0a9ec89949be0dd59284d6aff00291362457fb3cc34",
+            "mode": 33204,
+            "size": 518,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/graphify-out/.graphify_semantic_new.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f67726170686966792d6f75742f2e67726170686966795f73656d616e7469635f6e65772e6a736f6e"
+            }
+          },
+          "postimage": {
+            "kind": "absent"
+          },
+          "linesAdded": 0,
+          "linesRemoved": 19
+        }
+      },
+      "backupFiles": [
+        "e2b26f0c0bdcfe4d8bed90fcb47a7a7b768f64011d98e1f60ebc9408a767b56b",
+        "4e2b87e5879147ee11c4c0a9ec89949be0dd59284d6aff00291362457fb3cc34"
+      ],
+      "fileCount": 4,
+      "linesAdded": 0,
+      "linesRemoved": 41
+    }
+  ]
+}

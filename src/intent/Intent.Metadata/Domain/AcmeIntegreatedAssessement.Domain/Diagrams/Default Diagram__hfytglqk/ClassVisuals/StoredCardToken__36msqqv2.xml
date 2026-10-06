@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<classVisual id="0f89812e-06c2-477f-9d63-c6a0b91617c0" zIndex="0">
+  <name>StoredCardToken</name>
+  <position x="0" y="250" />
+  <size width="200" height="150" />
+  <autoResizeEnabled>true</autoResizeEnabled>
+</classVisual>

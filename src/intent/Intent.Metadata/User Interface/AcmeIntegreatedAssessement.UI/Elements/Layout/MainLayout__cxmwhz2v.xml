@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="2d6887ac-f7fb-4d4f-97aa-9c70aec1c8a8" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef">
+  <name>MainLayout</name>
+  <display>MainLayout</display>
+  <externalReference>a178d0e7-8bc2-47a2-9724-fc672ce37c13</externalReference>
+  <sort-children>by-type-then-manually</sort-children>
+  <parentFolderId>473cab9b-9a71-4ac4-beab-e86adbc9cb83</parentFolderId>
+  <packageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</packageId>
+  <packageName>AcmeIntegreatedAssessement.UI</packageName>
+  <mappings>
+    <mapping type="View Binding" typeId="c33f86ad-423a-4a6f-a80c-a3206eafe5cd">
+      <source applicationId="e477e0b1-f141-4531-b30f-7b53a9b73a52" designerId="f492faed-0665-4513-9853-5a230721786f" elementId="2d6887ac-f7fb-4d4f-97aa-9c70aec1c8a8" location="[Blazor.Components.MudBlazor.Metadata].[User Interface].[MainLayout]" />
+      <target applicationId="e477e0b1-f141-4531-b30f-7b53a9b73a52" designerId="f492faed-0665-4513-9853-5a230721786f" elementId="2d6887ac-f7fb-4d4f-97aa-9c70aec1c8a8" location="[Blazor.Components.MudBlazor.Metadata].[User Interface].[MainLayout]" />
+    </mapping>
+  </mappings>
+  <children>
+    <element id="fb1bd182-8868-4232-bbdf-a4b4d3616486" type="Layout Header" typeId="a6c3a89e-5932-4ab6-a406-75444f05beee">
+      <name>Header</name>
+      <display>Header</display>
+      <externalReference>a7c89270-9de3-40c7-942e-483aea25806f</externalReference>
+      <parentFolderId>2d6887ac-f7fb-4d4f-97aa-9c70aec1c8a8</parentFolderId>
+      <packageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</packageId>
+      <packageName>AcmeIntegreatedAssessement.UI</packageName>
+    </element>
+    <element id="92280272-692b-4922-ba75-eb0d3347e117" type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490">
+      <name>Sider</name>
+      <display>Sider</display>
+      <externalReference>3abb8e62-1ef0-41ff-8a0a-fb4333322e31</externalReference>
+      <parentFolderId>2d6887ac-f7fb-4d4f-97aa-9c70aec1c8a8</parentFolderId>
+      <packageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</packageId>
+      <packageName>AcmeIntegreatedAssessement.UI</packageName>
+    </element>
+    <element id="40419da2-ea6c-493f-af9a-bed4023452ed" type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f">
+      <name>Body</name>
+      <display>Body</display>
+      <externalReference>3d941ba4-404d-4233-9465-816e87cb5b25</externalReference>
+      <parentFolderId>2d6887ac-f7fb-4d4f-97aa-9c70aec1c8a8</parentFolderId>
+      <packageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</packageId>
+      <packageName>AcmeIntegreatedAssessement.UI</packageName>
+    </element>
+    <association id="5ede05b0-1442-4824-80b5-5bffe314e50d">
+      <sourceEnd id="968a00d1-b4a1-4e8a-a68b-19ae6e5bee53" type="Navigation Source End" typeId="97a3de8a-c9bf-4cf2-bc0a-b8692b02211b">
+        <display>: MainLayout</display>
+        <order>0</order>
+        <typeReference id="713c732c-ef20-44a1-94f8-e5150c3a4bd3">
+          <typeId>2d6887ac-f7fb-4d4f-97aa-9c70aec1c8a8</typeId>
+          <typeName>MainLayout</typeName>
+          <isNavigable>false</isNavigable>
+          <typePackageName>AcmeIntegreatedAssessement.UI</typePackageName>
+          <typePackageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</typePackageId>
+        </typeReference>
+      </sourceEnd>
+      <targetEnd id="5ede05b0-1442-4824-80b5-5bffe314e50d" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349">
+        <name>NavigateToHome</name>
+        <display>[navigate] Home</display>
+        <order>3</order>
+        <traits>
+          <trait id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" name="[Invokable]" />
+        </traits>
+        <typeReference id="d244349c-a70b-45ca-a2e4-4398e7909836">
+          <typeId>2e74d321-7e8f-4e5f-bcb4-75a7f94352e5</typeId>
+          <typeName>Home</typeName>
+          <typePackageName>AcmeIntegreatedAssessement.UI</typePackageName>
+          <typePackageId>fca2d91b-7a4b-4939-8845-477bf5c0ecc6</typePackageId>
+        </typeReference>
+        <externalReference>b2f6769e-5b0a-4034-ba4a-fab33a6efdf5</externalReference>
+      </targetEnd>
+      <associationType>Navigation</associationType>
+      <associationTypeId>6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e</associationTypeId>
+      <externalReference>b2f6769e-5b0a-4034-ba4a-fab33a6efdf5</externalReference>
+    </association>
+  </children>
+</class>

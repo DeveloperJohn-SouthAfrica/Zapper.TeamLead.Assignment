@@ -1,0 +1,103 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using AcmeIntegreatedAssessement.Application.Common.Interfaces;
+using AcmeIntegreatedAssessement.Domain.Entities;
+using AcmeIntegreatedAssessement.Domain.Common.Interfaces;
+using AcmeIntegreatedAssessement.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Intent.RoslynWeaver.Attributes;
+using MediatR;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using AcmeIntegreatedAssessement.Application.Common.Interfaces;
+using AcmeIntegreatedAssessement.Domain.Repositories;
+using AcmeIntegreatedAssessement.Domain.Common.Interfaces;
+using AcmeIntegreatedAssessement.Domain.Entities;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("Intent.Application.MediatR.CommandHandler", Version = "2.0")]
+
+namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
+{
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class SubmitPaymentCommandHandler : IRequestHandler<SubmitPaymentCommand>
+    {
+        private readonly ISubMerchantRepository _subMerchantRepository;
+        private readonly IStoredCardTokenRepository _tokenRepository;
+        private readonly IAcmePayClient _acmeClient;
+        private readonly IUnitOfWork _unitOfWork;
+
+        [IntentManaged(Mode.Merge)]
+        public SubmitPaymentCommandHandler(
+            ISubMerchantRepository subMerchantRepository,
+            IStoredCardTokenRepository tokenRepository,
+            IAcmePayClient acmeClient,
+            IUnitOfWork unitOfWork)
+        {
+            _subMerchantRepository = subMerchantRepository;
+            _tokenRepository = tokenRepository;
+            _acmeClient = acmeClient;
+            _unitOfWork = unitOfWork;
+        }
+
+        [IntentManaged(Mode.Fully, Body = Mode.Merge)]
+        public async Task Handle(SubmitPaymentCommand request, CancellationToken cancellationToken)
+        {
+            // Idempotency: skip duplicate
+            if (await _unitOfWork.Set<Payment>().AnyAsync(p => p.AppPaymentId == request.AppPaymentId, cancellationToken))
+            {
+                return;
+            }
+
+            var subMerchant = await _subMerchantRepository.FindFirstAsync(
+                sm => sm.ZapperMerchantId == request.ZapperMerchantId, cancellationToken)
+                ?? throw new InvalidOperationException($"SubMerchant '{request.ZapperMerchantId}' not found.");
+
+            var token = await _tokenRepository.FindFirstAsync(
+                t => t.CustomerId == request.Request.StoredCardToken, cancellationToken)
+                ?? throw new InvalidOperationException($"StoredCardToken '{request.Request.StoredCardToken}' not found.");
+
+            var transactionId = await _acmeClient.SubmitPaymentAsync(
+                request.ZapperMerchantId,
+                request.SubMerchantRrn,
+                request.Request.StoredCardToken,
+                request.Request.Amount,
+                request.Request.CurrencyCode,
+                request.AppPaymentId,
+                cancellationToken);
+
+            var payment = new Payment
+            {
+                Id = Guid.NewGuid(),
+                PaymentId = Guid.NewGuid().ToString(),
+                AppPaymentId = request.AppPaymentId,
+                Amount = request.Request.Amount,
+                Currency = request.Request.CurrencyCode,
+                SubMerchantRrn = request.SubMerchantRrn,
+                Status = "Pending",
+                AcmeTransactionUuid = transactionId,
+                SubMerchantId = subMerchant.Id
+            };
+            await _unitOfWork.Set<Payment>().AddAsync(payment, cancellationToken);
+
+            var change = new PaymentChange
+            {
+                Id = Guid.NewGuid(),
+                PaymentChangeId = Guid.NewGuid().ToString(),
+                EventType = "Submitted",
+                IsApproved = false,
+                AcmeNotificationTransactionUuid = string.Empty,
+                Rrn = string.Empty,
+                Amount = payment.Amount,
+                OccurredAt = DateTimeOffset.UtcNow.UtcDateTime,
+                PaymentId = payment.Id
+            };
+            await _unitOfWork.Set<PaymentChange>().AddAsync(change, cancellationToken);
+
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+        }
+    }
+}

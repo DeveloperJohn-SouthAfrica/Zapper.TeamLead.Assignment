@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "snapshots": [
+    {
+      "snapshotId": "e10e4848-651d-4658-81eb-09a3136d58d5",
+      "eventId": "fd5c38bd-3ae6-45ea-b238-1902ce74a9e8",
+      "userMessage": "run build and test fix all issues, start the app and let playwrite take a walk through and check things out",
+      "timestamp": "2026-10-06T12:00:14.305Z",
+      "files": {
+        "75400aab65203e0420e32e5193673357": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "93218c1c535b1683c159ea4c6560ac02629a98f8d5c9451454d44d6f340d4fe4",
+            "backupFile": "93218c1c535b1683c159ea4c6560ac02629a98f8d5c9451454d44d6f340d4fe4",
+            "mode": 33204,
+            "size": 2479,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170692f41636d65496e746567726561746564417373657373656d656e742e4170692e637370726f6a"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "269a21eb343694f6e312b3f55c84c134708d20bda2cfecc40f96084b9dc2783c",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api/AcmeIntegreatedAssessement.Api.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170692f41636d65496e746567726561746564417373657373656d656e742e4170692e637370726f6a"
+            }
+          },
+          "linesAdded": 0,
+          "linesRemoved": 1
+        },
+        "e9074b03f596918502a370ef38b1cecc": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "10a7113ede462037f52703bb548b4c64b1260d1165457030dc0217999660e648",
+            "backupFile": "10a7113ede462037f52703bb548b4c64b1260d1165457030dc0217999660e648",
+            "mode": 33204,
+            "size": 1323,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2e637370726f6a"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "71fad46cd2071ec3eabf17dca12e30bfcfbad67413cd297f068d4e1bec199f35",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2f41636d65496e746567726561746564417373657373656d656e742e4170706c69636174696f6e2e637370726f6a"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 1
+        },
+        "c1999ae4d78d3b3a977c1a34a87dc068": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "dd71eff1261a079c37340c448877993895ed01dedc5d3b5f77eea4839a8bf7ec",
+            "backupFile": "dd71eff1261a079c37340c448877993895ed01dedc5d3b5f77eea4839a8bf7ec",
+            "mode": 33204,
+            "size": 1880,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652e637370726f6a"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "05038ca76983e8fb7b5dc2842565ff50273d807ae657679856c7c0718782df96",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Infrastructure/AcmeIntegreatedAssessement.Infrastructure.csproj",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f7372632f41636d65496e746567726561746564417373657373656d656e742f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652f41636d65496e746567726561746564417373657373656d656e742e496e6672617374727563747572652e637370726f6a"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 1
+        }
+      },
+      "backupFiles": [
+        "93218c1c535b1683c159ea4c6560ac02629a98f8d5c9451454d44d6f340d4fe4",
+        "10a7113ede462037f52703bb548b4c64b1260d1165457030dc0217999660e648",
+        "dd71eff1261a079c37340c448877993895ed01dedc5d3b5f77eea4839a8bf7ec"
+      ],
+      "fileCount": 3,
+      "linesAdded": 2,
+      "linesRemoved": 3
+    }
+  ]
+}
