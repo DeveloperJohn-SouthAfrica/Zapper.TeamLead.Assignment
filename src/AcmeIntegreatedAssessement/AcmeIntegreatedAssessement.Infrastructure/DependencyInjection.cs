@@ -3,6 +3,7 @@ using AcmeIntegreatedAssessement.Domain.Common.Interfaces;
 using AcmeIntegreatedAssessement.Domain.Repositories;
 using AcmeIntegreatedAssessement.Infrastructure.Caching;
 using AcmeIntegreatedAssessement.Infrastructure.Configuration;
+using AcmeIntegreatedAssessement.Infrastructure.Data;
 using AcmeIntegreatedAssessement.Infrastructure.MultiTenant;
 using AcmeIntegreatedAssessement.Infrastructure.Persistence;
 using AcmeIntegreatedAssessement.Infrastructure.Repositories;
@@ -43,14 +44,27 @@ namespace AcmeIntegreatedAssessement.Infrastructure
             services.AddTransient<IStoredCardTokenRepository, StoredCardTokenRepository>();
             services.AddTransient<ISubMerchantRepository, SubMerchantRepository>();
             services.AddScoped<IDomainEventService, DomainEventService>();
-            services.AddScoped<RedisOmUnitOfWork>();
-            services.AddScoped<IRedisOmUnitOfWork>(provider => provider.GetRequiredService<RedisOmUnitOfWork>());
+            var redisEnabled = configuration.GetValue("Infrastructure:EnableRedis", true);
+            if (redisEnabled)
+            {
+                services.AddScoped<RedisOmUnitOfWork>();
+                services.AddScoped<IRedisOmUnitOfWork>(provider => provider.GetRequiredService<RedisOmUnitOfWork>());
+                services.ConfigureRedisOm(configuration);
+            }
+            else
+            {
+                services.AddScoped<IRedisOmUnitOfWork, NoopRedisOmUnitOfWork>();
+            }
             services.AddMassTransitConfiguration(configuration);
             services.AddHttpClients(configuration);
             // Repository facades for stored-procedure-backed data access
+            services.AddSingleton<IConnectionStringResolver, ConnectionStringResolver>();
+            services.Configure<PaymentDatabaseSettings>(configuration.GetSection(PaymentDatabaseSettings.SectionName));
+            services.AddTransient<ISqlStoredProcedureInvoker, SqlStoredProcedureInvoker>();
             services.AddTransient<IPaymentRepository, PaymentRepository>();
             services.AddTransient<IPaymentChangeRepository, PaymentChangeRepository>();
             services.AddTransient<INotificationDeliveryRepository, NotificationDeliveryRepository>();
+            services.AddTransient<IDailyPaymentSummaryRepository, DailyPaymentSummaryRepository>();
             // Acme Pay stub HTTP client configuration
             services.AddHttpClient<IAcmePayClient, AcmePayClient>(client =>
             {
@@ -64,7 +78,6 @@ namespace AcmeIntegreatedAssessement.Infrastructure
                 }
                 client.Timeout = TimeSpan.FromSeconds(configuration.GetValue("AcmePay:TimeoutSeconds", 30));
             });
-            services.ConfigureRedisOm(configuration);
             return services;
         }
     }

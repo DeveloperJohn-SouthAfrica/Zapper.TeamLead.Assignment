@@ -15,6 +15,8 @@ namespace AcmeIntegreatedAssessement.Application.Contracts
             CustomerId = null!;
             SubMerchantRrn = null!;
             SubMerchantId = null!;
+            StoredCardToken = null!;
+            CurrencyCode = null!;
         }
 
         public string AppPaymentId { get; init; }
@@ -24,5 +26,7 @@ namespace AcmeIntegreatedAssessement.Application.Contracts
         public string CustomerId { get; init; }
         public string SubMerchantRrn { get; init; }
         public string SubMerchantId { get; init; }
+        public string StoredCardToken { get; init; }
+        public string CurrencyCode { get; init; }
     }
 }

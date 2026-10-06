@@ -27,7 +27,7 @@ namespace AcmeIntegreatedAssessement.Application
                 cfg.AddOpenBehavior(typeof(ValidationBehaviour<,>));
                 cfg.AddOpenBehavior(typeof(UnitOfWorkBehaviour<,>));
             });
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(_ => { }, Assembly.GetExecutingAssembly());
             services.AddScoped<IValidatorProvider, ValidatorProvider>();
             services.AddTransient<IValidationService, ValidationService>();
             return services;

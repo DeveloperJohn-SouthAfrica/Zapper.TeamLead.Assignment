@@ -1,0 +1,122 @@
+services:
+  acme-web:
+    build:
+      context: ./src/AcmeIntegreatedAssessement
+      dockerfile: AcmeIntegreatedAssessement.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
+      ASPNETCORE_URLS: "https://+:8081;http://+:8080"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetapp.pfx
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${DEV_CERT_PASSWORD:-LocalDevOnly!ChangeMe}
+      ConnectionStrings__PaymentDatabase: "Server=sqlserver,1433;Database=Payments;User Id=sa;Password=${SA_PASSWORD:-YourStrong!Passw0rd};Encrypt=True;TrustServerCertificate=True"
+      ConnectionStrings__RedisOmConnectionString: redis:6379,abortConnect=false
+      Infrastructure__EnableRedis: "true"
+      SecretsManager__Enabled: "false"
+      AcmePay__BaseUrl: ${ACME_PAY_BASE_URL:-https://sandbox.acmepay.example/}
+      SSH_ROOT_PASSWORD: ${SSH_ROOT_PASSWORD:-ZapperSSH!}
+    ports:
+      - "127.0.0.1:8081:8081"
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:2225:2222"
+    volumes:
+      - ./.local/https:/https:ro
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  sqlserver:
+    build:
+      context: ./docker/sqlserver
+      dockerfile: Dockerfile
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${SA_PASSWORD:-YourStrong!Passw0rd}
+      MSSQL_PID: Developer
+      SQL_SSH_PASSWORD: ${SQL_SSH_PASSWORD:-ZapperSSH!}
+    ports:
+      - "127.0.0.1:${SQL_PORT:-1433}:1433"
+      - "127.0.0.1:2223:2223"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P "$$MSSQL_SA_PASSWORD" -Q "SELECT 1"
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 45s
+
+  redis:
+    build:
+      context: ./docker/redis
+      dockerfile: Dockerfile
+    environment:
+      REDIS_SSH_PASSWORD: ${REDIS_SSH_PASSWORD:-ZapperSSH!}
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
+      - "127.0.0.1:2224:2224"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  nginx:
+    profiles: ["cloudflare"]
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    environment:
+      APP_UPSTREAM_HOST: acme-web
+      APP_UPSTREAM_PORT: 8080
+      APP_HOSTNAME: ${APP_HOSTNAME:-payments.local}
+      CF_ORIGIN_CERT_PATH: /etc/nginx/certs/cf-origin-cert.pem
+      CF_ORIGIN_KEY_PATH: /etc/nginx/certs/cf-origin-key.pem
+      CF_ORIGIN_CA_PATH: /etc/nginx/certs/cf-origin-ca.pem
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:443:443"
+    volumes:
+      - ./docker/nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      acme-web:
+        condition: service_started
+
+  ssh-proxy:
+    profiles: ["tools"]
+    build:
+      context: ./docker/ssh-proxy
+      dockerfile: Dockerfile
+    environment:
+      SSH_PASSWORD: ${SSH_PASSWORD:-ZapperSSH!}
+    ports:
+      - "127.0.0.1:2226:22"
+
+  dacpac:
+    profiles: ["schema"]
+    build:
+      context: ./docker/sqlpackage
+      dockerfile: Dockerfile
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    volumes:
+      - ./src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/bin:/workspace:ro
+    environment:
+      SA_PASSWORD: ${SA_PASSWORD:-YourStrong!Passw0rd}
+      TARGET_DATABASE: ${TARGET_DATABASE:-Payments}
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "
+        exec sqlpackage /Action:Publish /SourceFile:/workspace/${DACPAC_RELATIVE_PATH:-Release/AcmeIntegreatedAssessement.Database.dacpac} /TargetServerName:sqlserver,1433 /TargetDatabaseName:$$TARGET_DATABASE /TargetUser:sa /TargetPassword:\"$$SA_PASSWORD\" /TargetEncryptConnection:True /TargetTrustServerCertificate:True /p:BlockOnPossibleDataLoss=false
+      "
+
+volumes:
+  mssql-data:
+  redis-data:

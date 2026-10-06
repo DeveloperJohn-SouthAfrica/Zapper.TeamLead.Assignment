@@ -35,6 +35,12 @@ namespace AcmeIntegreatedAssessement.Application.Contracts
 
             RuleFor(v => v.SubMerchantId)
                 .NotNull();
+
+            RuleFor(v => v.StoredCardToken)
+                .NotNull();
+
+            RuleFor(v => v.CurrencyCode)
+                .NotNull();
         }
     }
 }

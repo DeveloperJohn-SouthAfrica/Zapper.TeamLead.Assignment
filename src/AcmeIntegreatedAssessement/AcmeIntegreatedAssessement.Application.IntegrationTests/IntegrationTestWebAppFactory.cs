@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using AcmeIntegreatedAssessement.Api;
 using Intent.RoslynWeaver.Attributes;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -18,8 +20,14 @@ namespace AcmeIntegreatedAssessement.Application.IntegrationTests
         {
         }
 
-        public async ValueTask InitializeAsync()
+        Task IAsyncLifetime.InitializeAsync()
         {
+            return Task.CompletedTask;
+        }
+
+        Task IAsyncLifetime.DisposeAsync()
+        {
+            return DisposeAsync().AsTask();
         }
 
         public override async ValueTask DisposeAsync()
@@ -35,9 +43,26 @@ namespace AcmeIntegreatedAssessement.Application.IntegrationTests
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            builder.ConfigureTestServices(services =>
+            builder
+                .UseEnvironment("Development")
+                .ConfigureAppConfiguration((context, config)
+                    => config.AddInMemoryCollection(GetTestSettings()))
+                .ConfigureTestServices(services =>
+                {
+                });
+        }
+
+        private static IDictionary<string, string> GetTestSettings()
+        {
+            return new Dictionary<string, string>
             {
-            });
+                ["SecretsManager:Enabled"] = "false",
+                ["Infrastructure:EnableRedis"] = "false",
+                ["AcmePay:BaseUrl"] = "https://example.com/",
+                ["AcmePay:TimeoutSeconds"] = "60",
+                ["ConnectionStrings:PaymentDatabase"] = "Server=localhost;Database=Payments;User Id=sa;Password=Password123!;TrustServerCertificate=True",
+                ["PaymentDatabase:ConnectionStringName"] = "PaymentDatabase"
+            };
         }
     }
 }

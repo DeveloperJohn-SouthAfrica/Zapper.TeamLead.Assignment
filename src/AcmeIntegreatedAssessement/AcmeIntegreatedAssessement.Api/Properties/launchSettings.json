@@ -11,10 +11,15 @@
     "AcmeIntegreatedAssessement.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44376/",
-      "launchUrl": "https://localhost:44376/swagger",
+      "applicationUrl": "https://localhost:8081;http://localhost:8080",
+      "launchUrl": "https://localhost:8081",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SecretsManager__Enabled": "false",
+        "ConnectionStrings__PaymentDatabase": "Server=localhost,1433;Database=Payments;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=True;TrustServerCertificate=True",
+        "ConnectionStrings__RedisOmConnectionString": "localhost:6379,abortConnect=false",
+        "Infrastructure__EnableRedis": "true",
+        "AcmePay__BaseUrl": "https://sandbox.acmepay.example/"
       }
     },
     "IIS Express": {

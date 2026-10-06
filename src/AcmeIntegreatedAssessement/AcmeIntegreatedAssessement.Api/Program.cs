@@ -1,16 +1,10 @@
-using AcmeIntegreatedAssessement.Api.Components;
-using AcmeIntegreatedAssessement.Api.Components.Account;
-using AcmeIntegreatedAssessement.Api.Components.Services;
 using AcmeIntegreatedAssessement.Api.Configuration;
-using AcmeIntegreatedAssessement.Api.Filters;
 using AcmeIntegreatedAssessement.Api.Logging;
-using AcmeIntegreatedAssessement.Application;
-using AcmeIntegreatedAssessement.Infrastructure;
 using Intent.RoslynWeaver.Attributes;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using MudBlazor.Services;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 
@@ -19,97 +13,14 @@ using Serilog.Events;
 
 namespace AcmeIntegreatedAssessement.Api
 {
-    public class Program
+    public partial class Program
     {
         public static void Main(string[] args)
         {
-            using var logger = new LoggerConfiguration()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .CreateBootstrapLogger();
-
+            var logger = CreateBootstrapLogger();
             try
             {
-                var builder = WebApplication.CreateBuilder(args);
-
-                // Add services to the container.
-                if (builder.Configuration.GetValue<bool?>("SecretsManager:Enabled") == true)
-                {
-                    builder.Configuration.ConfigureAwsSecretsManager(builder.Configuration);
-                }
-
-                builder.Host.UseSerilog((context, services, configuration) => configuration
-                    .ReadFrom.Configuration(context.Configuration)
-                    .ReadFrom.Services(services)
-                    .Destructure.With(new BoundedLoggingDestructuringPolicy()), writeToProviders: true);
-
-                builder.Host.ConfigureLogging((context, logBuilder) =>
-                {
-                    logBuilder.ClearProviders();
-                    logBuilder.AddTelemetryConfiguration(context);
-                });
-
-                builder.Services.AddControllers(
-                    opt =>
-                    {
-                        opt.Filters.Add<ExceptionFilter>();
-                    });
-                builder.Services.AddApplication(builder.Configuration);
-                builder.Services.ConfigureApplicationSecurity(builder.Configuration);
-                builder.Services.ConfigureHealthChecks(builder.Configuration);
-                builder.Services.ConfigureProblemDetails();
-                builder.Services.ConfigureSignalR(builder.Configuration);
-                builder.Services.ConfigureBugsnag(builder.Configuration);
-                builder.Services.AddInfrastructure(builder.Configuration);
-                builder.Services.AddTelemetryConfiguration(builder.Configuration);
-                builder.Services.ConfigureSwagger(builder.Configuration);
-                builder.Services.ConfigureMultiTenancy(builder.Configuration);
-                builder.Services.AddCascadingAuthenticationState();
-                builder.Services.AddHttpContextAccessor();
-                builder.Services.AddScoped<IdentityRedirectManager>();
-                builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
-                builder.Services.AddAuthorization();
-                builder.Services.AddAuthentication(options =>
-                                            {
-                                                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                                            }).AddCookie();
-
-                builder.Services.AddRazorComponents()
-                    .AddInteractiveServerComponents();
-
-                builder.Services.AddMudServices();
-                builder.Services.AddScoped<ThemeService>();
-
-                var app = builder.Build();
-
-                // Configure the HTTP request pipeline.
-                app.UseSerilogRequestLogging();
-                app.UseHttpsRedirection();
-
-                if (!app.Environment.IsDevelopment())
-                {
-                    app.UseExceptionHandler("/Error");
-                    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                    app.UseHsts();
-                }
-                app.UseStaticFiles();
-                app.UseRouting();
-                app.UseMultiTenancy();
-                app.UseAuthentication();
-                app.UseAuthorization();
-                app.UseAntiforgery();
-                app.MapDefaultHealthChecks();
-                app.MapControllers();
-
-                app.MapRazorComponents<App>()
-                    .AddInteractiveServerRenderMode();
-                app.MapHubs();
-                app.UseSwashbuckle(builder.Configuration);
-
-                logger.Write(LogEventLevel.Information, "Starting web host");
-
-                app.Run();
+                CreateHostBuilder(args).Build().Run();
             }
             catch (HostAbortedException)
             {
@@ -121,6 +32,46 @@ namespace AcmeIntegreatedAssessement.Api
             {
                 logger.Write(LogEventLevel.Fatal, ex, "Unhandled exception");
             }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    if (hostingContext.Configuration.GetValue<bool?>("SecretsManager:Enabled") == true)
+                    {
+                        config.ConfigureAwsSecretsManager(hostingContext.Configuration);
+                    }
+                })
+                .UseSerilog(
+                    (context, services, configuration) => configuration
+                        .ReadFrom.Configuration(context.Configuration)
+                        .ReadFrom.Services(services)
+                        .Destructure.With(new BoundedLoggingDestructuringPolicy()),
+                    writeToProviders: true)
+                .ConfigureLogging((context, logBuilder) =>
+                {
+                    logBuilder.ClearProviders();
+                    logBuilder.AddTelemetryConfiguration(context);
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+        }
+
+        private static Serilog.ILogger CreateBootstrapLogger()
+        {
+            return new LoggerConfiguration()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .CreateBootstrapLogger();
         }
     }
 }

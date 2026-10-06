@@ -35,7 +35,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
             _paymentChangeRepository = paymentChangeRepository;
         }
 
-        [IntentManaged(Mode.Fully, Body = Mode.Merge)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public async Task Handle(SubmitPaymentCommand request, CancellationToken cancellationToken)
         {
             if (await _paymentRepository.GetByAppPaymentIdAsync(request.AppPaymentId, cancellationToken) != null)
@@ -47,9 +47,11 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
                 sm => sm.ZapperMerchantId == request.ZapperMerchantId, cancellationToken)
                 ?? throw new InvalidOperationException($"SubMerchant '{request.ZapperMerchantId}' not found.");
 
-            var token = await _tokenRepository.FindFirstAsync(
-                t => t.CustomerId == request.Request.StoredCardToken, cancellationToken)
-                ?? throw new InvalidOperationException($"StoredCardToken '{request.Request.StoredCardToken}' not found.");
+            if (await _tokenRepository.FindFirstAsync(
+                    t => t.CustomerId == request.Request.StoredCardToken, cancellationToken) is null)
+            {
+                throw new InvalidOperationException($"StoredCardToken '{request.Request.StoredCardToken}' not found.");
+            }
 
             var transactionId = await _acmeClient.SubmitPaymentAsync(
                 request.ZapperMerchantId,

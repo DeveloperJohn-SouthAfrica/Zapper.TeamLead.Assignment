@@ -408,6 +408,9 @@ FodyWeavers.xsd
 ## Visual studio for Mac
 ##
 
+# Docker certs / keys
+docker/nginx/certs/*.pem#
+
 
 # globs
 Makefile.in
@@ -485,3 +488,4 @@ $RECYCLE.BIN/
 
 # Intent Architect files
 !*.application.output.log
+.local/

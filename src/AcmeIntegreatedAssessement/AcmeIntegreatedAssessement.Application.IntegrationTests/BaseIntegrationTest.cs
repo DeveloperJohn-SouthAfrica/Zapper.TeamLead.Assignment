@@ -17,7 +17,14 @@ namespace AcmeIntegreatedAssessement.Application.IntegrationTests
 
         protected HttpClient CreateClient()
         {
-            return WebAppFactory.CreateClient();
+            var client = WebAppFactory.CreateClient();
+            const string tenantHeaderName = "X-Tenant-Identifier";
+            if (client.DefaultRequestHeaders.Contains(tenantHeaderName))
+            {
+                client.DefaultRequestHeaders.Remove(tenantHeaderName);
+            }
+            client.DefaultRequestHeaders.Add(tenantHeaderName, "tenant1");
+            return client;
         }
     }
 }

@@ -8,5 +8,7 @@ CREATE TABLE [dbo].[PaymentChange]
     [Rrn] NVARCHAR(100) NULL,
     [Amount] DECIMAL(18,2) NOT NULL,
     [OccurredAt] DATETIME2 NOT NULL,
-    [PaymentId] UNIQUEIDENTIFIER NOT NULL
+    [PaymentId] UNIQUEIDENTIFIER NOT NULL CONSTRAINT FK_PaymentChange_Payment REFERENCES [dbo].[Payment](Id),
+    [CreatedAt] DATETIME2 NOT NULL CONSTRAINT DF_PaymentChange_CreatedAt DEFAULT SYSUTCDATETIME(),
+    [CreatedBy] NVARCHAR(100) NOT NULL
 );

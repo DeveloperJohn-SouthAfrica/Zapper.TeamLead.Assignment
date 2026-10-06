@@ -8,5 +8,10 @@ CREATE TABLE [dbo].[Payment]
     [SubMerchantRrn] NVARCHAR(100) NOT NULL,
     [Status] NVARCHAR(50) NOT NULL,
     [AcmeTransactionUuid] UNIQUEIDENTIFIER NULL,
-    [SubMerchantId] UNIQUEIDENTIFIER NOT NULL
+    [SubMerchantId] UNIQUEIDENTIFIER NOT NULL CONSTRAINT FK_Payment_SubMerchant REFERENCES [dbo].[SubMerchant](Id),
+    [CreatedAt] DATETIME2 NOT NULL CONSTRAINT DF_Payment_CreatedAt DEFAULT SYSUTCDATETIME(),
+    [UpdatedAt] DATETIME2 NOT NULL CONSTRAINT DF_Payment_UpdatedAt DEFAULT SYSUTCDATETIME(),
+    [CreatedBy] NVARCHAR(100) NOT NULL,
+    [UpdatedBy] NVARCHAR(100) NOT NULL,
+    [RowVersion] ROWVERSION NOT NULL
 );

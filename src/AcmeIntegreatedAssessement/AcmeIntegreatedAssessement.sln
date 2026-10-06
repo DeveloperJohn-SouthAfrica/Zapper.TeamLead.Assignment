@@ -22,6 +22,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcmeIntegreatedAssessement.Infrastructure", "AcmeIntegreatedAssessement.Infrastructure\AcmeIntegreatedAssessement.Infrastructure.csproj", "{CD973A99-7164-4619-8FCB-BC2926BAC169}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Database", "5 - Database", "{007D5136-7B3A-4197-AC49-1DEBE72DAC0F}"
+EndProject
+Project("{42EA0DBD-9CF1-443E-919E-BE9C484E4577}") = "AcmeIntegreatedAssessement.Database", "AcmeIntegreatedAssessement.Database\AcmeIntegreatedAssessement.Database.sqlproj", "{543D3F3A-2BA7-43C9-A2C2-ABE69E83EBC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution", "0 - Solution", "{C3D3E280-EB5E-49EB-BDFB-530C1F79564F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\docker-compose.yml = ..\..\docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +46,7 @@ Global
 		{32064528-1477-43CA-9D2C-464ECF9D5C6D} = {FF293E13-41B1-462D-880D-ACB88E1462A2}
 		{A4169BFC-DF46-4586-ABD8-71733692C776} = {92E04D1A-1A10-4F8B-99F3-5BEA0E566116}
 		{CD973A99-7164-4619-8FCB-BC2926BAC169} = {7867F7D8-93DD-47EF-9CB1-1921B6817C54}
+		{543D3F3A-2BA7-43C9-A2C2-ABE69E83EBC2} = {007D5136-7B3A-4197-AC49-1DEBE72DAC0F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6FB4815D-AD4F-473A-A0BD-5808133245A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

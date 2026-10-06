@@ -20,6 +20,10 @@ We chose a **Blazor WebAssembly** clean architecture, leveraging **MassTransit**
 
 See [Setup.md](docs/setup.md) for how we orchestrate tooling before coding. It documents our use of Copilot CLI (each session pinned to BYOM/BYOK keys), Impeccable, Graphify, and Context7 so AI helpers remain context aware, gate UX regressions, and focus on documentation-driven implementation rather than aimless exploration.
 
+## Containerized infrastructure and SQL deployment
+
+The docker stack described in [docs/task3-infrastructure-tour.md](docs/task3-infrastructure-tour.md) mirrors the requested Jelastic-style environment: an NGINX+confd reverse proxy with Cloudflare origin certs fronts a stateless ASP.NET Core API, Redis (free tier) holds the only mutable state, and SQL Server Developer Edition exposes both TDS and SSH for tooling. Every persistence call flows through stored procedures (deployed with the SQL DACPAC pipeline in `scripts/deploy-dacpac.sh`), so the infrastructure layer owns audit/logging, environment configuration is driven by AWS AppConfig (with environment variables taking precedence), and the docker compose definitions keep networking, SSH access, and TLS termination explicit.
+
 ## Next steps
 
 -   Use the artifacts in [analysis](docs/analysis) to seed the Object-Oriented analysis and design pass in [design](docs/design).
