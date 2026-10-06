@@ -26,8 +26,32 @@ The docker stack described in [docs/task3-infrastructure-tour.md](docs/task3-inf
 
 ## Next steps
 
--   Use the artifacts in [analysis](docs/analysis) to seed the Object-Oriented analysis and design pass in [design](docs/design).
--   ## Assumptions
+-   I used the artifacts in [analysis](docs/analysis) to seed the Object-Oriented analysis and design pass in [design](docs/design).
+-   ## My Approach
 
-- **Acme Pay stub configuration**: We assume environment variables `AcmePay:BaseUrl` (e.g., `https://sandbox.acmepay.example/`) and optional `AcmePay:ApiKey` are defined; the client honor HMAC header `x-api-key`.
+1. Convert the PDF spec into Markdown so AI could easily read the file.
+2. Slice the spec into a set of system analysis and design documents using Mermaid.js (UML-as-code), chosen because AI can render diagrams as UTF‑8 text.
+3. Tooling selected:
+- GitHub Copilot CLI (BYOM to gpt-5.1-codex-mini on Azure Foundry) for cost-effective AI-assisted coding.
+- JetBrains Rider as IDE for broad stack support and powerful refactoring.
+- Intent Architect for deterministic architecture generation, avoiding probabilistic agent outputs.
+- Chosen stack: .NET Core Blazor WASM web app and API with CQRS, pub/sub, logging, observability, containerization, authentication, Swagger/OpenAPI, MediatR, and distributed cache.
+- Spec-Driven Development with Intent Architect, applied in incremental waves.
+- SQL project defined via Copilot CLI with explicit tables, relationships, and stored procedures (via DACPAC) for fine-grained control.
+- Blazor SPA front end with low-latency API surface exposed via Swagger UI for easy testing.
+
+**Trade‑offs:**  
+Additional time invested in proper analysis and design ensured a deterministic architecture layer over probabilistic agent outputs.
+
+**Infrastructure:**  
+- Multi-stage Docker layering for SQL Server, Redis, and NGINX reverse proxy.  
+- Post-deployment scripts seed the database and update schema via SQL DACPAC; SSH proxy access for DB via tools like DataGrip.
+
+**Artifacts:**  
+- Created a soul file (docs/soul.md) and helper docs for guiding engineering reasoning.  
+- AI helpers: Graphify for code-dependency exploration, Impeccable for UI conformance, Context7 for verified library documentation.
+
+## Assumptions
+
+- **Acme Pay stub configuration**: We assume environment variables `AcmePay:BaseUrl` (e.g., `https://sandbox.acmepay.example/`) and optional `AcmePay:ApiKey` are defined; the client honour HMAC header `x-api-key`.
 - **Initial stub behavior**: The Acme Pay stub returns a JSON envelope `{ "TransactionID": "<uuid>" }` on successful payment submission; we record it as `AcmeTransactionId`. Notifications and retry logic are simulated separately and documented in infrastructure tests.
