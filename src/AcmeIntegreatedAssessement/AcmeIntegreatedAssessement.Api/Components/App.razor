@@ -17,11 +17,11 @@
         <link rel="stylesheet" href="ux-components.css" />
         <link rel="stylesheet" href="ux-mudblazor.css" />
         <link rel="stylesheet" href="AcmeIntegreatedAssessement.Api.styles.css" />
-        <HeadOutlet @rendermode="GetRenderModeForPage()" />
+        <HeadOutlet />
     </head>
 
     <body>
-        <Routes @rendermode="GetRenderModeForPage()" />
+        <Routes />
         <script src="_framework/blazor.web.js"></script>
         <script src="theme-storage.js"></script>
         <script src="nav-drawer.js"></script>
@@ -37,8 +37,4 @@
     public HttpContext HttpContext { get; set; } = default!;
     private string _theme => HttpContext.Request.Cookies.TryGetValue("theme", out var t) && t == "light" ? "light" : "dark";
 
-    public IComponentRenderMode? GetRenderModeForPage()
-    {
-        return new InteractiveServerRenderMode(prerender: false);
-    }
 }
