@@ -25,7 +25,7 @@ namespace AcmeIntegreatedAssessement.Api.Components.Layout
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (firstRender && RendererInfo.IsInteractive)
+            if (firstRender)
             {
                 _themeService.OnChange += StateHasChanged;
                 var saved = await JS.InvokeAsync<string>("themeStorage.get");

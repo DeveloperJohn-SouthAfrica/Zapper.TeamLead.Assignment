@@ -39,10 +39,6 @@
 
     public IComponentRenderMode? GetRenderModeForPage()
     {
-        if (!HttpContext.AcceptsInteractiveRouting())
-        {
-            return null;
-        }
         return new InteractiveServerRenderMode(prerender: false);
     }
 }
