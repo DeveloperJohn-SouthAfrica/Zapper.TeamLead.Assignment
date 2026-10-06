@@ -1,0 +1,44 @@
+# Notification Domain Classes
+
+```mermaid
+classDiagram
+    class NotificationHandler {
+        +handleNotification(NotificationEnvelope envelope)
+        -validateSignature()
+    }
+
+    class NotificationRepository {
+        +insertNotification(NotificationRecord record)
+        +findByAcmeMessageId(string messageId)
+    }
+
+    class NotificationDeduplicator {
+        +isDuplicate(NotificationRecord record)
+    }
+
+    class PaymentStateTransitionService {
+        +applyNotification(NotificationRecord record)
+    }
+
+    class PaymentRepository {
+        +findByTransactionId(string transactionId)
+        +save(PaymentAggregate aggregate)
+    }
+
+    class DiagnosticsPublisher {
+        +publish(Event event, TraceContext context)
+    }
+
+    NotificationHandler --> NotificationRepository
+    NotificationHandler --> NotificationDeduplicator
+    NotificationHandler --> PaymentStateTransitionService
+    PaymentStateTransitionService --> PaymentRepository
+    PaymentStateTransitionService --> DiagnosticsPublisher
+    NotificationRepository --> NotificationDeduplicator
+```
+
+## Notes
+
+- Notification processing is split into validation, persistence, deduplication, and payment-state application to keep each class focused (SOLID).
+- `NotificationDeduplicator` keeps retry handling safe, allowing multiple identical callbacks without violating ACID constraints.
+- `DiagnosticsPublisher` captures ISO/IEC 25010 maintainability signals by emitting structured traces for each state change, enabling later observability instrumentation.

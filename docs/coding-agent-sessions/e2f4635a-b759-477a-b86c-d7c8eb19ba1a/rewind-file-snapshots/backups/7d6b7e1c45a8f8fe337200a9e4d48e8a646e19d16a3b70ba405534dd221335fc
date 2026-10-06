@@ -1,0 +1,120 @@
+version: "3.9"
+
+services:
+  acme-web:
+    build:
+      context: src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Development}
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__PaymentDatabase=Server=sqlserver,1433;Database=Payments;User Id=sa;Password=${SA_PASSWORD:-YourStrong!Passw0rd};TrustServerCertificate=True
+      - Redis__ConnectionString=redis:6379
+      - AWS_APP_CONFIG_ENDPOINT=${AWS_APP_CONFIG_ENDPOINT:-}
+      - AWS_FEATURE_FLAG_PREFIX=${AWS_FEATURE_FLAG_PREFIX:-PaymentFeature}
+      - SSH_ROOT_PASSWORD=${SSH_ROOT_PASSWORD:-ZapperSSH!}
+    ports:
+      - "8080:8080"
+      - "2225:2222"
+    depends_on:
+      - sqlserver
+      - redis
+    networks:
+      - jelastic
+
+  sqlserver:
+    build:
+      context: docker/sqlserver
+      dockerfile: Dockerfile
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${SA_PASSWORD:-YourStrong!Passw0rd}
+      - MSSQL_PID=Developer
+      - SQL_SSH_PASSWORD=${SQL_SSH_PASSWORD:-ZapperSSH!}
+    ports:
+      - "1433:1433"
+      - "2223:2223"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    networks:
+      - jelastic
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "${SA_PASSWORD}", "-Q", "SELECT 1"]
+      interval: 10s
+      retries: 6
+      start_period: 30s
+
+  redis:
+    build:
+      context: docker/redis
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_SSH_PASSWORD=${REDIS_SSH_PASSWORD:-ZapperSSH!}
+    ports:
+      - "6379:6379"
+      - "2224:2224"
+    volumes:
+      - redis-data:/data
+    networks:
+      - jelastic
+
+  nginx:
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile
+    environment:
+      - APP_UPSTREAM_HOST=acme-web
+      - APP_UPSTREAM_PORT=8080
+      - APP_HOSTNAME=${APP_HOSTNAME:-payments.local}
+      - CF_ORIGIN_CERT_PATH=/etc/nginx/certs/cf-origin-cert.pem
+      - CF_ORIGIN_KEY_PATH=/etc/nginx/certs/cf-origin-key.pem
+      - CF_ORIGIN_CA_PATH=/etc/nginx/certs/cf-origin-ca.pem
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - acme-web
+    networks:
+      - jelastic
+
+  ssh-proxy:
+    build:
+      context: docker/ssh-proxy
+      dockerfile: Dockerfile
+    environment:
+      - SSH_PASSWORD=${SSH_PASSWORD:-ZapperSSH!}
+    ports:
+      - "2226:22"
+    networks:
+      - jelastic
+
+  dacpac:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - sqlserver
+    volumes:
+      - ./src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/bin:/workspace
+    environment:
+      - SA_PASSWORD=${SA_PASSWORD:-YourStrong!Passw0rd}
+      - TARGET_DATABASE=${TARGET_DATABASE:-Payments}
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "
+        until /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P \"$SA_PASSWORD\" -Q 'SELECT 1' >/dev/null 2>&1; do
+          echo 'Waiting for SQL Server...';
+          sleep 2;
+        done;
+        /opt/mssql-tools/bin/sqlpackage /Action:Publish /SourceFile:/workspace/${DACPAC_RELATIVE_PATH:-Release/AcmeIntegreatedAssessement.Database.dacpac} /TargetServerName=sqlserver /TargetDatabaseName=$TARGET_DATABASE /TargetUser=sa /TargetPassword=\"$SA_PASSWORD\" /p:BlockOnPossibleDataLoss=false
+      "
+    networks:
+      - jelastic
+
+volumes:
+  mssql-data:
+  redis-data:
+
+networks:
+  jelastic:
+    driver: bridge

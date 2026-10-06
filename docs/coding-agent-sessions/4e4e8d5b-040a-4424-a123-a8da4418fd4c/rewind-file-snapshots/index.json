@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "snapshots": [
+    {
+      "snapshotId": "16c86f3d-3074-46d0-b6ce-aa6ccd81f3a4",
+      "eventId": "e4ca4140-0381-484d-a70a-d3fdc3adbfeb",
+      "userMessage": "/graphify init",
+      "timestamp": "2026-10-05T02:13:06.986Z",
+      "files": {
+        "c700b85a69a07ea2b467be6b5db1cba8": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_detect.json",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "f284af8c7df4da85b73dfc35eac14322f72a729438e10836d741e6f7220e55e3",
+            "backupFile": "f284af8c7df4da85b73dfc35eac14322f72a729438e10836d741e6f7220e55e3",
+            "mode": 33204,
+            "size": 67222,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_detect.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f67726170686966792d6f75742f2e67726170686966795f6465746563742e6a736f6e"
+            }
+          },
+          "postimage": {
+            "kind": "absent"
+          },
+          "linesAdded": 0,
+          "linesRemoved": 1
+        },
+        "da739234c27782cc32ed6adae222d809": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_extract.json",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "34611a528d784ce52f2337b501c0f952b5e6b9ddfca560a4a63dbceed641f9fd",
+            "backupFile": "34611a528d784ce52f2337b501c0f952b5e6b9ddfca560a4a63dbceed641f9fd",
+            "mode": 33204,
+            "size": 2315577,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_extract.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f67726170686966792d6f75742f2e67726170686966795f657874726163742e6a736f6e"
+            }
+          },
+          "postimage": {
+            "kind": "absent"
+          },
+          "linesAdded": 0,
+          "linesRemoved": 61227
+        },
+        "818fe8a4297e28805814f155fa14daf8": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_ast.json",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "483bd4001e1d1f857a3f3255ad58438904f4049aeeeb5551893905f0f1e52db4",
+            "backupFile": "483bd4001e1d1f857a3f3255ad58438904f4049aeeeb5551893905f0f1e52db4",
+            "mode": 33204,
+            "size": 2318325,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_ast.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f67726170686966792d6f75742f2e67726170686966795f6173742e6a736f6e"
+            }
+          },
+          "postimage": {
+            "kind": "absent"
+          },
+          "linesAdded": 0,
+          "linesRemoved": 61253
+        },
+        "2d2c50afa35a17a899e96520b69cf193": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_semantic.json",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "802d501cd854b9065d965f8474d03256b3d3e0e79c2bdcdea6da97e7533721d1",
+            "backupFile": "802d501cd854b9065d965f8474d03256b3d3e0e79c2bdcdea6da97e7533721d1",
+            "mode": 33204,
+            "size": 83,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_semantic.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f67726170686966792d6f75742f2e67726170686966795f73656d616e7469632e6a736f6e"
+            }
+          },
+          "postimage": {
+            "kind": "absent"
+          },
+          "linesAdded": 0,
+          "linesRemoved": 1
+        },
+        "c3c1c043a59d2d107e3ac70f168d83d1": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_analysis.json",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "a628b5207add6fb50efcf0b3c923fba8e07d12667c5e20b90f282adcfb462c74",
+            "backupFile": "a628b5207add6fb50efcf0b3c923fba8e07d12667c5e20b90f282adcfb462c74",
+            "mode": 33204,
+            "size": 111883,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/graphify-out/.graphify_analysis.json",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f67726170686966792d6f75742f2e67726170686966795f616e616c797369732e6a736f6e"
+            }
+          },
+          "postimage": {
+            "kind": "absent"
+          },
+          "linesAdded": 0,
+          "linesRemoved": 1672
+        },
+        "2fc8839d6f29a36b271e9e68e10c5a86": {
+          "path": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/.copilot/skills/impeccable/scripts/live-browser.js",
+          "preimage": {
+            "kind": "content",
+            "contentHash": "f68a3d68ac92606e91aa8878e003d9432ddd09aa97ca01c6b3ce46c937dca316",
+            "backupFile": "f68a3d68ac92606e91aa8878e003d9432ddd09aa97ca01c6b3ce46c937dca316",
+            "mode": 33204,
+            "size": 547395,
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/.copilot/skills/impeccable/scripts/live-browser.js",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f2e636f70696c6f742f736b696c6c732f696d7065636361626c652f736372697074732f6c6976652d62726f777365722e6a73"
+            }
+          },
+          "postimage": {
+            "kind": "content",
+            "contentHash": "e95ec5616bc8fc7268bf463e88dbd2e1eaf6e9c3bbcf2dae49e4232e4b394eb8",
+            "resolvedPath": "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/.copilot/skills/impeccable/scripts/live-browser.js",
+            "encodedPath": {
+              "encoding": "unix-bytes",
+              "data": "2f686f6d652f6a76616e6e69656b65726b2f526964657250726f6a656374732f5a61707065722e5465616d4c6561642e41737369676e6d656e742f2e636f70696c6f742f736b696c6c732f696d7065636361626c652f736372697074732f6c6976652d62726f777365722e6a73"
+            }
+          },
+          "linesAdded": 1,
+          "linesRemoved": 1
+        }
+      },
+      "backupFiles": [
+        "f284af8c7df4da85b73dfc35eac14322f72a729438e10836d741e6f7220e55e3",
+        "34611a528d784ce52f2337b501c0f952b5e6b9ddfca560a4a63dbceed641f9fd",
+        "483bd4001e1d1f857a3f3255ad58438904f4049aeeeb5551893905f0f1e52db4",
+        "802d501cd854b9065d965f8474d03256b3d3e0e79c2bdcdea6da97e7533721d1",
+        "a628b5207add6fb50efcf0b3c923fba8e07d12667c5e20b90f282adcfb462c74",
+        "f68a3d68ac92606e91aa8878e003d9432ddd09aa97ca01c6b3ce46c937dca316"
+      ],
+      "fileCount": 6,
+      "linesAdded": 1,
+      "linesRemoved": 124155
+    }
+  ]
+}

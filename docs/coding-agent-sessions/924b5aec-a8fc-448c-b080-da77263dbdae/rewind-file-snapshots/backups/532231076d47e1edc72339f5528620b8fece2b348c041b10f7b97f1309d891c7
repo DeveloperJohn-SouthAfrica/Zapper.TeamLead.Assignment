@@ -1,0 +1,53 @@
+# Data Flow Diagrams (DFD)
+
+## Level 0 - Payment acceptance system
+
+```mermaid
+flowchart LR
+    subgraph External Actors
+        App["Zapper App"]
+        AcmeStub["Acme Pay Stub"]
+        AcmeAdvice["Acme Payment Advice"]
+        AcmeSwitch["Acme Transaction Status"]
+    end
+
+    subgraph Core System
+        Intake["Payment Intake API"]
+        Orchestrator["Payment Orchestrator"]
+        NotificationHandler["Notification Endpoints"]
+        SummaryService["Daily Summary Reporter"]
+        RealTimeQuery["Real Time Transaction Query"]
+        PaymentAdvice["Payment Advice Endpoint (Basic Auth)"]
+        TransactionStatus["Transaction Status Webhook (HMAC)"]
+    end
+
+    subgraph Persistence
+        PaymentDB["SQL Store (Payments, History, Notifications)"]
+        TokenStore["Token/Idempotency Store"]
+    end
+
+    App -->|Payment Request| Intake
+    Intake -->|Validate + Context| Orchestrator
+    Orchestrator --> PaymentDB
+    Orchestrator -->|Submit| AcmeStub
+    AcmeStub -->|Callbacks| NotificationHandler
+    AcmeAdvice -->|"Notify (Auth)"| PaymentAdvice
+    AcmeSwitch -->|"Webhook (HMAC)"| TransactionStatus
+    PaymentAdvice --> NotificationHandler
+    TransactionStatus --> NotificationHandler
+    NotificationHandler --> PaymentDB
+    NotificationHandler --> TokenStore
+    RealTimeQuery --> PaymentDB
+    App -->|RTTQ Query| RealTimeQuery
+    SummaryService --> PaymentDB
+    TokenStore --> Orchestrator
+    SummaryService -->|Reports| App
+```
+
+## Notes
+
+- **Data stores** keep audit records and tokens separate to maintain ACID guarantees (transactions update payment + history atomically).
+- **Notification flow** always writes to a ledger-style store before emitting state changes so retries stay idempotent.
+- **Payment Advice** and **Transaction Status** endpoints enrich the same Notification Handler but have distinct authentication (basic vs. HMAC) and thus are modeled separately.
+- **Real Time Transaction Query** lets the App reconcile timed-out submissions without resubmitting, ensuring the system respects Append-only histories while remaining idempotent.
+- **Summary service** reads the same stores in a read-only fashion, following ISO/IEC 25010 reliability and performance expectations.

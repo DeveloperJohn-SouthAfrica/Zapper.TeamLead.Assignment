@@ -1,0 +1,38 @@
+# Object-Oriented Analysis & Design (Phase 2)
+
+Phase 1 gave us the DFDs, ERDs, and sequence diagrams that expose the major flows: payment submissions, notification handling, and daily reporting. Phase 2 now translates those flows into domain-aligned objects, services, and collaborators while staying stack-agnostic. We continue to honor the principles captured in `Soul.md` (ISO/IEC 25010 quality goals and ACID/SOLID/DRY/12-Factor commitments) while preparing for later adaptive refinements.
+
+## Domain services and responsibilities
+
+1. **Payment processing module**  
+   - Intake point is `PaymentIntakeAPI` (controller/handler) responsible for validating the payload and correlating the App payment ID.
+   - `PaymentOrchestrator` acts as the use-case runner: it instantiates `PaymentAggregate` state, coordinates writes to `PaymentRepository` and `PaymentHistoryRepository`, and dispatches the Acme request through `AcmeGatewayClient`.
+   - `PaymentAggregate` encapsulates the payment state machine (Pending → Approved/Declined → Reversed/Refunded) and exposes commands such as `markApproved()`, `applyNotification()`, and `recordFailure()`, enforcing invariants (SOLID Single Responsibility, encapsulated behaviors).
+   - `TokenStore` provides idempotent token lookups, and `IdempotencyGuard` (possibly part of the repository layer) ensures replayed requests reuse existing aggregate state.
+
+2. **Notification handling module**  
+   - `NotificationHandler` validates the incoming envelope, authenticates Acme (HMAC/Basic auth), and persists the raw payload through `NotificationRepository`.
+   - `NotificationDeduplicator` interprets `AcmeMessageID` and `TransactionID` to short-circuit duplicates before state changes are applied.
+   - `PaymentStateTransitionService` orbits the `PaymentAggregate`, applying updates transactionally and emitting `PaymentHistory` entries for auditability.
+   - Observers/listeners (e.g., `DiagnosticsPublisher`) can capture correlation IDs and diagnostics metadata at each transition.
+
+3. **Summary/reporting module**  
+   - `SummaryScheduler` or a cron trigger drives `DailySummaryService`.
+   - `DailySummaryService` queries aggregated views (e.g., using `SummaryQueryBuilder`) to fetch counts/totals per sub-merchant and currency, respecting the `Payment` statuses.
+   - `DailySummaryPresenter` optionally renders API responses or exports structured JSON/CSV while ensuring calculations are deterministic (12-Factor reprensentations, e.g., environment-driven timezone).
+
+4. **Infrastructure/utility layer**  
+   - `Configurations` are provided via environment-backed factories (12-Factor Config).  
+   - `AcmeGatewayClient` wraps HTTP calls with concurrency management (circuit breakers/throttling) and ensures any `HttpClient` or `SqlConnection` is shared or pooled.
+   - `DiagnosticsLogger` records results per ISO/IEC 25010 reliability, emitting structured logs and metrics for tracing.
+5. **Supporting entry points**
+   - `RealTimeTransactionQueryService` surfaces the `/apirttq/query` endpoint so the App can reconcile timed-out requests without resubmitting.
+   - `PaymentAdviceHandler` and `TransactionStatusWebhookHandler` are specialized `NotificationHandler` implementations that enforce the correct authentication (basic vs. HMAC) before delegating to the shared notification flow.
+
+## Object-oriented diagrams
+
+- [Payment domain classes](./payment-domain-classes.md)
+- [Notification domain classes](./notification-domain-classes.md)
+- [Summary domain classes](./summary-domain-classes.md)
+
+Each diagram is intentionally focused on a component so we can extend, validate, and iterate (Phase 3 adaptive design) without inflating a single file. They also expose the hooks required for later dependency injection, composition, testing, and SOLID-friendly refactors.

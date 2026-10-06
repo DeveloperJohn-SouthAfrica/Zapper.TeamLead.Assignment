@@ -1,0 +1,17 @@
+id: f5d53fdf-a245-40b2-ae44-e7f26446ad15
+cwd: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement
+git_root: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+repository: DeveloperJohn-SouthAfrica/Zapper.TeamLead.Assignment
+host_type: github
+branch: j/sdd-solution-scaffold-and-implementation
+client_name: github/cli
+name: run build and test fix all issues, start the app and let playwrite take a walk through and check things out
+user_named: false
+summary_count: 0
+fork_count: 0
+created_at: 2026-10-05T19:20:37.653Z
+updated_at: 2026-10-05T19:21:42.877Z
+remote_steerable: false
+mc_task_id: 6c921df1-5834-403a-a939-1c6737180400
+mc_session_id: f5d53fdf-a245-40b2-ae44-e7f26446ad15
+mc_last_event_id: 45bc5643-a083-481e-97fa-b30224254128

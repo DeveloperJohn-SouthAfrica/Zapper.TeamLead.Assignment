@@ -1,0 +1,49 @@
+# Task 3 infrastructure + implementation tour
+
+This guide traces the deliverables claimed for Tasks 1‑3 of the Zapper Team Lead assignment, pointing to the code, infrastructure, and verification artifacts so reviewers can fast‑forward to the real work. The sections below keep each requirement connected to concrete files, stored procedures, tests, and the supporting Docker stack (including SQL Server Developer, Redis free tier, Cloudflare TLS, and the DACPAC deploy pipeline).
+
+## 1. Compliance status snapshot
+
+| Task | Description | Primary artifacts |
+|------|-------------|-------------------|
+| T1 | Domain + DTO models, endpoints, and validation | `Domain/*`, `Application/Commands/SubmitPayment/*`, `Application/Queries/**`, `Infrastructure/Data/SqlStoredProcedureInvoker.cs` |
+| T2 | Submit payment/notification workflows + persistence + caching | `Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs`, `Infrastructure/Repositories/*Repository.cs`, `AcmeIntegreatedAssessement.Database/SchemaObjects/StoredProcedures/*.sql`, `Infrastructure/Caching/**` |
+| T3 | Daily summary report stored procedure + endpoint | `Application/Features/Report/DailyPaymentSummary/*.cs`, `AcmeIntegreatedAssessement.Database/SchemaObjects/StoredProcedures/GetDailyPaymentSummary.sql`, `Application.UnitTests/*`, `Application.IntegrationTests/*` |
+
+Every persisted interaction goes through the SQL layer via stored procedures. The `SqlStoredProcedureInvoker` (in `Infrastructure/Data`) removes “magic strings” by resolving `PaymentDatabaseSettings` and centralizing parameter wiring, ensuring audit/log columns are populated directly in SQL.
+
+## 2. Dockerized infrastructure (Jelastic-like elastic stack)
+
+- **Dotnet app** (`acme-web` service in `docker-compose.yml`): built from `src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api/Dockerfile`, which now bundles `openssh-server` and the `scripts/start-dotnet.sh` entrypoint to keep the container stateless while exposing SSH on port `2222`.
+- **SQL Server (Developer edition)** (`sqlserver` service): `docker/sqlserver/Dockerfile` extends `mcr.microsoft.com/mssql/server:2022-latest`, installs SSH, and exposes both `1433` (TDS) and `2223` (SSH) to let tooling like DataGrip tunnel through SSH if needed.
+- **Redis free tier** (`redis` service): derived from `redis:7.0-alpine` with SSH support and a persisted volume (`redis-data`) so Redis remains the only stateful layer, allowing the .NET services to scale statelessly.
+- **Nginx + confd reverse proxy** (`nginx` service): uses `confd` templates (`docker/nginx/confd` + `docker/nginx/templates/app.conf.tmpl`) to route traffic to the dotnet upstream and terminate TLS with Cloudflare origin certs mounted under `docker/nginx/certs`. Environment variables populate upstream host/port, the virtual host, and the cert/key/CA locations.
+- **SSH jump box** (`ssh-proxy` service): Alpine-based container exposing port `2226` that simply runs `sshd`. Developers SSH into it (`ssh app@localhost -p 2226`) and, because it shares the compose network, they can forward ports for SQL, Redis, or the API (e.g., `ssh -L 1433:sqlserver:1433 -L 6379:redis:6379 -L 8080:acme-web:8080 app@localhost -p 2226`).
+- **DACPAC deployment** (`dacpac` service & `scripts/deploy-dacpac.sh`): spins up `mcr.microsoft.com/mssql-tools`, waits for SQL to respond, and invokes `sqlpackage` to publish `AcmeIntegreatedAssessement.Database.dacpac` to the `Payments` database. The helper script builds the SQL project in `Release` configuration, caches the resulting `.dacpac`, and passes the relative path into the compose run so the SQL schema is applied without EF migrations.
+
+Volumes `mssql-data` and `redis-data` ensure SQL and Redis remain durable even when the stateless .NET containers scale out. The compose network `jelastic` gives each service a consistent DNS name (`sqlserver`, `redis`, `acme-web`), mimicking a Jelastic-style multi-service deployment.
+
+## 3. Code mapping for Task 3 requirements
+
+| Requirement | Implementation |
+|-------------|----------------|
+| Stored procedures + audit logging for payments | `AcmeIntegreatedAssessement.Database/SchemaObjects/StoredProcedures/*.sql` – each stored procedure has its own model, copies parameters into declared vars to avoid parameter sniffing, and writes `CreatedAt/By` + `UpdatedAt/By` columns. |
+| Infrastructure invocation without magic strings | `Infrastructure/Data/SqlStoredProcedureInvoker.cs` & `Infrastructure/Repositories/*Repository.cs` – invoker resolves `PaymentDatabaseSettings` and exposes strongly typed wrappers for `QueryAsync`, `QuerySingleAsync`, `ExecuteAsync`. |
+| Redis cache gating & per-item invalidation | `Infrastructure/Caching/DistributedCacheWithUnitOfWork.cs` (and related caches) leverage `IDistributedCache` semantics, flush on write, and cache items individually rather than entire collections. |
+| Daily summary report | `Application/Features/Reports/DailyPaymentSummary/*.cs` (handler, DTOs, mediator registration) and `AcmeIntegreatedAssessement.Database/SchemaObjects/StoredProcedures/GetDailyPaymentSummary.sql`. |
+| Tests | `src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Application.UnitTests` and `...IntegrationTests` cover payment submission, notification cycles, and the daily summary query, satisfying T2.11 and T3.3. |
+
+## 4. SSH + tooling hints
+
+- **Connect DB tools through SSH**: run `ssh app@localhost -p 2226` (password from `SSH_PASSWORD` in `.env` or defaults to `ZapperSSH!`). Once inside, use `sqlcmd`/`psql`/`redis-cli` against the internal hostnames (`sqlserver`, `redis`, `acme-web`), or forward ports back to the host—e.g., `ssh -L 1433:sqlserver:1433 -L 6379:redis:6379 -L 8080:acme-web:8080 app@localhost -p 2226`.
+- **Direct container SSH**: SSH is also available directly on each service (ports 2222/2223/2224) because the containers install `openssh-server` and expose those ports. You can SSH into them individually using the root password from the same `ZapperSSH!` default or the values set in `.env`.
+
+## 5. Operational commands
+
+- Bring the stack up (development port overrides allow CF certs and AWS AppConfig): `docker compose up -d --build`.
+- Deploy the schema via DACPAC: `scripts/deploy-dacpac.sh`.
+- Tear down: `docker compose down --volumes`.
+
+## Closing
+
+The infrastructure layer now owns every storage interaction (SQL stored procedures invoked via `SqlStoredProcedureInvoker`), the API remains stateless, Redis holds the only shared state, and the compose stack mirrors the elastic, CF fronted deployment described in the specification. Follow the pointer table above when reviewing Task 3 coverage.

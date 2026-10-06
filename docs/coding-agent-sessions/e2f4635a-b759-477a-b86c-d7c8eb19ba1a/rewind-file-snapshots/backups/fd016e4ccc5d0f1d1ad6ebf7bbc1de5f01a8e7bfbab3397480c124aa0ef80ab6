@@ -1,0 +1,1246 @@
+Trusting the HTTPS development certificate was requested. Trust is per-user and may require additional configuration. See https://aka.ms/dev-certs-trust for more information.
+Successfully trusted the existing HTTPS certificate.
+A valid HTTPS certificate is already present.
+Building the database project...
+  Determining projects to restore...
+/home/jvanniekerk/.nuget/packages/microsoft.build.sql/2.2.0/sdk/Sdk.targets(262,5): warning : A newer version of Microsoft.Build.Sql is available: 2.3.0. You are using 2.2.0. [/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/AcmeIntegreatedAssessement.Database.sqlproj]
+  All projects are up-to-date for restore.
+  AcmeIntegreatedAssessement.Database -> /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/bin/Release/AcmeIntegreatedAssessement.Database.dacpac
+
+Build succeeded.
+
+/home/jvanniekerk/.nuget/packages/microsoft.build.sql/2.2.0/sdk/Sdk.targets(262,5): warning : A newer version of Microsoft.Build.Sql is available: 2.3.0. You are using 2.2.0. [/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Database/AcmeIntegreatedAssessement.Database.sqlproj]
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.23
+Starting SQL Server Developer and Redis...
+time="2026-10-06T14:55:19+02:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image zapperteamleadassignment-redis Building 
+ Image zapperteamleadassignment-sqlserver Building 
+ Image zapperteamleadassignment-redis Building 
+ Image zapperteamleadassignment-sqlserver Building 
+Sending build context to Docker daemon     472B
+Sending build context to Docker daemon     566B
+Step 1/9 : FROM redis:7.0-alpine
+Step 1/10 : FROM mcr.microsoft.com/mssql/server:2022-latest
+ ---> 4402d880dd4c
+Step 2/10 : USER root
+ ---> c9d92d840fd0
+Step 2/9 : RUN apk add --no-cache openssh     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> 517d8500c9d8
+Step 3/10 : RUN apt-get update     && apt-get install -y --no-install-recommends openssh-server     && rm -rf /var/lib/apt/lists/*     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> 20c69002520e
+Step 3/9 : COPY scripts/run-redis.sh /usr/local/bin/run-redis.sh
+ ---> Using cache
+ ---> eac0e17f6159
+Step 4/10 : COPY scripts/run-sqlserver.sh /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> 23fa0040b338
+Step 5/10 : RUN chmod +x /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> d097914e13ca
+Step 4/9 : RUN chmod +x /usr/local/bin/run-redis.sh
+ ---> Using cache
+ ---> bd27f9189f73
+Step 6/10 : ENV SQL_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> f2c906e65214
+Step 5/9 : ENV REDIS_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> 650af079190d
+Step 7/10 : EXPOSE 1433
+ ---> Using cache
+ ---> 532da2eade2f
+Step 6/9 : EXPOSE 6379
+ ---> Using cache
+ ---> da8bf354ba53
+Step 8/10 : EXPOSE 2223
+ ---> Using cache
+ ---> 0975087163ea
+Step 7/9 : EXPOSE 2224
+ ---> Using cache
+ ---> 9bdf745630d2
+Step 9/10 : CMD ["/usr/local/bin/run-sqlserver.sh"]
+ ---> Using cache
+ ---> 44136ee08b21
+Step 8/9 : ENTRYPOINT ["/usr/local/bin/run-redis.sh"]
+ ---> Using cache
+ ---> 56a76a605a99
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 9a5af0cba155
+Step 9/9 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c7d16a18cd4e
+ ---> Using cache
+ ---> 263e167be8e7
+Successfully built c7d16a18cd4e
+Successfully built 263e167be8e7
+Successfully tagged zapperteamleadassignment-sqlserver:latest
+ Image zapperteamleadassignment-sqlserver Built 
+ Image zapperteamleadassignment-sqlserver Built 
+Successfully tagged zapperteamleadassignment-redis:latest
+ Image zapperteamleadassignment-redis Built 
+ Image zapperteamleadassignment-redis Built 
+ Container zapperteamleadassignment-sqlserver-1 Running 
+ Container zapperteamleadassignment-redis-1 Running 
+ Container zapperteamleadassignment-sqlserver-1 Waiting 
+ Container zapperteamleadassignment-redis-1 Waiting 
+ Container zapperteamleadassignment-redis-1 Healthy 
+ Container zapperteamleadassignment-sqlserver-1 Healthy 
+Deploying the database schema...
+time="2026-10-06T14:55:20+02:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image zapperteamleadassignment-sqlserver Building 
+ Image zapperteamleadassignment-sqlserver Building 
+Sending build context to Docker daemon     566B
+Step 1/10 : FROM mcr.microsoft.com/mssql/server:2022-latest
+ ---> 4402d880dd4c
+Step 2/10 : USER root
+ ---> Using cache
+ ---> 517d8500c9d8
+Step 3/10 : RUN apt-get update     && apt-get install -y --no-install-recommends openssh-server     && rm -rf /var/lib/apt/lists/*     && mkdir -p /var/run/sshd     && ssh-keygen -A
+ ---> Using cache
+ ---> eac0e17f6159
+Step 4/10 : COPY scripts/run-sqlserver.sh /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> 23fa0040b338
+Step 5/10 : RUN chmod +x /usr/local/bin/run-sqlserver.sh
+ ---> Using cache
+ ---> bd27f9189f73
+Step 6/10 : ENV SQL_SSH_PASSWORD=ZapperSSH!
+ ---> Using cache
+ ---> 650af079190d
+Step 7/10 : EXPOSE 1433
+ ---> Using cache
+ ---> da8bf354ba53
+Step 8/10 : EXPOSE 2223
+ ---> Using cache
+ ---> 9bdf745630d2
+Step 9/10 : CMD ["/usr/local/bin/run-sqlserver.sh"]
+ ---> Using cache
+ ---> 56a76a605a99
+Step 10/10 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c7d16a18cd4e
+Successfully built c7d16a18cd4e
+ Image zapperteamleadassignment-sqlserver Built 
+ Image zapperteamleadassignment-sqlserver Built 
+Successfully tagged zapperteamleadassignment-sqlserver:latest
+ Container zapperteamleadassignment-sqlserver-1 Running 
+time="2026-10-06T14:55:20+02:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image zapperteamleadassignment-dacpac Building 
+ Image zapperteamleadassignment-dacpac Building 
+Sending build context to Docker daemon     234B
+Step 1/5 : FROM mcr.microsoft.com/dotnet/sdk:10.0
+ ---> e70cdb7f80b0
+Step 2/5 : RUN dotnet tool install --tool-path /tools Microsoft.SqlPackage
+ ---> Using cache
+ ---> d182c434cb9c
+Step 3/5 : ENV PATH="/tools:${PATH}"
+ ---> Using cache
+ ---> 90fbb6ec5708
+Step 4/5 : ENTRYPOINT ["sqlpackage"]
+ ---> Using cache
+ ---> 872ca9f78121
+Step 5/5 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> be281c31252d
+Successfully built be281c31252d
+Successfully tagged zapperteamleadassignment-dacpac:latest
+ Image zapperteamleadassignment-dacpac Built 
+ Image zapperteamleadassignment-dacpac Built 
+ Container zapperteamleadassignment-sqlserver-1 Waiting 
+ Container zapperteamleadassignment-sqlserver-1 Healthy 
+ Container zapperteamleadassignment-dacpac-run-6c93541c5ec2 Creating 
+ Container zapperteamleadassignment-dacpac-run-6c93541c5ec2 Created 
+Publishing to database 'Payments' on server 'sqlserver,1433'.
+Initializing deployment (Start)
+Initializing deployment (Complete)
+Analyzing deployment plan (Start)
+Analyzing deployment plan (Complete)
+Updating database (Start)
+Update complete.
+Updating database (Complete)
+Successfully published database.
+Time elapsed 0:00:06.69
+ Container zapperteamleadassignment-acme-web-1 Stopping 
+ Container zapperteamleadassignment-acme-web-1 Stopped 
+Starting the application at https://localhost:8081 (Ctrl+C stops the app; SQL Server and Redis remain running)...
+Using launch settings from /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api/Properties/launchSettings.json...
+LogRecord.Timestamp:               2026-10-06T12:55:52.9194692Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:52.9194692Z
+LogRecord.CategoryName:            MassTransit
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        Bus started: loopback://localhost/
+LogRecord.Body:                    Bus started: {HostAddress}
+LogRecord.Attributes (Key:Value):
+    HostAddress: loopback://localhost/
+    SourceContext: MassTransit
+    OriginalFormat (a.k.a Body): Bus started: {HostAddress}
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:52 INF] Bus started: loopback://localhost/
+LogRecord.Timestamp:               2026-10-06T12:55:53.5575193Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:53.5575193Z
+LogRecord.CategoryName:            Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer
+LogRecord.Severity:                Warn
+LogRecord.SeverityText:            Warning
+LogRecord.FormattedMessage:        The ASP.NET Core developer certificate is only trusted by some clients. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+LogRecord.Body:                    The ASP.NET Core developer certificate is only trusted by some clients. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+LogRecord.Attributes (Key:Value):
+    EventId: { Id: 9, Name: "DeveloperCertificatePartiallyTrusted" }
+    SourceContext: Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer
+    OriginalFormat (a.k.a Body): The ASP.NET Core developer certificate is only trusted by some clients. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+LogRecord.EventId:                 9
+LogRecord.EventName:               DeveloperCertificatePartiallyTrusted
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:53 WRN] The ASP.NET Core developer certificate is only trusted by some clients. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+LogRecord.Timestamp:               2026-10-06T12:55:53.5833539Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:53.5833539Z
+LogRecord.CategoryName:            Microsoft.Hosting.Lifetime
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        Now listening on: "https://localhost:8081"
+LogRecord.Body:                    Now listening on: {address}
+LogRecord.Attributes (Key:Value):
+    address: https://localhost:8081
+    EventId: { Id: 14, Name: "ListeningOnAddress" }
+    SourceContext: Microsoft.Hosting.Lifetime
+    OriginalFormat (a.k.a Body): Now listening on: {address}
+LogRecord.EventId:                 14
+LogRecord.EventName:               ListeningOnAddress
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:53 INF] Now listening on: https://localhost:8081
+LogRecord.Timestamp:               2026-10-06T12:55:53.5848073Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:53.5848073Z
+LogRecord.CategoryName:            Microsoft.Hosting.Lifetime
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        Now listening on: "http://localhost:8080"
+LogRecord.Body:                    Now listening on: {address}
+LogRecord.Attributes (Key:Value):
+    address: http://localhost:8080
+    EventId: { Id: 14, Name: "ListeningOnAddress" }
+    SourceContext: Microsoft.Hosting.Lifetime
+    OriginalFormat (a.k.a Body): Now listening on: {address}
+LogRecord.EventId:                 14
+LogRecord.EventName:               ListeningOnAddress
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:53 INF] Now listening on: http://localhost:8080
+LogRecord.Timestamp:               2026-10-06T12:55:53.5883985Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:53.5883985Z
+LogRecord.CategoryName:            Microsoft.Hosting.Lifetime
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        Application started. Press Ctrl+C to shut down.
+LogRecord.Body:                    Application started. Press Ctrl+C to shut down.
+LogRecord.Attributes (Key:Value):
+    SourceContext: Microsoft.Hosting.Lifetime
+    OriginalFormat (a.k.a Body): Application started. Press Ctrl+C to shut down.
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:53 INF] Application started. Press Ctrl+C to shut down.
+LogRecord.Timestamp:               2026-10-06T12:55:53.5886388Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:53.5886388Z
+LogRecord.CategoryName:            Microsoft.Hosting.Lifetime
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        Hosting environment: "Development"
+LogRecord.Body:                    Hosting environment: {EnvName}
+LogRecord.Attributes (Key:Value):
+    EnvName: Development
+    SourceContext: Microsoft.Hosting.Lifetime
+    OriginalFormat (a.k.a Body): Hosting environment: {EnvName}
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:53 INF] Hosting environment: Development
+LogRecord.Timestamp:               2026-10-06T12:55:53.5887899Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:53.5887899Z
+LogRecord.CategoryName:            Microsoft.Hosting.Lifetime
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        Content root path: "/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api"
+LogRecord.Body:                    Content root path: {ContentRoot}
+LogRecord.Attributes (Key:Value):
+    ContentRoot: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api
+    SourceContext: Microsoft.Hosting.Lifetime
+    OriginalFormat (a.k.a Body): Content root path: {ContentRoot}
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:53 INF] Content root path: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.Api
+LogRecord.Timestamp:               2026-10-06T12:55:54.5027834Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:54.5027834Z
+LogRecord.TraceId:                 a9940d3b6558b94bb9fc9b4d6440c207
+LogRecord.SpanId:                  3b0a594e8ed8bd7f
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            Serilog.AspNetCore.RequestLoggingMiddleware
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        HTTP "POST" "/_blazor/negotiate" responded 200 in 95.2372 ms
+LogRecord.Body:                    HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+LogRecord.Attributes (Key:Value):
+    RequestMethod: POST
+    RequestPath: /_blazor/negotiate
+    StatusCode: 200
+    Elapsed: 95.237201
+    SourceContext: Serilog.AspNetCore.RequestLoggingMiddleware
+    RequestId: 0HNP3L4K4D24C:00000001
+    ConnectionId: 0HNP3L4K4D24C
+    OriginalFormat (a.k.a Body): HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:54 INF] HTTP POST /_blazor/negotiate responded 200 in 95.2372 ms
+Activity.TraceId:            a9940d3b6558b94bb9fc9b4d6440c207
+Activity.SpanId:             3b0a594e8ed8bd7f
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /_blazor/negotiate
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:54.3481161Z
+Activity.Duration:           00:00:00.1602601
+Activity.Tags:
+    http.request.method: POST
+    server.address: localhost
+    server.port: 8081
+    user_agent.original: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+    url.scheme: https
+    url.path: /_blazor/negotiate
+    url.query: ?negotiateVersion=Redacted
+    network.protocol.version: 2
+    http.route: /_blazor/negotiate
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            849dfde08010cea79ca856d211f1fca2
+Activity.SpanId:             36d1e251e4cf3008
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       55e384b27af4ac8d
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/OnConnectedAsync
+Activity.Kind:               Internal
+Activity.StartTime:          2026-10-06T12:55:54.5967408Z
+Activity.Duration:           00:00:00.0000461
+Activity.Tags:
+    rpc.method: OnConnectedAsync
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            2b786837a91146af94abe4de571c23b6
+Activity.SpanId:             69332ae66da01ea4
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/ConnectCircuit
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:54.6110930Z
+Activity.Duration:           00:00:00.0090257
+Activity.Tags:
+    rpc.method: ConnectCircuit
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    849dfde08010cea79ca856d211f1fca2 55e384b27af4ac8d
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            ad1e22f4addcb98b981f89ddb0a9c40c
+Activity.SpanId:             33683d364445fb1c
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/ResumeCircuit
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:54.6299931Z
+Activity.Duration:           00:00:00.0021941
+Activity.Tags:
+    rpc.method: ResumeCircuit
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    849dfde08010cea79ca856d211f1fca2 55e384b27af4ac8d
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+LogRecord.Timestamp:               2026-10-06T12:55:54.9360929Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:54.9360929Z
+LogRecord.TraceId:                 d8af0c0f8bcf61f7a5a2e40b72e2847e
+LogRecord.SpanId:                  7350cee372ed33cd
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            Serilog.AspNetCore.RequestLoggingMiddleware
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        HTTP "GET" "/" responded 200 in 262.9284 ms
+LogRecord.Body:                    HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+LogRecord.Attributes (Key:Value):
+    RequestMethod: GET
+    RequestPath: /
+    StatusCode: 200
+    Elapsed: 262.928374
+    SourceContext: Serilog.AspNetCore.RequestLoggingMiddleware
+    RequestId: 0HNP3L4K4D24C:00000005
+    ConnectionId: 0HNP3L4K4D24C
+    OriginalFormat (a.k.a Body): HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:54 INF] HTTP GET / responded 200 in 262.9284 ms
+Activity.TraceId:            d8af0c0f8bcf61f7a5a2e40b72e2847e
+Activity.SpanId:             7350cee372ed33cd
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        GET /
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:54.6701823Z
+Activity.Duration:           00:00:00.2685913
+Activity.Tags:
+    http.request.method: GET
+    server.address: localhost
+    server.port: 8081
+    user_agent.original: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+    url.scheme: https
+    url.path: /
+    network.protocol.version: 2
+    http.route: /
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            849dfde08010cea79ca856d211f1fca2
+Activity.SpanId:             dc3fd50fe32cdf6c
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       55e384b27af4ac8d
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/OnDisconnectedAsync
+Activity.Kind:               Internal
+Activity.StartTime:          2026-10-06T12:55:54.9662378Z
+Activity.Duration:           00:00:00.0007050
+Activity.Tags:
+    rpc.method: OnDisconnectedAsync
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+LogRecord.Timestamp:               2026-10-06T12:55:54.9751984Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:54.9751984Z
+LogRecord.TraceId:                 849dfde08010cea79ca856d211f1fca2
+LogRecord.SpanId:                  55e384b27af4ac8d
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            Serilog.AspNetCore.RequestLoggingMiddleware
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        HTTP "CONNECT" "/_blazor" responded 200 in 452.1098 ms
+LogRecord.Body:                    HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+LogRecord.Attributes (Key:Value):
+    RequestMethod: CONNECT
+    RequestPath: /_blazor
+    StatusCode: 200
+    Elapsed: 452.10978
+    SourceContext: Serilog.AspNetCore.RequestLoggingMiddleware
+    RequestId: 0HNP3L4K4D24C:00000003
+    ConnectionId: 0HNP3L4K4D24C
+    OriginalFormat (a.k.a Body): HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:54 INF] HTTP CONNECT /_blazor responded 200 in 452.1098 ms
+Activity.TraceId:            849dfde08010cea79ca856d211f1fca2
+Activity.SpanId:             55e384b27af4ac8d
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        CONNECT /_blazor
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:54.5218657Z
+Activity.Duration:           00:00:00.4562454
+Activity.Tags:
+    http.request.method: CONNECT
+    server.address: localhost
+    server.port: 8081
+    user_agent.original: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+    url.scheme: https
+    url.path: /_blazor
+    url.query: ?id=Redacted
+    network.protocol.version: 2
+    http.long_running: true
+    http.route: /_blazor
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+LogRecord.Timestamp:               2026-10-06T12:55:54.9814367Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:54.9814367Z
+LogRecord.TraceId:                 71147af1bacfc1fb98c3f312155d27e7
+LogRecord.SpanId:                  96786684a0e1572e
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            Serilog.AspNetCore.RequestLoggingMiddleware
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        HTTP "POST" "/_blazor/disconnect" responded 400 in 26.9127 ms
+LogRecord.Body:                    HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+LogRecord.Attributes (Key:Value):
+    RequestMethod: POST
+    RequestPath: /_blazor/disconnect
+    StatusCode: 400
+    Elapsed: 26.912666
+    SourceContext: Serilog.AspNetCore.RequestLoggingMiddleware
+    RequestId: 0HNP3L4K4D24C:00000007
+    ConnectionId: 0HNP3L4K4D24C
+    OriginalFormat (a.k.a Body): HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:54 INF] HTTP POST /_blazor/disconnect responded 400 in 26.9127 ms
+Activity.TraceId:            71147af1bacfc1fb98c3f312155d27e7
+Activity.SpanId:             96786684a0e1572e
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /_blazor/disconnect/
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:54.9541644Z
+Activity.Duration:           00:00:00.0277824
+Activity.Tags:
+    http.request.method: POST
+    server.address: localhost
+    server.port: 8081
+    user_agent.original: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+    url.scheme: https
+    url.path: /_blazor/disconnect
+    network.protocol.version: 2
+    http.route: /_blazor/disconnect/
+    http.response.status_code: 400
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+LogRecord.Timestamp:               2026-10-06T12:55:55.0683978Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:55.0683978Z
+LogRecord.TraceId:                 4e83144fd800bd7f02a4acfb442911b3
+LogRecord.SpanId:                  7994b94cb3acea1d
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            Serilog.AspNetCore.RequestLoggingMiddleware
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        HTTP "GET" "/AcmeIntegreatedAssessement.Api.styles.css" responded 200 in 29.6842 ms
+LogRecord.Body:                    HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+LogRecord.Attributes (Key:Value):
+    RequestMethod: GET
+    RequestPath: /AcmeIntegreatedAssessement.Api.styles.css
+    StatusCode: 200
+    Elapsed: 29.684198
+    SourceContext: Serilog.AspNetCore.RequestLoggingMiddleware
+    RequestId: 0HNP3L4K4D24C:00000009
+    ConnectionId: 0HNP3L4K4D24C
+    OriginalFormat (a.k.a Body): HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:55 INF] HTTP GET /AcmeIntegreatedAssessement.Api.styles.css responded 200 in 29.6842 ms
+Activity.TraceId:            4e83144fd800bd7f02a4acfb442911b3
+Activity.SpanId:             7994b94cb3acea1d
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        GET
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.0382951Z
+Activity.Duration:           00:00:00.0306039
+Activity.Tags:
+    http.request.method: GET
+    server.address: localhost
+    server.port: 8081
+    user_agent.original: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+    url.scheme: https
+    url.path: /AcmeIntegreatedAssessement.Api.styles.css
+    network.protocol.version: 2
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+LogRecord.Timestamp:               2026-10-06T12:55:55.1218721Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:55.1218721Z
+LogRecord.TraceId:                 c856f883592341c0841d91f48884545e
+LogRecord.SpanId:                  ee7b5377b3c05147
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            Serilog.AspNetCore.RequestLoggingMiddleware
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        HTTP "GET" "/_blazor/initializers" responded 200 in 7.9301 ms
+LogRecord.Body:                    HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+LogRecord.Attributes (Key:Value):
+    RequestMethod: GET
+    RequestPath: /_blazor/initializers
+    StatusCode: 200
+    Elapsed: 7.930095
+    SourceContext: Serilog.AspNetCore.RequestLoggingMiddleware
+    RequestId: 0HNP3L4K4D24C:0000000B
+    ConnectionId: 0HNP3L4K4D24C
+    OriginalFormat (a.k.a Body): HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:55 INF] HTTP GET /_blazor/initializers responded 200 in 7.9301 ms
+Activity.TraceId:            c856f883592341c0841d91f48884545e
+Activity.SpanId:             ee7b5377b3c05147
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        GET /_blazor/initializers/
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.1135331Z
+Activity.Duration:           00:00:00.0087688
+Activity.Tags:
+    http.request.method: GET
+    server.address: localhost
+    server.port: 8081
+    user_agent.original: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+    url.scheme: https
+    url.path: /_blazor/initializers
+    network.protocol.version: 2
+    http.route: /_blazor/initializers/
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+LogRecord.Timestamp:               2026-10-06T12:55:55.1323956Z
+LogRecord.ObservedTimestamp:       2026-10-06T12:55:55.1323956Z
+LogRecord.TraceId:                 f7c5ad55e21321e767d936f1280e8dae
+LogRecord.SpanId:                  569926b0b1dc4200
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            Serilog.AspNetCore.RequestLoggingMiddleware
+LogRecord.Severity:                Info
+LogRecord.SeverityText:            Information
+LogRecord.FormattedMessage:        HTTP "POST" "/_blazor/negotiate" responded 200 in 0.8030 ms
+LogRecord.Body:                    HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+LogRecord.Attributes (Key:Value):
+    RequestMethod: POST
+    RequestPath: /_blazor/negotiate
+    StatusCode: 200
+    Elapsed: 0.802983
+    SourceContext: Serilog.AspNetCore.RequestLoggingMiddleware
+    RequestId: 0HNP3L4K4D24C:0000000D
+    ConnectionId: 0HNP3L4K4D24C
+    OriginalFormat (a.k.a Body): HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms
+
+Resource associated with LogRecord:
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.16.0
+service.name: AcmeIntegreatedAssessement
+service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+[14:55:55 INF] HTTP POST /_blazor/negotiate responded 200 in 0.8030 ms
+Activity.TraceId:            f7c5ad55e21321e767d936f1280e8dae
+Activity.SpanId:             569926b0b1dc4200
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        POST /_blazor/negotiate
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.1312912Z
+Activity.Duration:           00:00:00.0014481
+Activity.Tags:
+    http.request.method: POST
+    server.address: localhost
+    server.port: 8081
+    user_agent.original: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+    url.scheme: https
+    url.path: /_blazor/negotiate
+    url.query: ?negotiateVersion=Redacted
+    network.protocol.version: 2
+    http.route: /_blazor/negotiate
+    http.response.status_code: 200
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            d99f3819b78fc27efc85388e8a7e2098
+Activity.SpanId:             4fe9b0783face343
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       48dbef11ceaa4463
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/OnConnectedAsync
+Activity.Kind:               Internal
+Activity.StartTime:          2026-10-06T12:55:55.1439890Z
+Activity.Duration:           00:00:00.0000161
+Activity.Tags:
+    rpc.method: OnConnectedAsync
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            d7edf974e75e57b641ca54019a89cdcb
+Activity.SpanId:             f5776719ce4a5aca
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Circuit W_79cb5M5BLPQwkBf4ivr1VvB8smuZ7opQs4Gxw2ye8
+Activity.Kind:               Internal
+Activity.StartTime:          2026-10-06T12:55:55.2225721Z
+Activity.Duration:           00:00:00.0002304
+Activity.Tags:
+    aspnetcore.components.circuit.id: W_79cb5M5BLPQwkBf4ivr1VvB8smuZ7opQs4Gxw2ye8
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+    05759e49b5ff79a605ddd370c95397a9 05e2131549ffc696
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.Components.Server.Circuits
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            05759e49b5ff79a605ddd370c95397a9
+Activity.SpanId:             05e2131549ffc696
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/StartCircuit
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.1464770Z
+Activity.Duration:           00:00:00.0784937
+Activity.Tags:
+    rpc.method: StartCircuit
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            b2d77eb1d54a0c26629f0391a3c6fb03
+Activity.SpanId:             652bc99c2022be13
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Route / -> AcmeIntegreatedAssessement.Api.Components.Pages.Home
+Activity.Kind:               Internal
+Activity.StartTime:          2026-10-06T12:55:55.3941366Z
+Activity.Duration:           00:00:00.0008494
+Activity.Tags:
+    aspnetcore.components.type: AcmeIntegreatedAssessement.Api.Components.Pages.Home
+    aspnetcore.components.route: /
+    aspnetcore.components.circuit.id: W_79cb5M5BLPQwkBf4ivr1VvB8smuZ7opQs4Gxw2ye8
+Activity.Links:
+    d7edf974e75e57b641ca54019a89cdcb f5776719ce4a5aca
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.Components
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            ff977a45596d886a8a2c83b2c772e477
+Activity.SpanId:             6fbd8f4806472c51
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/UpdateRootComponents
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.2255897Z
+Activity.Duration:           00:00:00.5538769
+Activity.Tags:
+    rpc.method: UpdateRootComponents
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            51f5f2b475053f0f4982f411d6d500d1
+Activity.SpanId:             1ed4583f3186cc9c
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.7808193Z
+Activity.Duration:           00:00:00.0056190
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            0977f94f5a086eb0364c36fdec1ab10f
+Activity.SpanId:             d30ab55401708b15
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/OnRenderCompleted
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.7870666Z
+Activity.Duration:           00:00:00.0170250
+Activity.Tags:
+    rpc.method: OnRenderCompleted
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            7d785ea27edd7fbb910a869072c4b780
+Activity.SpanId:             a342b8857ead4e28
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/OnRenderCompleted
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.8171611Z
+Activity.Duration:           00:00:00.0002024
+Activity.Tags:
+    rpc.method: OnRenderCompleted
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            196bbedb902bd4577f185de2ec32b831
+Activity.SpanId:             b3d9aa363a6de20f
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.8500957Z
+Activity.Duration:           00:00:00.0016668
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            3b57b5e0201e002f57fb08e4c9cefb57
+Activity.SpanId:             81000c40998777fe
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.8576024Z
+Activity.Duration:           00:00:00.0000846
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            3080523137c4e1af09b2c8e1964fa720
+Activity.SpanId:             72e2ec6b5caf1022
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.8809018Z
+Activity.Duration:           00:00:00.0000879
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            ab11739fdf7312997759e10258d2d910
+Activity.SpanId:             4a6c1a9c2d54f514
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.8844600Z
+Activity.Duration:           00:00:00.0000689
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            5f6909969b269805c5f645ffaaa78632
+Activity.SpanId:             716c0f50a6f1c5c2
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.8849745Z
+Activity.Duration:           00:00:00.0000359
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            02a9433fd4d2f5fb57e1f6fee3203e29
+Activity.SpanId:             2a6da3e50e9ed999
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.8870838Z
+Activity.Duration:           00:00:00.0000440
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            ee890831abc5a8c0d311cfd2fb51f718
+Activity.SpanId:             1bedcdf3418fb6a1
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.9267502Z
+Activity.Duration:           00:00:00.0000943
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            5f59e1f2738363cac2385aeec6f10085
+Activity.SpanId:             053b8ef1674ad841
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.9290205Z
+Activity.Duration:           00:00:00.0000591
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            448db140904e00e068e697bedbfeafb9
+Activity.SpanId:             2ab3cc813252a47c
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.9294341Z
+Activity.Duration:           00:00:00.0000343
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            381efdad7fd28e4874f320aa14baecb1
+Activity.SpanId:             d22cf9ab1517600f
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.9363419Z
+Activity.Duration:           00:00:00.0000524
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            71f77f09015748bafba6acb8be1ad09b
+Activity.SpanId:             ec35c71fc0096b13
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/OnRenderCompleted
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.9435707Z
+Activity.Duration:           00:00:00.0000680
+Activity.Tags:
+    rpc.method: OnRenderCompleted
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            1308c1a51186f491f079a1249883148a
+Activity.SpanId:             efecdd820f338365
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/EndInvokeJSFromDotNet
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.9701468Z
+Activity.Duration:           00:00:00.0034522
+Activity.Tags:
+    rpc.method: EndInvokeJSFromDotNet
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+
+Activity.TraceId:            c71fa611bdd42127b792f2db7f4733d9
+Activity.SpanId:             e79c2d9a5def124b
+Activity.TraceFlags:         Recorded
+Activity.DisplayName:        Microsoft.AspNetCore.Components.Server.ComponentHub/OnRenderCompleted
+Activity.Kind:               Server
+Activity.StartTime:          2026-10-06T12:55:55.9739326Z
+Activity.Duration:           00:00:00.0000772
+Activity.Tags:
+    rpc.method: OnRenderCompleted
+    rpc.system: signalr
+    rpc.service: Microsoft.AspNetCore.Components.Server.ComponentHub
+Activity.Links:
+    d99f3819b78fc27efc85388e8a7e2098 48dbef11ceaa4463
+Instrumentation scope (ActivitySource):
+    Name: Microsoft.AspNetCore.SignalR.Server
+Resource associated with Activity:
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.16.0
+    service.name: AcmeIntegreatedAssessement
+    service.instance.id: 9bf6d07a-c46b-4e6b-8495-b2003c51ad79
+

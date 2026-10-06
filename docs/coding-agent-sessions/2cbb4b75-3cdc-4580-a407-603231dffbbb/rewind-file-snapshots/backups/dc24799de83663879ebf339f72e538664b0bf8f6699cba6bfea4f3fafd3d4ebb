@@ -1,0 +1,53 @@
+using AcmeIntegreatedAssessement.Application.Common.Interfaces;
+using AcmeIntegreatedAssessement.Domain.Common.Interfaces;
+using AcmeIntegreatedAssessement.Domain.Repositories;
+using AcmeIntegreatedAssessement.Infrastructure.Caching;
+using AcmeIntegreatedAssessement.Infrastructure.Configuration;
+using AcmeIntegreatedAssessement.Infrastructure.MultiTenant;
+using AcmeIntegreatedAssessement.Infrastructure.Persistence;
+using AcmeIntegreatedAssessement.Infrastructure.Repositories;
+using AcmeIntegreatedAssessement.Infrastructure.Services;
+using Finbuckle.MultiTenant;
+using Finbuckle.MultiTenant.Abstractions;
+using Intent.RoslynWeaver.Attributes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("Intent.Infrastructure.DependencyInjection.DependencyInjection", Version = "1.0")]
+
+namespace AcmeIntegreatedAssessement.Infrastructure
+{
+    public static class DependencyInjection
+    {
+        [IntentMerge]
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<ApplicationDbContext>((sp, options) =>
+            {
+                var tenantInfo = sp.GetRequiredService<IMultiTenantContextAccessor<TenantExtendedInfo>>().MultiTenantContext?.TenantInfo;
+                var connectionString = tenantInfo?.ConnectionString ?? throw new MultiTenantException(sp.GetRequiredService<IHostEnvironment>().IsDevelopment()
+                    ? "Failed to resolve tenant connection information. If you are running EF Core CLI commands (e.g. 'dotnet ef migrations'), install the Intent.Modules.EntityFrameworkCore.DesignTimeDbContextFactory module."
+                    : "Failed to resolve tenant connection information.");
+                options.UseInMemoryDatabase(connectionString);
+                options.UseLazyLoadingProxies();
+            });
+            services.AddDistributedMemoryCache();
+            services.AddSingleton<IDistributedCacheWithUnitOfWork, DistributedCacheWithUnitOfWork>();
+            services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<IScopedExecutor, ScopedExecutor>();
+            services.AddScoped<IScopedMediator, ScopedMediator>();
+            services.AddTransient<IStoredCardTokenRepository, StoredCardTokenRepository>();
+            services.AddTransient<ISubMerchantRepository, SubMerchantRepository>();
+            services.AddScoped<IDomainEventService, DomainEventService>();
+            services.AddScoped<RedisOmUnitOfWork>();
+            services.AddScoped<IRedisOmUnitOfWork>(provider => provider.GetRequiredService<RedisOmUnitOfWork>());
+            services.AddMassTransitConfiguration(configuration);
+            services.AddHttpClients(configuration);
+            services.ConfigureRedisOm(configuration);
+            return services;
+        }
+    }
+}

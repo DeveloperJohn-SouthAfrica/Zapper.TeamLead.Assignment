@@ -1,0 +1,17 @@
+id: 3b5578c9-48ce-423f-8905-d7bd1a8a9092
+cwd: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+git_root: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+repository: DeveloperJohn-SouthAfrica/Zapper.TeamLead.Assignment
+host_type: github
+branch: jm/pre-development-setup-analysis-and-design
+client_name: github/cli
+name: Taking into account everything in `/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/docs/*` Update the `/home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment/Solution.md` We have chosen a stack, Blazor WASM clean architecture, with mass transit pub/sub to manage the distributed event based nature of the design, we have the mediator pattern to allow for fluent validation and segregated hghly structured controller business logic. We also have included the CQRS pattern and a series o...
+user_named: false
+summary_count: 0
+fork_count: 0
+created_at: 2026-10-04T21:38:19.853Z
+updated_at: 2026-10-04T22:06:15.481Z
+remote_steerable: false
+mc_task_id: e6b84368-61f0-4a66-a2ce-92313d714083
+mc_session_id: 3b5578c9-48ce-423f-8905-d7bd1a8a9092
+mc_last_event_id: 389af2a3-a2cd-49f8-9372-c4bf548ee533

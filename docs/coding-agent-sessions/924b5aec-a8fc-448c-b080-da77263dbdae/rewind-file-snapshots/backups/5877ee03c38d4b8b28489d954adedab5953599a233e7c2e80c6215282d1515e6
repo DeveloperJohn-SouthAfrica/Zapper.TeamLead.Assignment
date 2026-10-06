@@ -1,0 +1,70 @@
+# Entity Relationship Diagram (ERD)
+
+```mermaid
+erDiagram
+    SUBMERCHANT {
+        string SubMerchantID PK "Zapper identifier"
+        string TradingName
+        string City
+        string Region
+        string Country
+        string MerchantCategoryCode
+        string CardAcceptorName
+    }
+
+    CUSTOMER {
+        string CustomerID PK
+        string Email
+    }
+
+    STORED_CARD {
+        string Token PK
+        string CustomerID FK
+        string Email
+        string CardOnFileScenario
+    }
+
+    PAYMENT {
+        string PaymentID PK
+        string AppPaymentID
+        string CustomerID FK
+        string SubMerchantID FK
+        long Amount
+        string CurrencyCode
+        string TransactionStatus
+        string Channel
+        datetime CreatedAt
+        datetime UpdatedAt
+    }
+
+    PAYMENT_HISTORY {
+        string HistoryID PK
+        string PaymentID FK
+        string EventType
+        string Details
+        datetime OccurredAt
+    }
+
+    NOTIFICATION {
+        string NotificationID PK
+        string PaymentID FK
+        string AcmeMessageID
+        string TransactionStatus
+        string ResponseCode
+        string RawPayload
+        datetime ReceivedAt
+    }
+
+    PAYMENT ||--|{ PAYMENT_HISTORY : records
+    PAYMENT ||--|{ NOTIFICATION : influenced_by
+    CUSTOMER ||--|{ STORED_CARD : owns
+    CUSTOMER ||--|{ PAYMENT : initiates
+    SUBMERCHANT ||--|{ PAYMENT : receives
+    STORED_CARD }|..|| CUSTOMER : "references"
+```
+
+## Notes
+
+- Every write to `PAYMENT` pairs with a `PAYMENT_HISTORY` entry to satisfy audit and ACID requirements.
+- Notifications live in their own table so retries accumulate but do not mutate prior rows.
+- This schema is deliberately minimal to keep the analysis phase stack-independent while meeting ISO/IEC 25010 maintainability and reliability expectations.

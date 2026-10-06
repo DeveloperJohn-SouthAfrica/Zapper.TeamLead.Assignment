@@ -1,0 +1,17 @@
+id: 92228a72-52d1-4804-a6df-c14e6e4c9a78
+cwd: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+git_root: /home/jvanniekerk/RiderProjects/Zapper.TeamLead.Assignment
+repository: DeveloperJohn-SouthAfrica/Zapper.TeamLead.Assignment
+host_type: github
+branch: jm/pre-development-setup-analysis-and-design
+client_name: github/cli
+name: Create a Kiro / SpecKit / BMAD / OpenSpec folder under `/docs` and populate the contents with the appropriate assets for a spec driven development import
+user_named: false
+summary_count: 0
+fork_count: 0
+created_at: 2026-10-04T22:45:30.524Z
+updated_at: 2026-10-04T22:46:28.486Z
+remote_steerable: false
+mc_task_id: a3007eb8-4a18-4e68-8a4a-a2e8c3399b76
+mc_session_id: 92228a72-52d1-4804-a6df-c14e6e4c9a78
+mc_last_event_id: 201ce66e-5fb6-4b60-a521-830e53d91ddb
