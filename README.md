@@ -10,7 +10,7 @@
 
 2. **Start local infrastructure and API**  
    ```bash
-   scripts/local-up.sh
+   sudo scripts/local-up.sh
    ```
 
 3. **Access services**  
@@ -56,7 +56,7 @@ dotnet run --project src/AcmeIntegreatedAssessement/AcmeIntegreatedAssessement.A
 To run the API itself in Docker instead of using `dotnet run`:
 
 ```bash
-scripts/local-up.sh --compose
+sudo scripts/local-up.sh --compose
 ```
 
 The app, SQL Server, and Redis ports bind to localhost. The default local SQL `sa` password is `YourStrong!Passw0rd`; set `SA_PASSWORD` in the shell before running the setup script to override it. Set `ACME_PAY_BASE_URL` to a reachable Acme Pay stub or sandbox URL before submitting payments. AWS Secrets Manager is disabled for local development.

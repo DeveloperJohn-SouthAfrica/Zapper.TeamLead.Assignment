@@ -113,13 +113,13 @@
   <file path="AcmeIntegreatedAssessement.Application.UnitTests/AcmeIntegreatedAssessement.Application.UnitTests.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="AcmeIntegreatedAssessement.Application/AcmeIntegreatedAssessement.Application.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommand.cs" templateId="Intent.Application.MediatR.CommandModels" />
-  <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs" templateId="Intent.Application.MediatR.CommandHandler" />
+  <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandHandler.cs" deviationsHash="668EDC1D1C54A1AE39304442CC7D415FB714594175C87ABDC9183D35DBAB790B" templateId="Intent.Application.MediatR.CommandHandler" />
   <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeApprovedNotification/ProcessAcmeApprovedNotificationCommandValidator.cs" templateId="Intent.Application.MediatR.FluentValidation.CommandValidator" />
   <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommand.cs" templateId="Intent.Application.MediatR.CommandModels" />
-  <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs" templateId="Intent.Application.MediatR.CommandHandler" />
+  <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandHandler.cs" deviationsHash="24698DA757A24726AA78D51290F5B2E3348435A5372497AC6D62FABD2F584C00" templateId="Intent.Application.MediatR.CommandHandler" />
   <file path="AcmeIntegreatedAssessement.Application/Commands/ProcessAcmeReversalNotification/ProcessAcmeReversalNotificationCommandValidator.cs" templateId="Intent.Application.MediatR.FluentValidation.CommandValidator" />
   <file path="AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommand.cs" templateId="Intent.Application.MediatR.CommandModels" />
-  <file path="AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs" templateId="Intent.Application.MediatR.CommandHandler" />
+  <file path="AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandHandler.cs" deviationsHash="434B4169EF34D93065F6D55EEDC59C51DA8B45CF4AFA7CA63076BD200F3DCE26" templateId="Intent.Application.MediatR.CommandHandler" />
   <file path="AcmeIntegreatedAssessement.Application/Commands/SubmitPayment/SubmitPaymentCommandValidator.cs" templateId="Intent.Application.MediatR.FluentValidation.CommandValidator" />
   <file path="AcmeIntegreatedAssessement.Application/Common/Behaviours/AuthorizationBehaviour.cs" templateId="Intent.Application.MediatR.Behaviours.AuthorizationBehaviour" />
   <file path="AcmeIntegreatedAssessement.Application/Common/Behaviours/LoggingBehaviour.cs" templateId="Intent.Application.MediatR.Behaviours.LoggingBehaviour" />
@@ -157,10 +157,10 @@
   <file path="AcmeIntegreatedAssessement.Application/Contracts/AcmeReversalNotificationDtoValidator.cs" templateId="Intent.Application.FluentValidation.Dtos.DTOValidator" />
   <file path="AcmeIntegreatedAssessement.Application/Contracts/PaymentStateResponseDto.cs" templateId="Intent.Application.Dtos.DtoModel" />
   <file path="AcmeIntegreatedAssessement.Application/Contracts/SubmitPaymentRequestDto.cs" templateId="Intent.Application.Dtos.DtoModel" />
-  <file path="AcmeIntegreatedAssessement.Application/Contracts/SubmitPaymentRequestDtoValidator.cs" templateId="Intent.Application.FluentValidation.Dtos.DTOValidator" />
+  <file path="AcmeIntegreatedAssessement.Application/Contracts/SubmitPaymentRequestDtoValidator.cs" deviationsHash="7D43A5FED5B97CA995019BCC36641F77A8F21CAFEA81BC4868A3E9E9259375FA" templateId="Intent.Application.FluentValidation.Dtos.DTOValidator" />
   <file path="AcmeIntegreatedAssessement.Application/DependencyInjection.cs" templateId="Intent.Application.DependencyInjection.DependencyInjection" />
   <file path="AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQuery.cs" templateId="Intent.Application.MediatR.QueryModels" />
-  <file path="AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs" templateId="Intent.Application.MediatR.QueryHandler" />
+  <file path="AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryHandler.cs" deviationsHash="468A0353C550CE92DD2FC026650791C7FA29CE069B202E6CCE0CC77BCA08394B" templateId="Intent.Application.MediatR.QueryHandler" />
   <file path="AcmeIntegreatedAssessement.Application/Queries/GetPaymentState/GetPaymentStateQueryValidator.cs" templateId="Intent.Application.MediatR.FluentValidation.QueryValidator" />
   <file path="AcmeIntegreatedAssessement.Domain/AcmeIntegreatedAssessement.Domain.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="AcmeIntegreatedAssessement.Domain/Common/CollectionExtensions.cs" templateId="Intent.Entities.CollectionExtensions" />
@@ -189,7 +189,7 @@
   <file path="AcmeIntegreatedAssessement.Infrastructure/Configuration/HttpClientConfiguration.cs" templateId="Intent.Integration.HttpClients.HttpClientConfiguration" />
   <file path="AcmeIntegreatedAssessement.Infrastructure/Configuration/MassTransitConfiguration.cs" templateId="Intent.Eventing.MassTransit.MassTransitConfiguration" />
   <file path="AcmeIntegreatedAssessement.Infrastructure/Configuration/RedisOmConfiguration.cs" templateId="Intent.Redis.Om.Repositories.Templates.RedisOmConfiguration" />
-  <file path="AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs" templateId="Intent.Infrastructure.DependencyInjection.DependencyInjection" />
+  <file path="AcmeIntegreatedAssessement.Infrastructure/DependencyInjection.cs" deviationsHash="E7741DB5D5489FBCF3727CEECD4AABA8A91DEFE612FC083816B03171CCCCA1E7" templateId="Intent.Infrastructure.DependencyInjection.DependencyInjection" />
   <file path="AcmeIntegreatedAssessement.Infrastructure/Eventing/FinbuckleConsumingFilter.cs" templateId="Intent.Eventing.MassTransit.FinbuckleConsumingFilter" />
   <file path="AcmeIntegreatedAssessement.Infrastructure/Eventing/FinbuckleMessageHeaderStrategy.cs" templateId="Intent.Eventing.MassTransit.FinbuckleMessageHeaderStrategy" />
   <file path="AcmeIntegreatedAssessement.Infrastructure/Eventing/FinbucklePublishingFilter.cs" templateId="Intent.Eventing.MassTransit.FinbucklePublishingFilter" />
