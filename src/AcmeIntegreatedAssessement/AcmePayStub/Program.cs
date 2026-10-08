@@ -172,23 +172,27 @@ static bool TryReadPayment(JsonElement request, Guid transactionId, out StubPaym
     var acceptorName = ReadString(request, "CardAcceptorName");
     var email = ReadString(request, "Email") ?? string.Empty;
     var cardOnFileScenario = ReadString(request, "CardOnFileScenario");
+    var isCardPayment = paymentService is "CardNotPresent" or "CardNotPresentRecurring" or "GooglePay" or "ApplePay";
+    var hasCardToken = request.TryGetProperty("Card", out var card) &&
+                       !string.IsNullOrWhiteSpace(ReadString(card, "Token"));
     if (string.IsNullOrWhiteSpace(orderNumber) ||
-        !orderNumber.All(char.IsLetterOrDigit) ||
+        !orderNumber.All(char.IsAsciiLetterOrDigit) ||
         orderNumber.Length > 50 ||
         !request.TryGetProperty("Amount", out var amountElement) ||
         !amountElement.TryGetInt64(out var amount) ||
         amount <= 0 ||
         currencyCode.Length != 3 ||
+        !currencyCode.All(char.IsAsciiLetter) ||
         paymentService is not ("CardNotPresent" or "CardNotPresentRecurring" or "AcmeEft" or "GooglePay" or "ApplePay") ||
         string.IsNullOrWhiteSpace(subMerchantId) ||
         subMerchantId.Length > 15 ||
         string.IsNullOrWhiteSpace(mcc) ||
         mcc.Length > 4 ||
+        !mcc.All(char.IsAsciiDigit) ||
         string.IsNullOrWhiteSpace(acceptorName) ||
         acceptorName.Length != 40 ||
-        !request.TryGetProperty("Card", out var card) ||
-        string.IsNullOrWhiteSpace(ReadString(card, "Token")) ||
-        cardOnFileScenario is not ("CIT" or "MIT"))
+        isCardPayment && !hasCardToken ||
+        cardOnFileScenario is not (null or "CIT" or "MIT"))
     {
         return false;
     }
@@ -196,7 +200,7 @@ static bool TryReadPayment(JsonElement request, Guid transactionId, out StubPaym
     payment = new StubPaymentRecord(
         transactionId,
         orderNumber,
-        orderNumber[..12],
+        orderNumber[..Math.Min(12, orderNumber.Length)],
         amount,
         currencyCode,
         paymentService,
