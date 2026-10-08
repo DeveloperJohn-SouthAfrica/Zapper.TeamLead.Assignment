@@ -16,7 +16,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeReversalNot
             string rrn,
             decimal amount,
             DateTimeOffset occurredAt,
-            string appPaymentId, AcmeReversalNotificationDto body)
+            string appPaymentId, AcmeReversalNotificationDto body, string rawPayloadJson = "")
         {
             EventType = eventType;
             IsApproved = isApproved;
@@ -26,6 +26,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeReversalNot
             OccurredAt = occurredAt;
             AppPaymentId = appPaymentId;
             Body = body;
+            RawPayloadJson = rawPayloadJson;
         }
 
         public string EventType { get; set; }
@@ -36,5 +37,6 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeReversalNot
         public DateTimeOffset OccurredAt { get; set; }
         public string AppPaymentId { get; set; }
         public AcmeReversalNotificationDto Body { get; set; }
+        public string RawPayloadJson { get; set; }
     }
 }

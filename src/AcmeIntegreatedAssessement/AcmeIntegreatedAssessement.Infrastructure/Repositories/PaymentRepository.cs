@@ -31,6 +31,24 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
                 cancellationToken);
         }
 
+        public async Task<Payment?> GetByAcmeTransactionUuidAsync(Guid transactionId, CancellationToken cancellationToken = default)
+        {
+            return await _invoker.QuerySingleAsync(
+                "GetPaymentByAcmeTransactionUuid",
+                MapPayment,
+                parameters => AddParameter(parameters, "@AcmeTransactionUuid", transactionId, SqlDbType.UniqueIdentifier),
+                cancellationToken);
+        }
+
+        public async Task<Payment?> GetBySubMerchantRrnAsync(string rrn, CancellationToken cancellationToken = default)
+        {
+            return await _invoker.QuerySingleAsync(
+                "GetPaymentBySubMerchantRrn",
+                MapPayment,
+                parameters => AddParameter(parameters, "@SubMerchantRrn", rrn, SqlDbType.NVarChar, 100),
+                cancellationToken);
+        }
+
         public async Task AddAsync(Payment payment, CancellationToken cancellationToken = default)
         {
             await _invoker.ExecuteAsync(
@@ -48,6 +66,34 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
                     AddParameter(parameters, "@SubMerchantId", payment.SubMerchantId, SqlDbType.UniqueIdentifier);
                     AddParameter(parameters, "@CreatedBy", AuditActor.System, SqlDbType.NVarChar, 100);
                     AddParameter(parameters, "@UpdatedBy", AuditActor.System, SqlDbType.NVarChar, 100);
+                },
+                cancellationToken);
+        }
+
+        public async Task ApplyNotificationAsync(
+            NotificationDelivery delivery,
+            PaymentChange change,
+            string? paymentStatus,
+            CancellationToken cancellationToken = default)
+        {
+            await _invoker.ExecuteAsync(
+                "ApplyPaymentNotification",
+                parameters =>
+                {
+                    AddParameter(parameters, "@NotificationId", Guid.Parse(delivery.NotificationId), SqlDbType.UniqueIdentifier);
+                    AddParameter(parameters, "@AppPaymentId", delivery.AppPaymentId, SqlDbType.NVarChar, 100);
+                    AddParameter(parameters, "@PaymentId", change.PaymentId, SqlDbType.UniqueIdentifier);
+                    AddParameter(parameters, "@NotificationType", delivery.NotificationType, SqlDbType.NVarChar, 50);
+                    AddParameter(parameters, "@OccurredAt", delivery.OccurredAt, SqlDbType.DateTime2);
+                    AddParameter(parameters, "@RawPayloadJson", delivery.RawPayloadJson, SqlDbType.NVarChar, size: -1);
+                    AddParameter(parameters, "@ChangeId", change.Id, SqlDbType.UniqueIdentifier);
+                    AddParameter(parameters, "@ChangeIdentifier", change.PaymentChangeId, SqlDbType.NVarChar, 100);
+                    AddParameter(parameters, "@EventType", change.EventType, SqlDbType.NVarChar, 50);
+                    AddParameter(parameters, "@IsApproved", change.IsApproved, SqlDbType.Bit);
+                    AddParameter(parameters, "@Rrn", change.Rrn, SqlDbType.NVarChar, 100);
+                    AddParameter(parameters, "@Amount", change.Amount, SqlDbType.Decimal, precision: 18, scale: 2);
+                    AddParameter(parameters, "@PaymentStatus", paymentStatus, SqlDbType.NVarChar, 50);
+                    AddParameter(parameters, "@CreatedBy", AuditActor.System, SqlDbType.NVarChar, 100);
                 },
                 cancellationToken);
         }

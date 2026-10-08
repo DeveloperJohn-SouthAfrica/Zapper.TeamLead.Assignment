@@ -1,7 +1,4 @@
-using System;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using AcmeIntegreatedAssessement.Application.Common.Interfaces;
 using AcmeIntegreatedAssessement.Domain.Entities;
 using Intent.RoslynWeaver.Attributes;
@@ -16,61 +13,51 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeApprovedNot
     public class ProcessAcmeApprovedNotificationCommandHandler : IRequestHandler<ProcessAcmeApprovedNotificationCommand>
     {
         private readonly IPaymentRepository _paymentRepository;
-        private readonly IPaymentChangeRepository _paymentChangeRepository;
-        private readonly INotificationDeliveryRepository _notificationRepository;
 
-        [IntentManaged(Mode.Merge)]
-        public ProcessAcmeApprovedNotificationCommandHandler(
-            IPaymentRepository paymentRepository,
-            IPaymentChangeRepository paymentChangeRepository,
-            INotificationDeliveryRepository notificationRepository)
+        public ProcessAcmeApprovedNotificationCommandHandler(IPaymentRepository paymentRepository)
         {
             _paymentRepository = paymentRepository;
-            _paymentChangeRepository = paymentChangeRepository;
-            _notificationRepository = notificationRepository;
         }
 
-        [IntentManaged(Mode.Fully, Body = Mode.Merge)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public async Task Handle(ProcessAcmeApprovedNotificationCommand request, CancellationToken cancellationToken)
         {
-            if (await _notificationRepository.ExistsAsync(request.AcmeNotificationTransactionUuid.ToString(), cancellationToken))
-            {
-                return;
-            }
-
             var payment = await _paymentRepository.GetByAppPaymentIdAsync(request.AppPaymentId, cancellationToken)
                 ?? throw new InvalidOperationException($"Payment '{request.AppPaymentId}' not found.");
+            var status = request.IsApproved ? "Success" : "Failure";
+            var eventType = request.IsApproved ? "Approved" : "Declined";
+            var occurredAt = request.OccurredAt.UtcDateTime;
+            var notificationId = request.AcmeNotificationTransactionUuid.ToString("D");
 
-            var delivery = new NotificationDelivery
-            {
-                Id = Guid.NewGuid(),
-                NotificationId = request.AcmeNotificationTransactionUuid.ToString(),
-                AppPaymentId = request.AppPaymentId,
-                PaymentId = payment.PaymentId,
-                PaymentsId = payment.Id,
-                NotificationType = request.EventType,
-                OccurredAt = request.OccurredAt.UtcDateTime,
-                IsApplied = true,
-                RawPayloadJson = JsonSerializer.Serialize(request.Body)
-            };
-            await _notificationRepository.AddAsync(delivery, cancellationToken);
-
-            var status = request.IsApproved ? "Approved" : "Declined";
-            await _paymentRepository.UpdateStatusAsync(request.AppPaymentId, status, cancellationToken);
-
-            var change = new PaymentChange
-            {
-                Id = Guid.NewGuid(),
-                PaymentChangeId = Guid.NewGuid().ToString(),
-                EventType = request.EventType,
-                IsApproved = request.IsApproved,
-                AcmeNotificationTransactionUuid = request.AcmeNotificationTransactionUuid.ToString(),
-                Rrn = request.Rrn,
-                Amount = request.Amount,
-                OccurredAt = request.OccurredAt.UtcDateTime,
-                PaymentId = payment.Id
-            };
-            await _paymentChangeRepository.AddAsync(change, cancellationToken);
+            await _paymentRepository.ApplyNotificationAsync(
+                new NotificationDelivery
+                {
+                    Id = Guid.NewGuid(),
+                    NotificationId = notificationId,
+                    AppPaymentId = request.AppPaymentId,
+                    PaymentId = payment.PaymentId,
+                    PaymentsId = payment.Id,
+                    NotificationType = request.EventType,
+                    OccurredAt = occurredAt,
+                    IsApplied = true,
+                    RawPayloadJson = string.IsNullOrEmpty(request.RawPayloadJson)
+                        ? JsonSerializer.Serialize(request.Body)
+                        : request.RawPayloadJson
+                },
+                new PaymentChange
+                {
+                    Id = Guid.NewGuid(),
+                    PaymentChangeId = Guid.NewGuid().ToString("D"),
+                    EventType = eventType,
+                    IsApproved = request.IsApproved,
+                    AcmeNotificationTransactionUuid = notificationId,
+                    Rrn = request.Rrn,
+                    Amount = request.Amount,
+                    OccurredAt = occurredAt,
+                    PaymentId = payment.Id
+                },
+                status,
+                cancellationToken);
         }
     }
 }

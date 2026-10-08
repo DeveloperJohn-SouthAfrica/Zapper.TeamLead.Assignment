@@ -1,8 +1,10 @@
 using AcmeIntegreatedAssessement.Domain.Entities;
 using AcmeIntegreatedAssessement.Domain.Repositories;
 using AcmeIntegreatedAssessement.Infrastructure.Persistence;
+using AcmeIntegreatedAssessement.Infrastructure.Data;
 using AutoMapper;
 using Intent.RoslynWeaver.Attributes;
+using Microsoft.Data.SqlClient;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.EntityFrameworkCore.Repositories.Repository", Version = "1.0")]
@@ -12,9 +14,30 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class SubMerchantRepository : RepositoryBase<SubMerchant, SubMerchant, ApplicationDbContext>, ISubMerchantRepository
     {
+        private readonly ISqlStoredProcedureInvoker _sqlInvoker;
 
-        public SubMerchantRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public SubMerchantRepository(ApplicationDbContext dbContext, IMapper mapper, ISqlStoredProcedureInvoker sqlInvoker) : base(dbContext, mapper)
         {
+            _sqlInvoker = sqlInvoker;
+        }
+
+        public async Task<SubMerchant?> GetByZapperMerchantIdAsync(string zapperMerchantId, CancellationToken cancellationToken = default)
+        {
+            return await _sqlInvoker.QuerySingleAsync(
+                "GetSubMerchantByZapperMerchantId",
+                reader => new SubMerchant
+                {
+                    Id = reader.GetGuid(reader.GetOrdinal("Id")),
+                    ZapperMerchantId = reader.GetString(reader.GetOrdinal("ZapperMerchantId")),
+                    SubMerchantAltId = reader.GetString(reader.GetOrdinal("ZapperMerchantId")),
+                    TradingName = reader.GetString(reader.GetOrdinal("TradingName")),
+                    City = reader.GetString(reader.GetOrdinal("City")),
+                    Region = reader.GetString(reader.GetOrdinal("Region")),
+                    Country = reader.GetString(reader.GetOrdinal("Country")),
+                    MerchantCategoryCode = reader.GetString(reader.GetOrdinal("MerchantCategoryCode"))
+                },
+                parameters => parameters.Add("@ZapperMerchantId", System.Data.SqlDbType.NVarChar, 100).Value = zapperMerchantId,
+                cancellationToken);
         }
 
         public async Task<TProjection?> FindByIdProjectToAsync<TProjection>(
