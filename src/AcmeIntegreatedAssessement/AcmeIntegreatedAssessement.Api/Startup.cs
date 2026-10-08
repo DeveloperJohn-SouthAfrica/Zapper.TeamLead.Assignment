@@ -61,7 +61,9 @@ namespace AcmeIntegreatedAssessement.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSerilogRequestLogging();
-            app.UseHttpsRedirection();
+            app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/api/payments/acme/notifications"),
+                branch => branch.UseHttpsRedirection());
 
             if (!env.IsDevelopment())
             {

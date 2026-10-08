@@ -2,10 +2,14 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using AcmeIntegreatedAssessement.Api.Services;
+using AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeApprovedNotification;
+using AcmeIntegreatedAssessement.Application.Common.Interfaces;
 using AcmeIntegreatedAssessement.Application.Contracts;
+using AcmeIntegreatedAssessement.Domain.Entities;
 using AcmeIntegreatedAssessement.Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Moq;
 using Xunit;
 
 namespace AcmeIntegreatedAssessement.Application.UnitTests;
@@ -83,6 +87,40 @@ public class AcmeContractTests
     }
 
     [Fact]
+    public async Task SubmitPaymentAsync_RetriesRateLimitedRequestsWithNewMessageIdsAndStableTransactionId()
+    {
+        var handler = new RateLimitThenSuccessHandler();
+        using var httpClient = new HttpClient(handler)
+        {
+            BaseAddress = new Uri("http://acme-test/")
+        };
+        var client = CreateAcmeClient(httpClient);
+
+        var result = await client.SubmitPaymentAsync(CreateSubmission());
+
+        Assert.Equal(TransactionId, result.TransactionId);
+        Assert.Equal(3, handler.MessageIds.Count);
+        Assert.Equal(3, handler.MessageIds.Distinct().Count());
+        Assert.All(handler.TransactionIds, transactionId => Assert.Equal(TransactionId, transactionId));
+    }
+
+    [Fact]
+    public async Task SubmitPaymentAsync_PropagatesGatewayStatusWhenErrorBodyIsNotJson()
+    {
+        using var httpClient = CreateClient(_ =>
+            new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)
+            {
+                Content = new StringContent("gateway unavailable")
+            });
+        var client = CreateAcmeClient(httpClient);
+
+        var exception = await Assert.ThrowsAsync<HttpRequestException>(() =>
+            client.SubmitPaymentAsync(CreateSubmission()));
+
+        Assert.Equal(HttpStatusCode.ServiceUnavailable, exception.StatusCode);
+    }
+
+    [Fact]
     public void CallbackAuthentication_ValidatesBasicAndRawBodyHmac()
     {
         const string username = "advice";
@@ -121,6 +159,81 @@ public class AcmeContractTests
         var conflicting = CreateRecord(Guid.NewGuid(), "REFERENCE0001");
         Assert.False(store.TryCreate(conflicting, out _, out var conflict));
         Assert.Equal(payment.TransactionId, conflict!.TransactionId);
+    }
+
+    [Fact]
+    public async Task ApprovedNotificationHandler_PreservesCompletedEftStatus()
+    {
+        var paymentRepository = new Mock<IPaymentRepository>();
+        var payment = new Payment
+        {
+            Id = Guid.NewGuid(),
+            PaymentId = TransactionId.ToString("D"),
+            AppPaymentId = "app-payment",
+            Amount = 1999,
+            Currency = "ZAR",
+            SubMerchantRrn = "REFERENCE0001",
+            Status = "Processing",
+            AcmeTransactionUuid = TransactionId.ToString("D")
+        };
+        paymentRepository.Setup(repository => repository.GetByAppPaymentIdAsync("app-payment", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(payment);
+        string? appliedStatus = null;
+        PaymentChange? appliedChange = null;
+        paymentRepository
+            .Setup(repository => repository.ApplyNotificationAsync(
+                It.IsAny<NotificationDelivery>(),
+                It.IsAny<PaymentChange>(),
+                It.IsAny<string?>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<NotificationDelivery, PaymentChange, string?, CancellationToken>((_, change, status, _) =>
+            {
+                appliedChange = change;
+                appliedStatus = status;
+            })
+            .Returns(Task.CompletedTask);
+
+        var body = new AcmeApprovedNotificationDto
+        {
+            EventType = "Approved",
+            IsApproved = true,
+            AcmeNotificationTransactionUuid = Guid.NewGuid(),
+            Rrn = payment.SubMerchantRrn,
+            Amount = payment.Amount,
+            OccurredAt = DateTimeOffset.UtcNow,
+            AppPaymentId = payment.AppPaymentId,
+            RequestType = "Payment",
+            MerchantID = MerchantId.ToString("D"),
+            TransactionID = TransactionId.ToString("D"),
+            TransactionDateTime = DateTime.UtcNow,
+            OrderNumber = "REFERENCE0001",
+            ReconID = "recon-id",
+            RetrievalReferenceNumber = payment.SubMerchantRrn,
+            SystemsTraceAuditNumber = "123456",
+            CurrencyCode = "ZAR",
+            PaymentService = "CardNotPresent",
+            TransactionStatus = "Complete",
+            ResponseCode = "COMPL",
+            ResponseDescription = "Complete",
+            AuthCode = "ABC123",
+            MaskedCardNumber = "541333******1429",
+            CommProtocol = "REST"
+        };
+        var handler = new ProcessAcmeApprovedNotificationCommandHandler(paymentRepository.Object);
+        var command = new ProcessAcmeApprovedNotificationCommand(
+            "Payment",
+            true,
+            Guid.NewGuid(),
+            payment.SubMerchantRrn,
+            payment.Amount,
+            DateTimeOffset.UtcNow,
+            payment.AppPaymentId,
+            body);
+
+        await handler.Handle(command, CancellationToken.None);
+
+        Assert.Equal("Complete", appliedStatus);
+        Assert.Equal("Approved", appliedChange!.EventType);
     }
 
     private static HttpClient CreateClient(Func<HttpRequestMessage, HttpResponseMessage> responseFactory) =>
@@ -172,5 +285,36 @@ public class AcmeContractTests
             HttpRequestMessage request,
             CancellationToken cancellationToken) =>
             Task.FromResult(responseFactory(request));
+    }
+
+    private sealed class RateLimitThenSuccessHandler : HttpMessageHandler
+    {
+        public List<Guid> MessageIds { get; } = [];
+        public List<Guid> TransactionIds { get; } = [];
+
+        protected override async Task<HttpResponseMessage> SendAsync(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken)
+        {
+            using var body = JsonDocument.Parse(await request.Content!.ReadAsStringAsync(cancellationToken));
+            MessageIds.Add(body.RootElement.GetProperty("MessageHeader").GetProperty("MessageID").GetGuid());
+            TransactionIds.Add(body.RootElement.GetProperty("PaymentRequest").GetProperty("TransactionID").GetGuid());
+            if (MessageIds.Count <= 2)
+            {
+                var limited = new HttpResponseMessage(HttpStatusCode.TooManyRequests);
+                limited.Headers.RetryAfter = new System.Net.Http.Headers.RetryConditionHeaderValue(TimeSpan.FromMilliseconds(5));
+                return limited;
+            }
+
+            return JsonResponse($$"""
+                {
+                  "PaymentResponse": {
+                    "TransactionID": "{{TransactionId}}",
+                    "TransactionStatus": "Success",
+                    "ResponseDetail": { "Code": "00" }
+                  }
+                }
+                """);
+        }
     }
 }

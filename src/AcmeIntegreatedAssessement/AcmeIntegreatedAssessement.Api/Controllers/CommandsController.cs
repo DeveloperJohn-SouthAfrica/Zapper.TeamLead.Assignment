@@ -108,8 +108,11 @@ namespace AcmeIntegreatedAssessement.Api.Controllers
                 payload.ResponseCode);
             var eventId = new Guid(SHA256.HashData(Encoding.UTF8.GetBytes(eventIdSource)).AsSpan(0, 16));
             var occurredAt = ToSast(payload.TransactionDateTime);
-            var isApproved = string.Equals(payload.TransactionStatus, "Success", StringComparison.Ordinal) &&
-                             string.Equals(payload.ResponseCode, "00", StringComparison.Ordinal);
+            var isApproved =
+                (string.Equals(payload.TransactionStatus, "Success", StringComparison.Ordinal) &&
+                 string.Equals(payload.ResponseCode, "00", StringComparison.Ordinal)) ||
+                (string.Equals(payload.TransactionStatus, "Complete", StringComparison.Ordinal) &&
+                 string.Equals(payload.ResponseCode, "COMPL", StringComparison.Ordinal));
             var body = new AcmeApprovedNotificationDto
             {
                 EventType = payload.RequestType,

@@ -407,14 +407,22 @@ static async Task SendWithRetriesAsync(HttpClient client, Func<HttpRequestMessag
 {
     for (var attempt = 1; attempt <= 4; attempt++)
     {
-        using var message = createMessage();
-        using var response = await client.SendAsync(message, CancellationToken.None);
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        try
         {
-            return;
+            using var message = createMessage();
+            using var response = await client.SendAsync(message, CancellationToken.None);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return;
+            }
+
+            logger.LogWarning("Callback delivery attempt {Attempt} received HTTP {StatusCode}.", attempt, (int)response.StatusCode);
+        }
+        catch (HttpRequestException exception)
+        {
+            logger.LogWarning(exception, "Callback delivery attempt {Attempt} failed to reach its receiver.", attempt);
         }
 
-        logger.LogWarning("Callback delivery attempt {Attempt} received HTTP {StatusCode}.", attempt, (int)response.StatusCode);
         if (attempt < 4)
         {
             await Task.Delay(TimeSpan.FromSeconds(attempt));

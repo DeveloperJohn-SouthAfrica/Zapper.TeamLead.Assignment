@@ -30,28 +30,29 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Services
             AcmePaymentSubmission payment,
             CancellationToken cancellationToken = default)
         {
-            var request = new
+            var paymentRequest = new
             {
-                MessageHeader = CreateHeader(),
-                PaymentRequest = new
-                {
-                    MerchantID = _merchantId,
-                    TransactionID = payment.TransactionId,
-                    payment.OrderNumber,
-                    payment.Amount,
-                    payment.CurrencyCode,
-                    payment.PaymentService,
-                    Card = new { Token = payment.CardToken },
-                    payment.CardOnFileScenario,
-                    SubMerchantID = payment.SubMerchantId,
-                    payment.MerchantCategoryCode,
-                    payment.CardAcceptorName,
-                    payment.Email
-                }
+                MerchantID = _merchantId,
+                TransactionID = payment.TransactionId,
+                payment.OrderNumber,
+                payment.Amount,
+                payment.CurrencyCode,
+                payment.PaymentService,
+                Card = new { Token = payment.CardToken },
+                payment.CardOnFileScenario,
+                SubMerchantID = payment.SubMerchantId,
+                payment.MerchantCategoryCode,
+                payment.CardAcceptorName,
+                payment.Email
             };
 
             for (var attempt = 0; ; attempt++)
             {
+                var request = new
+                {
+                    MessageHeader = CreateHeader(),
+                    PaymentRequest = paymentRequest
+                };
                 using var response = await _httpClient.PostAsJsonAsync("/api/payment", request, JsonOptions, cancellationToken);
                 if (response.StatusCode == HttpStatusCode.TooManyRequests && attempt < 2)
                 {
@@ -106,17 +107,26 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Services
             HttpResponseMessage response,
             CancellationToken cancellationToken)
         {
-            var envelope = await response.Content.ReadFromJsonAsync<PaymentEnvelope>(JsonOptions, cancellationToken)
-                ?? throw new InvalidOperationException("Acme Pay returned an empty response.");
             if (!response.IsSuccessStatusCode)
             {
-                var error = envelope.PaymentResponse?.ResponseDetail;
+                PaymentEnvelope? errorEnvelope = null;
+                try
+                {
+                    errorEnvelope = await response.Content.ReadFromJsonAsync<PaymentEnvelope>(JsonOptions, cancellationToken);
+                }
+                catch (JsonException)
+                {
+                }
+
+                var error = errorEnvelope?.PaymentResponse?.ResponseDetail;
                 throw new HttpRequestException(
                     $"Acme Pay returned HTTP {(int)response.StatusCode} ({error?.Code ?? "unknown"}): {error?.Description ?? response.ReasonPhrase}",
                     null,
                     response.StatusCode);
             }
 
+            var envelope = await response.Content.ReadFromJsonAsync<PaymentEnvelope>(JsonOptions, cancellationToken)
+                ?? throw new InvalidOperationException("Acme Pay returned an empty response.");
             var payment = envelope.PaymentResponse
                 ?? throw new InvalidOperationException("Acme Pay response did not contain PaymentResponse.");
             if (!Guid.TryParse(payment.TransactionID, out var transactionId))

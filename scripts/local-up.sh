@@ -104,4 +104,8 @@ exec dotnet run \
     -- \
     --ConnectionStrings:PaymentDatabase="Server=localhost,$SQL_PORT;Database=$TARGET_DATABASE;User Id=sa;Password=$SA_PASSWORD;Encrypt=True;TrustServerCertificate=True" \
     --ConnectionStrings:RedisOmConnectionString="localhost:$REDIS_PORT,abortConnect=false" \
-    --AcmePay:BaseUrl="$ACME_PAY_BASE_URL"
+    --AcmePay:BaseUrl="$ACME_PAY_BASE_URL" \
+    --ACME_PAY_MERCHANT_ID="$ACME_PAY_MERCHANT_ID" \
+    --ACME_ADVICE_USERNAME="$ACME_ADVICE_USERNAME" \
+    --ACME_ADVICE_PASSWORD="$ACME_ADVICE_PASSWORD" \
+    --ACME_WEBHOOK_SECRET="$ACME_WEBHOOK_SECRET"

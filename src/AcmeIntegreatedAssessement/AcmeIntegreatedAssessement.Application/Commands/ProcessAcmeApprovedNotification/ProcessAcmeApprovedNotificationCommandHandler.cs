@@ -24,7 +24,10 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeApprovedNot
         {
             var payment = await _paymentRepository.GetByAppPaymentIdAsync(request.AppPaymentId, cancellationToken)
                 ?? throw new InvalidOperationException($"Payment '{request.AppPaymentId}' not found.");
-            var status = request.IsApproved ? "Success" : "Failure";
+            var isComplete = request.IsApproved &&
+                             string.Equals(request.Body.TransactionStatus, "Complete", StringComparison.Ordinal) &&
+                             string.Equals(request.Body.ResponseCode, "COMPL", StringComparison.Ordinal);
+            var status = isComplete ? "Complete" : request.IsApproved ? "Success" : "Failure";
             var eventType = request.IsApproved ? "Approved" : "Declined";
             var occurredAt = request.OccurredAt.UtcDateTime;
             var notificationId = request.AcmeNotificationTransactionUuid.ToString("D");

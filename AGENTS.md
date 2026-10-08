@@ -7,4 +7,4 @@ To ensure a collective deterministic approach to the solution today and foreverm
 
 **When all else fails look to your soul file [soul.md](docs/soul.md)**
 
-For business context and analysis use [Solution.md](Solution.md) as your starting navigation point
+For business context and analysis use [SOLUTION.md](SOLUTION.md) as your starting navigation point.
