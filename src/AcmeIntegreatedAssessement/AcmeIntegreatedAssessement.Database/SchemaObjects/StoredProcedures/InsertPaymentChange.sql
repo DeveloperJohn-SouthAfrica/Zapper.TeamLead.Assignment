@@ -6,7 +6,7 @@ CREATE PROCEDURE [dbo].[InsertPaymentChange]
     @IsApproved BIT,
     @AcmeNotificationTransactionUuid UNIQUEIDENTIFIER,
     @Rrn NVARCHAR(100),
-    @Amount DECIMAL(18,2),
+    @Amount BIGINT,
     @OccurredAt DATETIME2,
     @CreatedBy NVARCHAR(100)
 AS

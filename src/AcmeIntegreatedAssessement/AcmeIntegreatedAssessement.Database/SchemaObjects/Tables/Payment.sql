@@ -3,7 +3,7 @@ CREATE TABLE [dbo].[Payment]
     [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
     [PaymentId] NVARCHAR(100) NOT NULL,
     [AppPaymentId] NVARCHAR(100) NOT NULL,
-    [Amount] DECIMAL(18,2) NOT NULL,
+    [Amount] BIGINT NOT NULL,
     [Currency] NVARCHAR(3) NOT NULL,
     [SubMerchantRrn] NVARCHAR(100) NOT NULL,
     [Status] NVARCHAR(50) NOT NULL,

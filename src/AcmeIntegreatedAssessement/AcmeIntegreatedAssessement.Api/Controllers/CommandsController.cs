@@ -81,6 +81,7 @@ namespace AcmeIntegreatedAssessement.Api.Controllers
                 string.IsNullOrWhiteSpace(payload.RequestType) ||
                 string.IsNullOrWhiteSpace(payload.RetrievalReferenceNumber) ||
                 string.IsNullOrWhiteSpace(payload.ResponseCode) ||
+                payload.Amount <= 0 ||
                 payload.TransactionDateTime == default)
             {
                 return BadRequest();
@@ -92,9 +93,23 @@ namespace AcmeIntegreatedAssessement.Api.Controllers
                 return NotFound();
             }
 
-            var eventId = new Guid(SHA256.HashData(rawBody).AsSpan(0, 16));
+            if (payment.SubMerchantRrn != payload.RetrievalReferenceNumber)
+            {
+                return BadRequest();
+            }
+
+            var eventIdSource = string.Join(
+                "|",
+                transactionId.ToString("D"),
+                payload.RequestType,
+                payload.TransactionDateTime.ToString("O", CultureInfo.InvariantCulture),
+                payload.RetrievalReferenceNumber,
+                payload.Amount.ToString(CultureInfo.InvariantCulture),
+                payload.ResponseCode);
+            var eventId = new Guid(SHA256.HashData(Encoding.UTF8.GetBytes(eventIdSource)).AsSpan(0, 16));
             var occurredAt = ToSast(payload.TransactionDateTime);
-            var isApproved = string.Equals(payload.ResponseCode, "00", StringComparison.Ordinal);
+            var isApproved = string.Equals(payload.TransactionStatus, "Success", StringComparison.Ordinal) &&
+                             string.Equals(payload.ResponseCode, "00", StringComparison.Ordinal);
             var body = new AcmeApprovedNotificationDto
             {
                 EventType = payload.RequestType,
@@ -135,7 +150,7 @@ namespace AcmeIntegreatedAssessement.Api.Controllers
                     body,
                     Encoding.UTF8.GetString(rawBody)),
                 cancellationToken);
-            return Ok();
+            return Ok(ApiMessageEnvelope.Create(new MessageAcknowledgement(true), "Web"));
         }
 
         [HttpPost("api/payments/acme/notifications/reversal")]
@@ -173,6 +188,8 @@ namespace AcmeIntegreatedAssessement.Api.Controllers
                 string.IsNullOrWhiteSpace(payload.Rrn) ||
                 payload.TransactionType is not ("Reversal" or "Refund") ||
                 string.IsNullOrWhiteSpace(payload.TransactionDateTime) ||
+                payload.TransactionAmount <= 0 ||
+                string.IsNullOrWhiteSpace(payload.TxResultCode) ||
                 !DateTime.TryParse(payload.TransactionDateTime, CultureInfo.InvariantCulture, DateTimeStyles.None, out var transactionDateTime))
             {
                 return BadRequest();
@@ -182,6 +199,10 @@ namespace AcmeIntegreatedAssessement.Api.Controllers
             if (payment is null)
             {
                 return NotFound();
+            }
+            if (!string.Equals(payment.Currency, payload.CurrencyCode ?? "ZAR", StringComparison.OrdinalIgnoreCase))
+            {
+                return BadRequest();
             }
 
             var occurredAt = ToSast(DateTime.SpecifyKind(transactionDateTime, DateTimeKind.Unspecified));
@@ -215,19 +236,46 @@ namespace AcmeIntegreatedAssessement.Api.Controllers
                     body,
                     Encoding.UTF8.GetString(rawBody)),
                 cancellationToken);
-            return Ok();
+            return Ok(ApiMessageEnvelope.Create(new MessageAcknowledgement(true), "Web"));
         }
 
         [HttpPost("api/payments")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(MessageEnvelope<PaymentStateResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> SubmitPayment(
-            [FromBody] SubmitPaymentCommand command,
+        public async Task<ActionResult<MessageEnvelope<PaymentStateResponseDto>>> SubmitPayment(
+            [FromBody] MessageEnvelope<SubmitPaymentRequestDto> envelope,
             CancellationToken cancellationToken = default)
         {
+            if (!ApiMessageEnvelope.IsValidHeader(envelope.MessageHeader) ||
+                envelope.Payload is not { } payload ||
+                string.IsNullOrWhiteSpace(payload.AppPaymentId) ||
+                string.IsNullOrWhiteSpace(payload.ZapperMerchantId) ||
+                string.IsNullOrWhiteSpace(payload.CustomerId) ||
+                payload.Amount <= 0)
+            {
+                return BadRequest();
+            }
+
+            var command = new SubmitPaymentCommand(
+                payload.AppPaymentId,
+                payload.Amount,
+                string.IsNullOrWhiteSpace(payload.CurrencyCode) ? "ZAR" : payload.CurrencyCode,
+                payload.ZapperMerchantId,
+                payload.CustomerId,
+                string.Empty,
+                payload);
             await _mediator.Send(command, cancellationToken);
-            return Created(string.Empty, null);
+            var payment = await _paymentRepository.GetByAppPaymentIdAsync(payload.AppPaymentId, cancellationToken)
+                ?? throw new InvalidOperationException($"Payment '{payload.AppPaymentId}' could not be read after submission.");
+            var response = new PaymentStateResponseDto
+            {
+                AppPaymentId = payment.AppPaymentId,
+                Status = payment.Status,
+                Amount = payment.Amount,
+                Currency = payment.Currency
+            };
+            return Ok(ApiMessageEnvelope.Create(response, envelope.MessageHeader!.Channel!));
         }
 
         private string? GetConfiguration(string environmentVariable, string configurationKey) =>

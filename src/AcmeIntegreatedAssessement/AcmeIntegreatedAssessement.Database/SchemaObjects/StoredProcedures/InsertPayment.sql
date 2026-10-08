@@ -2,7 +2,7 @@ CREATE PROCEDURE [dbo].[InsertPayment]
     @PaymentId UNIQUEIDENTIFIER,
     @PaymentIdentifier NVARCHAR(100),
     @AppPaymentId NVARCHAR(100),
-    @Amount DECIMAL(18,2),
+    @Amount BIGINT,
     @Currency NVARCHAR(3),
     @SubMerchantRrn NVARCHAR(100),
     @Status NVARCHAR(50),

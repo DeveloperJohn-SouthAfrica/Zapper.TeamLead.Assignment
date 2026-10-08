@@ -25,9 +25,12 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeReversalNot
             var payment = await _paymentRepository.GetByAppPaymentIdAsync(request.AppPaymentId, cancellationToken)
                 ?? throw new InvalidOperationException($"Payment '{request.AppPaymentId}' not found.");
             var isApplied = request.IsApproved && string.Equals(request.Body.TxResultCode, "00", StringComparison.Ordinal);
-            var eventType = isApplied
-                ? request.EventType.Equals("Refund", StringComparison.OrdinalIgnoreCase) ? "Refunded" : "Reversed"
-                : $"{request.EventType}Failed";
+            var isRefund = request.EventType.Equals("Refund", StringComparison.OrdinalIgnoreCase);
+            var eventType = isRefund ? "RefundFailed" : "ReversalFailed";
+            if (isApplied)
+            {
+                eventType = isRefund ? "Refunded" : "Reversed";
+            }
             var status = isApplied ? eventType : null;
             var occurredAt = request.OccurredAt.UtcDateTime;
             var notificationId = request.AcmeNotificationTransactionUuid.ToString("D");

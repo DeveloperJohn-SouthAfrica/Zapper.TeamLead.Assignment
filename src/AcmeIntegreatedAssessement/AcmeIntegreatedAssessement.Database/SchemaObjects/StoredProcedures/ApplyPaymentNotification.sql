@@ -10,7 +10,7 @@ CREATE PROCEDURE [dbo].[ApplyPaymentNotification]
     @EventType NVARCHAR(50),
     @IsApproved BIT,
     @Rrn NVARCHAR(100),
-    @Amount DECIMAL(18,2),
+    @Amount BIGINT,
     @PaymentStatus NVARCHAR(50) = NULL,
     @CreatedBy NVARCHAR(100)
 AS

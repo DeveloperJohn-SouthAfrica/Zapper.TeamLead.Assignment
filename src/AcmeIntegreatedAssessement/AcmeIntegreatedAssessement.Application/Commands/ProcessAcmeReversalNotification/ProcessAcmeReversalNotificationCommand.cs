@@ -14,7 +14,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeReversalNot
             bool isApproved,
             Guid acmeNotificationTransactionUuid,
             string rrn,
-            decimal amount,
+            long amount,
             DateTimeOffset occurredAt,
             string appPaymentId, AcmeReversalNotificationDto body, string rawPayloadJson = "")
         {
@@ -33,7 +33,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.ProcessAcmeReversalNot
         public bool IsApproved { get; set; }
         public Guid AcmeNotificationTransactionUuid { get; set; }
         public string Rrn { get; set; }
-        public decimal Amount { get; set; }
+        public long Amount { get; set; }
         public DateTimeOffset OccurredAt { get; set; }
         public string AppPaymentId { get; set; }
         public AcmeReversalNotificationDto Body { get; set; }

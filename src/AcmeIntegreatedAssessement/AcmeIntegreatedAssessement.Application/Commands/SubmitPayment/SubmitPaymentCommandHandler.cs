@@ -47,6 +47,10 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
             var subMerchantId = request.Request.ZapperMerchantId;
             var subMerchant = await _subMerchantRepository.GetByZapperMerchantIdAsync(subMerchantId, cancellationToken)
                 ?? throw new InvalidOperationException($"Sub-merchant '{subMerchantId}' not found.");
+            if (subMerchant.ZapperMerchantId.Length > 15 || subMerchant.MerchantCategoryCode.Length > 4)
+            {
+                throw new InvalidOperationException($"Sub-merchant '{subMerchantId}' has facilitator fields outside Acme Pay limits.");
+            }
             var customerId = request.Request.CustomerId;
             var card = await _tokenRepository.GetByCustomerIdAsync(customerId, cancellationToken)
                 ?? throw new InvalidOperationException($"Stored card for customer '{customerId}' not found.");
@@ -76,7 +80,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
             var submission = new AcmePaymentSubmission(
                 transactionId,
                 payment.SubMerchantRrn,
-                checked((long)payment.Amount),
+                payment.Amount,
                 payment.Currency,
                 "CardNotPresent",
                 card.AcmeToken,
@@ -101,6 +105,11 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
             {
                 _logger.LogWarning(exception, "Acme payment submission is ambiguous for app payment {AppPaymentId}; reconciling by transaction ID.", payment.AppPaymentId);
                 await ReconcileAmbiguousSubmissionAsync(payment.AppPaymentId, transactionId, cancellationToken);
+            }
+            catch (HttpRequestException)
+            {
+                await _paymentRepository.UpdateStatusAsync(payment.AppPaymentId, "Failure", cancellationToken);
+                throw;
             }
         }
 
@@ -140,18 +149,35 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
                 return;
             }
 
-            var status = string.Equals(result.ResponseCode, "00", StringComparison.OrdinalIgnoreCase)
-                ? "Success"
-                : string.Equals(result.ResponseCode, "COMPL", StringComparison.OrdinalIgnoreCase)
-                    ? "Complete"
-                    : "Failure";
+            var status = "Failure";
+            if (string.Equals(result.ResponseCode, "COMPL", StringComparison.OrdinalIgnoreCase))
+            {
+                status = "Complete";
+            }
+            else if (string.Equals(result.TransactionStatus, "Failure", StringComparison.OrdinalIgnoreCase))
+            {
+                status = "Failure";
+            }
+            else if (string.Equals(result.ResponseCode, "00", StringComparison.OrdinalIgnoreCase))
+            {
+                status = "Success";
+            }
             await _paymentRepository.UpdateStatusAsync(appPaymentId, status, cancellationToken);
         }
 
-        private static string GetCurrencyCode(string? requestCurrencyCode, string commandCurrency) =>
-            string.IsNullOrWhiteSpace(requestCurrencyCode)
-                ? string.IsNullOrWhiteSpace(commandCurrency) ? "ZAR" : commandCurrency
-                : requestCurrencyCode;
+        private static string GetCurrencyCode(string? requestCurrencyCode, string commandCurrency)
+        {
+            var currencyCode = requestCurrencyCode;
+            if (string.IsNullOrWhiteSpace(currencyCode))
+            {
+                currencyCode = commandCurrency;
+            }
+            if (string.IsNullOrWhiteSpace(currencyCode))
+            {
+                currencyCode = "ZAR";
+            }
+            return currencyCode.ToUpperInvariant();
+        }
 
         private static string BuildCardAcceptorName(SubMerchant subMerchant)
         {

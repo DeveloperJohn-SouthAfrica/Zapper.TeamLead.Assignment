@@ -58,7 +58,7 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
                     AddParameter(parameters, "@PaymentId", payment.Id, SqlDbType.UniqueIdentifier);
                     AddParameter(parameters, "@PaymentIdentifier", payment.PaymentId, SqlDbType.NVarChar, 100);
                     AddParameter(parameters, "@AppPaymentId", payment.AppPaymentId, SqlDbType.NVarChar, 100);
-                    AddParameter(parameters, "@Amount", payment.Amount, SqlDbType.Decimal, precision: 18, scale: 2);
+                    AddParameter(parameters, "@Amount", payment.Amount, SqlDbType.BigInt);
                     AddParameter(parameters, "@Currency", payment.Currency, SqlDbType.NVarChar, 3);
                     AddParameter(parameters, "@SubMerchantRrn", payment.SubMerchantRrn, SqlDbType.NVarChar, 100);
                     AddParameter(parameters, "@Status", payment.Status, SqlDbType.NVarChar, 50);
@@ -91,7 +91,7 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
                     AddParameter(parameters, "@EventType", change.EventType, SqlDbType.NVarChar, 50);
                     AddParameter(parameters, "@IsApproved", change.IsApproved, SqlDbType.Bit);
                     AddParameter(parameters, "@Rrn", change.Rrn, SqlDbType.NVarChar, 100);
-                    AddParameter(parameters, "@Amount", change.Amount, SqlDbType.Decimal, precision: 18, scale: 2);
+                    AddParameter(parameters, "@Amount", change.Amount, SqlDbType.BigInt);
                     AddParameter(parameters, "@PaymentStatus", paymentStatus, SqlDbType.NVarChar, 50);
                     AddParameter(parameters, "@CreatedBy", AuditActor.System, SqlDbType.NVarChar, 100);
                 },
@@ -119,7 +119,7 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
                 Id = reader.GetGuid(reader.GetOrdinal("Id")),
                 PaymentId = reader.GetString(reader.GetOrdinal("PaymentId")),
                 AppPaymentId = reader.GetString(reader.GetOrdinal("AppPaymentId")),
-                Amount = reader.GetDecimal(reader.GetOrdinal("Amount")),
+                Amount = reader.GetInt64(reader.GetOrdinal("Amount")),
                 Currency = reader.GetString(reader.GetOrdinal("Currency")),
                 SubMerchantRrn = reader.GetString(reader.GetOrdinal("SubMerchantRrn")),
                 Status = reader.GetString(reader.GetOrdinal("Status")),

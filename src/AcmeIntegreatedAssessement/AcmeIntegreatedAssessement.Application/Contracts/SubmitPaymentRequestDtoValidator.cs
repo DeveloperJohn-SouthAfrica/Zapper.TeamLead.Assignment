@@ -35,6 +35,9 @@ namespace AcmeIntegreatedAssessement.Application.Contracts
 
             RuleFor(v => v.CardOnFileScenario)
                 .Must(value => value is "CIT" or "MIT");
+
+            RuleFor(v => v.CurrencyCode)
+                .Must(value => string.IsNullOrWhiteSpace(value) || value.Length == 3 && value.All(char.IsLetter));
         }
     }
 }

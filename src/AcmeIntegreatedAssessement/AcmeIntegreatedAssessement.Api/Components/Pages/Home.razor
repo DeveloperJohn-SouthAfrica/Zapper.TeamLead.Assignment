@@ -13,7 +13,7 @@
                     Acme payments reliability command center
                 </h1>
                 <p class="hero-subtitle">
-                    Tokenized payments, audit trails, and redis-backed feature flags served from a stateless .NET layer while SQL stored procedures own every change.
+                    Tokenized payments, SQL-backed audit trails, and authenticated Acme notifications in a containerized .NET service.
                 </p>
 
                 <div class="hero-band">
@@ -23,11 +23,11 @@
                     </div>
                     <div class="hero-band-block">
                         <span class="hero-band-label">Infrastructure</span>
-                        <strong class="hero-band-value">SQL DACPAC · Redis straight-through</strong>
+                        <strong class="hero-band-value">SQL Server · DACPAC</strong>
                     </div>
                     <div class="hero-band-block">
                         <span class="hero-band-label">Audit & logging</span>
-                        <strong class="hero-band-value">Stored procedures + elastic logs</strong>
+                        <strong class="hero-band-value">Structured application logs</strong>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="hero-spotlight-card" data-testid="hero-status">
                     <p class="hero-spotlight-label">Telemetry</p>
                     <h2>@TotalsDisplay</h2>
-                    <p class="hero-spotlight-subtitle">SQL stats and cache hit ratios stored in telemetry tables to keep query plans lean.</p>
+                    <p class="hero-spotlight-subtitle">Daily totals are shown per currency in the settlement breakdown below.</p>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                 <h2 class="section-title">Daily payment metrics</h2>
             </div>
             <p class="section-note">
-                Every query path lands in a stored procedure, parameter sniffing is stabilized, and audit columns ensure every command and notification lands in SQL.
+                Payment outcomes, adjustments, and callback deliveries are recorded for settlement and troubleshooting.
             </p>
         </header>
 
@@ -109,7 +109,7 @@
                 <h2 class="section-title">Summary by merchant & currency</h2>
             </div>
             <p class="section-note">
-                Each row mirrors the stored procedure output so every merchant, introduction, and currency pair has its own model and index-friendly plan.
+                Totals are grouped by sub-merchant and currency, with payment outcomes shown separately.
             </p>
         </header>
 
@@ -149,8 +149,7 @@
                 <RowTemplate>
                     <MudTd>
                         <div class="merchant-cell">
-                            <strong>@context.SubMerchantRrn</strong>
-                            <span class="merchant-id">(@context.SubMerchantId.ToString())</span>
+                            <strong>@context.SubMerchantId</strong>
                         </div>
                     </MudTd>
                     <MudTd>@context.Currency</MudTd>
@@ -169,7 +168,7 @@
         <MudPaper Elevation="3" Class="panel" data-testid="infrastructure-panel">
             <div class="panel-heading">
                 <p class="section-eyebrow">Infrastructure signals</p>
-                <h3 class="section-title">SQL, cache, and stateful controls</h3>
+                <h3 class="section-title">SQL, cache, and integration health</h3>
             </div>
             <div class="panel-grid">
                 @foreach (var item in InfrastructureItems)
@@ -189,14 +188,14 @@
         <MudPaper Elevation="3" Class="panel" data-testid="cache-panel">
             <div class="panel-heading">
                 <p class="section-eyebrow">Observability + cache safety</p>
-                <h3 class="section-title">Audit logs & Redis orchestration</h3>
+                <h3 class="section-title">Persistence and configuration</h3>
             </div>
             <ul class="audit-list">
-                <li>Every transactional query fires a stored procedure model, populating `CreatedAt/UpdatedAt` and `ChangedBy` columns for full auditability.</li>
-                <li>Audit records stream into SQL tables that the UI, Playwright suite, and logs query via dedicated indexes so plans stay stable when scales grow.</li>
-                <li>Redis acts as the only stateful tier, caching each card/token individually and flushing on every write to keep the .NET layer stateless.</li>
-                <li>AWS AppConfig-backed feature flag module (with environment override) decides telemetry sampling and keeps our running dashboards in sync.</li>
-                <li>Stored procedures map their parameters to declared variables to guard against parameter sniffing, and each procedure has its own model to avoid cross-sproc coupling.</li>
+                <li>Payment state, lifecycle changes, and webhook deliveries are written to SQL Server.</li>
+                <li>Callback audit records retain the exact payload text used for verification and processing.</li>
+                <li>Redis and MassTransit are optional integrations; SQL remains the payment system-of-record.</li>
+                <li>Environment variables configure local runs, and AWS Secrets Manager can supply production secrets.</li>
+                <li>Acme requests use bearer authentication; advice and adjustment callbacks use Basic authentication and HMAC-SHA256 respectively.</li>
             </ul>
         </MudPaper>
     </section>

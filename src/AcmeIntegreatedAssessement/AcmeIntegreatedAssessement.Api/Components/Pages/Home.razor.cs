@@ -19,8 +19,8 @@ public partial class Home
     {
         try
         {
-            var dto = await Http.GetFromJsonAsync<DailySummaryDto>("api/reports/daily-summary");
-            if (dto is not null)
+            var envelope = await Http.GetFromJsonAsync<MessageEnvelopeDto<DailySummaryDto>>("api/reports/daily-summary");
+            if (envelope?.Payload is { } dto)
             {
                 _summary = DailySummaryModel.FromDto(dto);
             }
@@ -37,25 +37,39 @@ public partial class Home
 
     private string ReportDateDisplay =>
         _summary?.ReportDate?.ToString("dddd, dd MMM yyyy") ??
-        DateOnly.FromDateTime(DateTime.UtcNow).ToString("dddd, dd MMM yyyy");
+        DateOnly.FromDateTime(DateTime.UtcNow.AddHours(2)).ToString("dddd, dd MMM yyyy");
 
     private SummaryTotals Totals => _summary?.SummaryTotals ?? SummaryTotals.Empty;
 
-    private string TotalsDisplay => FormatCurrency(Totals.TotalAmount);
+    private string TotalsDisplay =>
+        _summary?.SubMerchantSummaries.Select(row => row.Currency).Distinct(StringComparer.OrdinalIgnoreCase).ToArray() is { Length: 1 } currencies
+            ? FormatCurrency(Totals.TotalAmount, currencies[0])
+            : "Multiple currencies";
 
-    private IReadOnlyList<HeroMetric> HeroMetrics => HeroMetric.Build(Totals);
+    private IReadOnlyList<HeroMetric> HeroMetrics =>
+    [
+        new("Approved events", Totals.ApprovedCount.ToString("N0"), FormatAmount(Totals.ApprovedAmount), "Acme response", "stat-approved", Color.Success),
+        new("Declined events", Totals.DeclinedCount.ToString("N0"), FormatAmount(Totals.DeclinedAmount), "Acme response", "stat-declined", Color.Error),
+        new("Reversals", Totals.ReversedCount.ToString("N0"), FormatAmount(Totals.ReversedAmount), "Switch outcome", "stat-reversed", Color.Warning),
+        new("Refunds", Totals.RefundedCount.ToString("N0"), FormatAmount(Totals.RefundedAmount), "Switch outcome", "stat-refunded", Color.Info)
+    ];
 
     private IReadOnlyList<SubMerchantRow> MerchantRows => _summary?.SubMerchantSummaries ?? Array.Empty<SubMerchantRow>();
 
     private static readonly InfrastructureItem[] InfrastructureItems =
     {
-        new("SQL Server (DACPAC)", "Schema deployed via SQLPackage, every stored procedure owning its own model so changes are isolated and parameter sniffing is stabilized.", "Live", "DACPAC + stored-procedure parameter guards", Color.Primary, "infra-sql"),
-        new("Redis cache", "Free-tier Redis stays stateful, caching each token/card individually and flushing per write so the stateless .NET layer scales on demand.", "Healthy", "Straight-through flush on writes", Color.Success, "infra-redis"),
-        new("AWS AppConfig + Feature Flags", "AppConfig drives feature toggles (env var overrides take precedence) so the UI and tests read the same config fingerprint.", "Synced", "Feature flags backed by AppConfig & env vars", Color.Tertiary, "infra-appconfig")
+        new("SQL Server", "Payments, lifecycle changes, callback deliveries, and settlement summaries are persisted in SQL Server.", "Configured", "Schema packaged as a DACPAC", Color.Primary, "infra-sql"),
+        new("Redis", "Redis is available in the local compose stack for the existing cache and messaging integrations.", "Configured", "Not used as payment system-of-record", Color.Success, "infra-redis"),
+        new("AWS Secrets Manager", "The API can load secrets from AWS Secrets Manager when enabled; local development uses environment configuration.", "Optional", "No AWS AppConfig integration", Color.Tertiary, "infra-secrets")
     };
 
-    private static string FormatCurrency(decimal value) =>
-        value.ToString("C0", CultureInfo.CurrentCulture);
+    private string FormatAmount(long amount) =>
+        _summary?.SubMerchantSummaries.Select(row => row.Currency).Distinct(StringComparer.OrdinalIgnoreCase).ToArray() is { Length: 1 } currencies
+            ? FormatCurrency(amount, currencies[0])
+            : "By currency";
+
+    private static string FormatCurrency(long amount, string currency) =>
+        $"{currency} {(amount / 100m).ToString("N2", CultureInfo.GetCultureInfo("en-ZA"))}";
 
     private sealed class DailySummaryModel
     {
@@ -78,7 +92,6 @@ public partial class Home
                 .Where(item => (item.ApprovedCount + item.DeclinedCount + item.ReversedCount + item.RefundedCount) > 0)
                 .Select(item => new SubMerchantRow(
                     item.SubMerchantId,
-                    item.SubMerchantRrn,
                     item.Currency,
                     item.ApprovedCount,
                     item.ApprovedAmount,
@@ -89,7 +102,7 @@ public partial class Home
                     item.RefundedCount,
                     item.RefundedAmount))
                 .OrderByDescending(item => item.TotalAmount)
-                .ThenBy(item => item.SubMerchantRrn, StringComparer.Ordinal)
+                .ThenBy(item => item.SubMerchantId)
                 .ToList();
 
             return new DailySummaryModel
@@ -102,47 +115,37 @@ public partial class Home
 
     private sealed record SubMerchantRow(
         Guid SubMerchantId,
-        string SubMerchantRrn,
         string Currency,
         long ApprovedCount,
-        decimal ApprovedAmount,
+        long ApprovedAmount,
         long DeclinedCount,
-        decimal DeclinedAmount,
+        long DeclinedAmount,
         long ReversedCount,
-        decimal ReversedAmount,
+        long ReversedAmount,
         long RefundedCount,
-        decimal RefundedAmount)
+        long RefundedAmount)
     {
         public long TotalEvents => ApprovedCount + DeclinedCount + ReversedCount + RefundedCount;
-        public decimal TotalAmount => ApprovedAmount + DeclinedAmount + ReversedAmount + RefundedAmount;
-        public string TotalAmountDisplay => TotalAmount == 0 ? "-" : FormatCurrency(TotalAmount);
+        public long TotalAmount => ApprovedAmount + DeclinedAmount + ReversedAmount + RefundedAmount;
+        public string TotalAmountDisplay => TotalAmount == 0 ? "-" : FormatCurrency(TotalAmount, Currency);
     }
 
     private readonly record struct SummaryTotals(
         long ApprovedCount,
-        decimal ApprovedAmount,
+        long ApprovedAmount,
         long DeclinedCount,
-        decimal DeclinedAmount,
+        long DeclinedAmount,
         long ReversedCount,
-        decimal ReversedAmount,
+        long ReversedAmount,
         long RefundedCount,
-        decimal RefundedAmount)
+        long RefundedAmount)
     {
-        public static SummaryTotals Empty => new(0, 0m, 0, 0m, 0, 0m, 0, 0m);
+        public static SummaryTotals Empty => new(0, 0, 0, 0, 0, 0, 0, 0);
         public long EventCount => ApprovedCount + DeclinedCount + ReversedCount + RefundedCount;
-        public decimal TotalAmount => ApprovedAmount + DeclinedAmount + ReversedAmount + RefundedAmount;
+        public long TotalAmount => ApprovedAmount + DeclinedAmount + ReversedAmount + RefundedAmount;
     }
 
-    private sealed record HeroMetric(string Label, string CountDisplay, string AmountDisplay, string TagLine, string TestId, Color ChipColor)
-    {
-        public static IReadOnlyList<HeroMetric> Build(SummaryTotals totals) => new[]
-        {
-            new HeroMetric("Approved events", totals.ApprovedCount.ToString("N0"), FormatCurrency(totals.ApprovedAmount), "Consent secured", "stat-approved", Color.Success),
-            new HeroMetric("Declined events", totals.DeclinedCount.ToString("N0"), FormatCurrency(totals.DeclinedAmount), "Acquirer feedback", "stat-declined", Color.Error),
-            new HeroMetric("Reversals", totals.ReversedCount.ToString("N0"), FormatCurrency(totals.ReversedAmount), "Reconciliation", "stat-reversed", Color.Warning),
-            new HeroMetric("Refunds", totals.RefundedCount.ToString("N0"), FormatCurrency(totals.RefundedAmount), "Customer care", "stat-refunded", Color.Info)
-        };
-    }
+    private sealed record HeroMetric(string Label, string CountDisplay, string AmountDisplay, string TagLine, string TestId, Color ChipColor);
 
     private sealed record InfrastructureItem(string Title, string Description, string Status, string Footnote, Color ChipColor, string TestId);
 
@@ -155,13 +158,16 @@ public partial class Home
         public IReadOnlyList<SubMerchantDto> SubMerchantSummaries { get; init; } = Array.Empty<SubMerchantDto>();
     }
 
+    private sealed class MessageEnvelopeDto<T>
+    {
+        [JsonPropertyName("payload")]
+        public T? Payload { get; init; }
+    }
+
     private sealed class SubMerchantDto
     {
         [JsonPropertyName("subMerchantId")]
         public Guid SubMerchantId { get; init; }
-
-        [JsonPropertyName("subMerchantRrn")]
-        public string SubMerchantRrn { get; init; } = string.Empty;
 
         [JsonPropertyName("currency")]
         public string Currency { get; init; } = string.Empty;
@@ -170,24 +176,24 @@ public partial class Home
         public long ApprovedCount { get; init; }
 
         [JsonPropertyName("approvedAmount")]
-        public decimal ApprovedAmount { get; init; }
+        public long ApprovedAmount { get; init; }
 
         [JsonPropertyName("declinedCount")]
         public long DeclinedCount { get; init; }
 
         [JsonPropertyName("declinedAmount")]
-        public decimal DeclinedAmount { get; init; }
+        public long DeclinedAmount { get; init; }
 
         [JsonPropertyName("reversedCount")]
         public long ReversedCount { get; init; }
 
         [JsonPropertyName("reversedAmount")]
-        public decimal ReversedAmount { get; init; }
+        public long ReversedAmount { get; init; }
 
         [JsonPropertyName("refundedCount")]
         public long RefundedCount { get; init; }
 
         [JsonPropertyName("refundedAmount")]
-        public decimal RefundedAmount { get; init; }
+        public long RefundedAmount { get; init; }
     }
 }

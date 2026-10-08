@@ -28,7 +28,7 @@ namespace AcmeIntegreatedAssessement.Domain.Entities
 
         public string Rrn { get; set; }
 
-        public decimal Amount { get; set; }
+        public long Amount { get; set; }
 
         public DateTime OccurredAt { get; set; }
 

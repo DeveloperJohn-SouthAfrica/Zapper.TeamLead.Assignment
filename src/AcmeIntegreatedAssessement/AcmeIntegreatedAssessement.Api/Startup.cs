@@ -29,7 +29,8 @@ namespace AcmeIntegreatedAssessement.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(opt => opt.Filters.Add<ExceptionFilter>());
+            services.AddControllers(opt => opt.Filters.Add<ExceptionFilter>())
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddApplication(Configuration);
             services.ConfigureApplicationSecurity(Configuration);
             services.ConfigureHealthChecks(Configuration);

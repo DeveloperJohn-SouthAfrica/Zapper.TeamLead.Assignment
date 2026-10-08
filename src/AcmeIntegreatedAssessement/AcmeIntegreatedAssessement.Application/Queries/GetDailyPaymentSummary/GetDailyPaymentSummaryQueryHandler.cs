@@ -22,13 +22,12 @@ namespace AcmeIntegreatedAssessement.Application.Queries.GetDailyPaymentSummary
         {
             var rows = await _repository.GetDailySummaryAsync(request.ReportDate.ToDateTime(TimeOnly.MinValue), cancellationToken);
             var summaries = rows
-                .GroupBy(row => (row.SubMerchantId, row.SubMerchantRrn, row.Currency))
+                .GroupBy(row => (row.SubMerchantId, row.Currency))
                 .Select(group =>
                 {
                     var summary = new DailyPaymentSummarySubMerchant
                     {
                         SubMerchantId = group.Key.SubMerchantId,
-                        SubMerchantRrn = group.Key.SubMerchantRrn,
                         Currency = group.Key.Currency
                     };
                     foreach (var entry in group)

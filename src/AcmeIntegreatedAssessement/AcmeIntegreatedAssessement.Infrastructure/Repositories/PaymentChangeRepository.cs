@@ -31,7 +31,7 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
                     AddParameter(parameters, "@IsApproved", change.IsApproved, SqlDbType.Bit);
                     AddParameter(parameters, "@AcmeNotificationTransactionUuid", TryParseGuid(change.AcmeNotificationTransactionUuid), SqlDbType.UniqueIdentifier);
                     AddParameter(parameters, "@Rrn", change.Rrn, SqlDbType.NVarChar, 100);
-                    AddParameter(parameters, "@Amount", change.Amount, SqlDbType.Decimal, precision: 18, scale: 2);
+                    AddParameter(parameters, "@Amount", change.Amount, SqlDbType.BigInt);
                     AddParameter(parameters, "@OccurredAt", change.OccurredAt, SqlDbType.DateTime2);
                     AddParameter(parameters, "@CreatedBy", AuditActor.System, SqlDbType.NVarChar, 100);
                 },
