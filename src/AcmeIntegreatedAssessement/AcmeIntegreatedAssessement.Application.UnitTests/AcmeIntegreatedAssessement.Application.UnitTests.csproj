@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -20,6 +21,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcmeIntegreatedAssessement.Application\AcmeIntegreatedAssessement.Application.csproj" />
+    <ProjectReference Include="..\AcmeIntegreatedAssessement.Api\AcmeIntegreatedAssessement.Api.csproj" />
+    <ProjectReference Include="..\AcmePayStub\AcmePayStub.csproj" />
   </ItemGroup>
 
 </Project>
