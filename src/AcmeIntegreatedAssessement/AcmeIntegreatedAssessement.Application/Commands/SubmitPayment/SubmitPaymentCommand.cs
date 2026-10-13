@@ -11,7 +11,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
     public class SubmitPaymentCommand : IRequest, ICommand
     {
         public SubmitPaymentCommand(string appPaymentId,
-            decimal amount,
+            long amount,
             string currency,
             string zapperMerchantId,
             string customerId,
@@ -27,7 +27,7 @@ namespace AcmeIntegreatedAssessement.Application.Commands.SubmitPayment
         }
 
         public string AppPaymentId { get; set; }
-        public decimal Amount { get; set; }
+        public long Amount { get; set; }
         public string Currency { get; set; }
         public string ZapperMerchantId { get; set; }
         public string CustomerId { get; set; }

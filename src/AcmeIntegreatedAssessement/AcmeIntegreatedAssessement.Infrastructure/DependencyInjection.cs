@@ -9,6 +9,7 @@ using AcmeIntegreatedAssessement.Infrastructure.Persistence;
 using AcmeIntegreatedAssessement.Infrastructure.Repositories;
 using AcmeIntegreatedAssessement.Infrastructure.Services;
 using System;
+using System.Net.Http.Headers;
 using Finbuckle.MultiTenant;
 using Finbuckle.MultiTenant.Abstractions;
 using Intent.RoslynWeaver.Attributes;
@@ -65,17 +66,14 @@ namespace AcmeIntegreatedAssessement.Infrastructure
             services.AddTransient<IPaymentChangeRepository, PaymentChangeRepository>();
             services.AddTransient<INotificationDeliveryRepository, NotificationDeliveryRepository>();
             services.AddTransient<IDailyPaymentSummaryRepository, DailyPaymentSummaryRepository>();
-            // Acme Pay stub HTTP client configuration
             services.AddHttpClient<IAcmePayClient, AcmePayClient>(client =>
             {
-                var baseUrl = configuration["AcmePay:BaseUrl"] 
+                var baseUrl = configuration["ACME_PAY_BASE_URL"] ?? configuration["AcmePay:BaseUrl"]
                               ?? throw new InvalidOperationException("Configuration 'AcmePay:BaseUrl' is required");
                 client.BaseAddress = new Uri(baseUrl);
-                var apiKey = configuration["AcmePay:ApiKey"];
-                if (!string.IsNullOrWhiteSpace(apiKey))
-                {
-                    client.DefaultRequestHeaders.Add("x-api-key", apiKey);
-                }
+                var apiKey = configuration["ACME_PAY_API_KEY"] ?? configuration["AcmePay:ApiKey"]
+                    ?? throw new InvalidOperationException("Configuration 'AcmePay:ApiKey' is required");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
                 client.Timeout = TimeSpan.FromSeconds(configuration.GetValue("AcmePay:TimeoutSeconds", 30));
             });
             return services;

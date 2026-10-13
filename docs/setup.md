@@ -1,39 +1,27 @@
-## Platform prerequisites
+# Developer and AI-assisted workflow
 
-1. **Install nvm and Node 24**
-   ```bash
-   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
-   source "$HOME/.nvm/nvm.sh"
-   nvm install 24
-   node -v    # should read v24.21.0
-   npm -v     # should read 11.19.0
-   ```
+## Required development tools
 
-2. **Install Copilot CLI (BYOM/BYOK aware)**
-   ```bash
-   curl -fsSL https://gh.io/copilot-install | bash
-   ```
-   After installation, run `copilot` in this repo, use `/init`, and `exit` once initialization completes. Configure BYOM/BYOK credentials via `copilot config set cloud.byoKey <FILE>` or the dashboard-provided secret so that the CLI always uses our chosen model and avoids unbounded token usage.
+- .NET 8 SDK
+- Docker Engine or Docker Desktop with Docker Compose v2
+- Git
 
-3. **Optional tooling that keeps us agentic**
-   - **Astral UV package manager (Linux)**  
-     `curl -LsSf https://astral.sh/uv/install.sh | sh`
-   - **Graphify (for structure-aware diagrams)**  
-     `uv tool install graphifyy` (then run `graphifyy` from the repo as needed).
-   - **Context7 (context-first guidance for autocoding)**  
-     `npx ctx7 setup`
-   - **Impeccable (quality guardrails and visual QA)**  
-     `npm install -g impeccable` or add to devDependencies; run `impeccable scan` during reviews.
+Local service setup and commands are in [`../README.md`](../README.md). Node.js and Python tooling are not prerequisites for the .NET solution.
 
-## Tooling workflow notes
+## Repository context and AI guidance
 
-- **Copilot CLI** will be our primary agent. Keep it context aware by starting each session from this repo, pointing it at our BYOM/BYOK endpoint, and supplying only the files that describe the current focus.
-- **Graphify** lets us extract diagrams from structured prompts; use it to capture the DFD/ERD/Sequence drafts before they are committed into docs.
-- **Context7** steers the autopilot toward existing documentation—always seed its context with `setup.md`, `Zapper-Team-Lead-Assignment-Polished.md`, and `docs/analysis/*.md` so it grounds answers.
-- **Impeccable** runs infrequently but as a sanity check when touching UI or UX-related outputs (storyboards, instructions, or diagrams).
+- Start from the assignment specification in [`Zapper - Team_Lead Assignment.md`](Zapper%20-%20Team_Lead%20Assignment.md), then use [`../SOLUTION.md`](../SOLUTION.md) for implementation decisions and evidence boundaries.
+- Follow repository-specific guidance in [`../AGENTS.md`](../AGENTS.md), [`../.github/copilot-instructions.md`](../.github/copilot-instructions.md), and [`../.copilot/copilot-instructions.md`](../.copilot/copilot-instructions.md).
+- The Graphify skill under `.github/skills/graphify/` can map source dependencies before editing cross-cutting payment flows.
+- The Impeccable skill under `.github/skills/impeccable/` is for actual UI changes; respect the existing hook rather than adding duplicate visual checks.
+- If a Context7 MCP server is available in the agent environment, use it to verify external library behavior. Its availability is optional and should not be represented as a project runtime dependency.
 
-## Repository setup
+## Suggested task workflow
 
-1. `npm install` (if package files appear) or run the repo-specific bootstrap.
-2. Keep environment variables in a `.env.local` (excluded) and reference them via `process.env`.
-3. After tooling is ready, run `npx ctx7 validate` (if available) to check context captures before letting Copilot act.
+1. Read the relevant specification and follow the payment path from API to application handler, repository, stored procedure, and callback.
+2. Break work into a small acceptance-path change with explicit evidence.
+3. Keep exact Acme JSON and authentication conventions separate from app envelope conventions.
+4. Run the focused unit test, API/stub build, and local configuration checks for the changed path.
+5. Reconcile documentation with what was actually built and verified. Do not claim live sandbox, SQL integration, AWS, or hosted-video validation unless it was performed.
+
+The current remediation decisions and validation limitations are recorded in [`../ai/spec-compliance-remediation.md`](../ai/spec-compliance-remediation.md).

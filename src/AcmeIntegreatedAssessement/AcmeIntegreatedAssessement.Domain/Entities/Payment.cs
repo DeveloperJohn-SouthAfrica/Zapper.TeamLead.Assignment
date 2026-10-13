@@ -24,7 +24,7 @@ namespace AcmeIntegreatedAssessement.Domain.Entities
 
         public string AppPaymentId { get; set; }
 
-        public decimal Amount { get; set; }
+        public long Amount { get; set; }
 
         public string Currency { get; set; }
 

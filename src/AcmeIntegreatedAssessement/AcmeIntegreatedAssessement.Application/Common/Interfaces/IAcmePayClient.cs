@@ -1,19 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
+using AcmeIntegreatedAssessement.Application.Contracts;
 
 namespace AcmeIntegreatedAssessement.Application.Common.Interfaces
 {
     public interface IAcmePayClient
     {
-        /// <summary>
-        /// Submits a payment request to the Acme Pay stub.
-        /// </summary>
-        Task<string> SubmitPaymentAsync(string zapperMerchantId,
-                                        string subMerchantRrn,
-                                        string customerId,
-                                        decimal amount,
-                                        string currency,
-                                        string appPaymentId,
-                                        CancellationToken cancellationToken = default);
+        Task<AcmePaymentResult> SubmitPaymentAsync(AcmePaymentSubmission payment, CancellationToken cancellationToken = default);
+        Task<AcmePaymentResult?> QueryPaymentAsync(Guid transactionId, CancellationToken cancellationToken = default);
     }
 }

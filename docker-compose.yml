@@ -12,7 +12,12 @@ services:
       ConnectionStrings__RedisOmConnectionString: redis:6379,abortConnect=false
       Infrastructure__EnableRedis: "true"
       SecretsManager__Enabled: "false"
-      AcmePay__BaseUrl: ${ACME_PAY_BASE_URL:-https://sandbox.acmepay.example/}
+      ACME_PAY_BASE_URL: http://acme-pay-stub:8080/
+      ACME_PAY_API_KEY: ${ACME_PAY_API_KEY:-local-acme-pay-key}
+      ACME_PAY_MERCHANT_ID: ${ACME_PAY_MERCHANT_ID:-8B67BF88-BB8D-4EB5-ADFC-0F5C97C7ED67}
+      ACME_ADVICE_USERNAME: ${ACME_ADVICE_USERNAME:-local-advice-user}
+      ACME_ADVICE_PASSWORD: ${ACME_ADVICE_PASSWORD:-local-advice-password}
+      ACME_WEBHOOK_SECRET: ${ACME_WEBHOOK_SECRET:-local-webhook-secret-change-me}
       SSH_ROOT_PASSWORD: ${SSH_ROOT_PASSWORD:-ZapperSSH!}
     ports:
       - "127.0.0.1:8081:8081"
@@ -25,6 +30,28 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      acme-pay-stub:
+        condition: service_started
+
+  acme-pay-stub:
+    build:
+      context: ./src/AcmeIntegreatedAssessement
+      dockerfile: AcmePayStub/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ACME_PAY_MERCHANT_ID: ${ACME_PAY_MERCHANT_ID:-8B67BF88-BB8D-4EB5-ADFC-0F5C97C7ED67}
+      ACME_STUB_API_KEY: ${ACME_PAY_API_KEY:-local-acme-pay-key}
+      ACME_STUB_SCENARIO: ${ACME_STUB_SCENARIO:-approved}
+      ACME_STUB_CALLBACKS_ENABLED: ${ACME_STUB_CALLBACKS_ENABLED:-true}
+      ACME_ADVICE_CALLBACK_URL: ${ACME_ADVICE_CALLBACK_URL:-http://acme-web:8080/api/payments/acme/notifications/approved}
+      ACME_ADJUSTMENT_CALLBACK_URL: ${ACME_ADJUSTMENT_CALLBACK_URL:-http://acme-web:8080/api/payments/acme/notifications/reversal}
+      ACME_ADVICE_USERNAME: ${ACME_ADVICE_USERNAME:-local-advice-user}
+      ACME_ADVICE_PASSWORD: ${ACME_ADVICE_PASSWORD:-local-advice-password}
+      ACME_WEBHOOK_SECRET: ${ACME_WEBHOOK_SECRET:-local-webhook-secret-change-me}
+    ports:
+      - "127.0.0.1:${ACME_STUB_PORT:-8082}:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   sqlserver:
     build:

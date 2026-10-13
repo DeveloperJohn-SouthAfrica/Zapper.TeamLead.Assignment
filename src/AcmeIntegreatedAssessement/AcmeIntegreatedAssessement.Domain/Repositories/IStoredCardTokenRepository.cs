@@ -17,5 +17,6 @@ namespace AcmeIntegreatedAssessement.Domain.Repositories
         Task<StoredCardToken?> FindByIdAsync(Guid id, Func<IQueryable<StoredCardToken>, IQueryable<StoredCardToken>> queryOptions, CancellationToken cancellationToken = default);
         [IntentManaged(Mode.Fully)]
         Task<List<StoredCardToken>> FindByIdsAsync(Guid[] ids, CancellationToken cancellationToken = default);
+        Task<StoredCardToken?> GetByCustomerIdAsync(string customerId, CancellationToken cancellationToken = default);
     }
 }

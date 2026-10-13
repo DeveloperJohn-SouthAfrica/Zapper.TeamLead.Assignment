@@ -22,11 +22,11 @@ public class GetDailyPaymentSummaryQueryHandlerTests
         repositoryMock.Setup(repo => repo.GetDailySummaryAsync(It.IsAny<DateTime>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<DailyPaymentSummaryEntry>
             {
-                new(merchantA, "RRN-A", "ZAR", "Approved", 3, 300m),
-                new(merchantA, "RRN-A", "ZAR", "Declined", 1, 50m),
-                new(merchantA, "RRN-A", "ZAR", "Refunded", 1, 125m),
-                new(merchantB, "RRN-B", "USD", "Approved", 2, 420m),
-                new(merchantB, "RRN-B", "USD", "Reversed", 1, 75m)
+                new(merchantA, "ZAR", "Approved", 3, 300),
+                new(merchantA, "ZAR", "Declined", 1, 50),
+                new(merchantA, "ZAR", "Refunded", 1, 125),
+                new(merchantB, "USD", "Approved", 2, 420),
+                new(merchantB, "USD", "Reversed", 1, 75)
             });
 
         var handler = new GetDailyPaymentSummaryQueryHandler(repositoryMock.Object);
@@ -37,17 +37,17 @@ public class GetDailyPaymentSummaryQueryHandlerTests
         Assert.Equal(2, result.SubMerchantSummaries.Count);
         var summaryA = result.SubMerchantSummaries.Single(s => s.SubMerchantId == merchantA);
         Assert.Equal(3, summaryA.ApprovedCount);
-        Assert.Equal(300m, summaryA.ApprovedAmount);
+        Assert.Equal(300, summaryA.ApprovedAmount);
         Assert.Equal(1, summaryA.DeclinedCount);
-        Assert.Equal(50m, summaryA.DeclinedAmount);
+        Assert.Equal(50, summaryA.DeclinedAmount);
         Assert.Equal(1, summaryA.RefundedCount);
-        Assert.Equal(125m, summaryA.RefundedAmount);
+        Assert.Equal(125, summaryA.RefundedAmount);
 
         var summaryB = result.SubMerchantSummaries.Single(s => s.SubMerchantId == merchantB);
         Assert.Equal(2, summaryB.ApprovedCount);
-        Assert.Equal(420m, summaryB.ApprovedAmount);
+        Assert.Equal(420, summaryB.ApprovedAmount);
         Assert.Equal(1, summaryB.ReversedCount);
-        Assert.Equal(75m, summaryB.ReversedAmount);
+        Assert.Equal(75, summaryB.ReversedAmount);
     }
 
     [Fact]
@@ -58,7 +58,7 @@ public class GetDailyPaymentSummaryQueryHandlerTests
         repositoryMock.Setup(repo => repo.GetDailySummaryAsync(It.IsAny<DateTime>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<DailyPaymentSummaryEntry>
             {
-                new(merchant, "RRN-Z", "ZAR", "Unexpected", 5, 250m)
+                new(merchant, "ZAR", "Unexpected", 5, 250)
             });
 
         var handler = new GetDailyPaymentSummaryQueryHandler(repositoryMock.Object);

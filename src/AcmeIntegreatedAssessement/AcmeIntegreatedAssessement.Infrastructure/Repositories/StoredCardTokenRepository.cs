@@ -1,8 +1,10 @@
 using AcmeIntegreatedAssessement.Domain.Entities;
 using AcmeIntegreatedAssessement.Domain.Repositories;
 using AcmeIntegreatedAssessement.Infrastructure.Persistence;
+using AcmeIntegreatedAssessement.Infrastructure.Data;
 using AutoMapper;
 using Intent.RoslynWeaver.Attributes;
+using Microsoft.Data.SqlClient;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.EntityFrameworkCore.Repositories.Repository", Version = "1.0")]
@@ -12,8 +14,27 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class StoredCardTokenRepository : RepositoryBase<StoredCardToken, StoredCardToken, ApplicationDbContext>, IStoredCardTokenRepository
     {
-        public StoredCardTokenRepository(ApplicationDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        private readonly ISqlStoredProcedureInvoker _sqlInvoker;
+
+        public StoredCardTokenRepository(ApplicationDbContext dbContext, IMapper mapper, ISqlStoredProcedureInvoker sqlInvoker) : base(dbContext, mapper)
         {
+            _sqlInvoker = sqlInvoker;
+        }
+
+        public async Task<StoredCardToken?> GetByCustomerIdAsync(string customerId, CancellationToken cancellationToken = default)
+        {
+            return await _sqlInvoker.QuerySingleAsync(
+                "GetStoredCardTokenByCustomerId",
+                reader => new StoredCardToken
+                {
+                    Id = reader.GetGuid(reader.GetOrdinal("Id")),
+                    StoredCardTokenId = reader.GetString(reader.GetOrdinal("StoredCardTokenId")),
+                    AcmeToken = reader.GetString(reader.GetOrdinal("AcmeToken")),
+                    CustomerId = reader.GetString(reader.GetOrdinal("CustomerId")),
+                    CustomerEmail = reader.GetString(reader.GetOrdinal("CustomerEmail"))
+                },
+                parameters => parameters.Add("@CustomerId", System.Data.SqlDbType.NVarChar, 100).Value = customerId,
+                cancellationToken);
         }
 
         public async Task<TProjection?> FindByIdProjectToAsync<TProjection>(

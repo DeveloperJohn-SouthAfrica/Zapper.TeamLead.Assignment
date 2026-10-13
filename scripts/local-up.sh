@@ -31,6 +31,17 @@ export DEV_CERT_PASSWORD="${DEV_CERT_PASSWORD:-LocalDevOnly!ChangeMe}"
 export SQL_PORT="${SQL_PORT:-1433}"
 export REDIS_PORT="${REDIS_PORT:-6379}"
 export TARGET_DATABASE="${TARGET_DATABASE:-Payments}"
+export ACME_STUB_PORT="${ACME_STUB_PORT:-8082}"
+export ACME_PAY_MERCHANT_ID="${ACME_PAY_MERCHANT_ID:-8B67BF88-BB8D-4EB5-ADFC-0F5C97C7ED67}"
+export ACME_PAY_API_KEY="${ACME_PAY_API_KEY:-local-acme-pay-key}"
+export ACME_ADVICE_USERNAME="${ACME_ADVICE_USERNAME:-local-advice-user}"
+export ACME_ADVICE_PASSWORD="${ACME_ADVICE_PASSWORD:-local-advice-password}"
+export ACME_WEBHOOK_SECRET="${ACME_WEBHOOK_SECRET:-local-webhook-secret-change-me}"
+
+if [[ "$RUN_IN_COMPOSE" != true ]]; then
+    export ACME_ADVICE_CALLBACK_URL="${ACME_ADVICE_CALLBACK_URL:-http://host.docker.internal:8080/api/payments/acme/notifications/approved}"
+    export ACME_ADJUSTMENT_CALLBACK_URL="${ACME_ADJUSTMENT_CALLBACK_URL:-http://host.docker.internal:8080/api/payments/acme/notifications/reversal}"
+fi
 
 CERT_DIR="$ROOT_DIR/.local/https"
 CERT_PATH="$CERT_DIR/aspnetapp.pfx"
@@ -45,7 +56,7 @@ echo "Building the database project..."
 dotnet build "$DATABASE_PROJECT" -c Release
 
 echo "Starting SQL Server Developer and Redis..."
-docker compose -f "$COMPOSE_FILE" up -d --build --wait --wait-timeout 180 sqlserver redis
+docker compose -f "$COMPOSE_FILE" up -d --build --wait --wait-timeout 180 sqlserver redis acme-pay-stub
 
 DACPAC_PATH="$(find "$(dirname "$DATABASE_PROJECT")/bin" -name 'AcmeIntegreatedAssessement.Database.dacpac' -type f -print | sort | tail -n 1)"
 if [[ -z "$DACPAC_PATH" ]]; then
@@ -85,10 +96,16 @@ if docker compose -f "$COMPOSE_FILE" ps --services --status running | grep -Fxq 
     docker compose -f "$COMPOSE_FILE" stop acme-web
 fi
 
-echo "Starting the application at https://localhost:8081 (Ctrl+C stops the app; SQL Server and Redis remain running)..."
+echo "Starting the application at https://localhost:8081 (Ctrl+C stops the app; SQL Server, Redis, and the Acme stub remain running)..."
+ACME_PAY_BASE_URL="${ACME_PAY_BASE_URL:-http://localhost:$ACME_STUB_PORT/}"
 exec dotnet run \
     --project "$API_PROJECT" \
     --launch-profile AcmeIntegreatedAssessement.Api \
     -- \
     --ConnectionStrings:PaymentDatabase="Server=localhost,$SQL_PORT;Database=$TARGET_DATABASE;User Id=sa;Password=$SA_PASSWORD;Encrypt=True;TrustServerCertificate=True" \
-    --ConnectionStrings:RedisOmConnectionString="localhost:$REDIS_PORT,abortConnect=false"
+    --ConnectionStrings:RedisOmConnectionString="localhost:$REDIS_PORT,abortConnect=false" \
+    --AcmePay:BaseUrl="$ACME_PAY_BASE_URL" \
+    --ACME_PAY_MERCHANT_ID="$ACME_PAY_MERCHANT_ID" \
+    --ACME_ADVICE_USERNAME="$ACME_ADVICE_USERNAME" \
+    --ACME_ADVICE_PASSWORD="$ACME_ADVICE_PASSWORD" \
+    --ACME_WEBHOOK_SECRET="$ACME_WEBHOOK_SECRET"

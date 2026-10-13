@@ -34,7 +34,7 @@ namespace AcmeIntegreatedAssessement.Application.Contracts
         public bool IsApproved { get; init; }
         public Guid AcmeNotificationTransactionUuid { get; init; }
         public string Rrn { get; init; }
-        public decimal Amount { get; init; }
+        public long Amount { get; init; }
         public DateTimeOffset OccurredAt { get; init; }
         public string AppPaymentId { get; init; }
         public string RequestType { get; init; }

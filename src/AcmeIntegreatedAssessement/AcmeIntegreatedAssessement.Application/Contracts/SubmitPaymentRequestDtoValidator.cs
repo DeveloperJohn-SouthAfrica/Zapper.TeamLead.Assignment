@@ -28,19 +28,16 @@ namespace AcmeIntegreatedAssessement.Application.Contracts
                 .NotNull();
 
             RuleFor(v => v.CustomerId)
-                .NotNull();
+                .NotEmpty();
 
-            RuleFor(v => v.SubMerchantRrn)
-                .NotNull();
+            RuleFor(v => v.Amount)
+                .GreaterThan(0);
 
-            RuleFor(v => v.SubMerchantId)
-                .NotNull();
-
-            RuleFor(v => v.StoredCardToken)
-                .NotNull();
+            RuleFor(v => v.CardOnFileScenario)
+                .Must(value => value is "CIT" or "MIT");
 
             RuleFor(v => v.CurrencyCode)
-                .NotNull();
+                .Must(value => string.IsNullOrWhiteSpace(value) || value.Length == 3 && value.All(char.IsLetter));
         }
     }
 }

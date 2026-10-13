@@ -1,63 +1,164 @@
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using AcmeIntegreatedAssessement.Application.Common.Interfaces;
+using AcmeIntegreatedAssessement.Application.Contracts;
+using Microsoft.Extensions.Configuration;
 
 namespace AcmeIntegreatedAssessement.Infrastructure.Services
 {
-    /// <inheritdoc />
     public class AcmePayClient : IAcmePayClient
     {
-        private readonly HttpClient _httpClient;
+        private static readonly JsonSerializerOptions JsonOptions = new()
+        {
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = null
+        };
 
-        public AcmePayClient(HttpClient httpClient)
+        private readonly HttpClient _httpClient;
+        private readonly Guid _merchantId;
+
+        public AcmePayClient(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
+            _merchantId = Guid.TryParse(configuration["ACME_PAY_MERCHANT_ID"] ?? configuration["AcmePay:MerchantId"], out var merchantId)
+                ? merchantId
+                : throw new InvalidOperationException("Configuration 'AcmePay:MerchantId' must be a valid GUID.");
         }
 
-        public async Task<string> SubmitPaymentAsync(string zapperMerchantId,
-                                                     string subMerchantRrn,
-                                                     string customerId,
-                                                     decimal amount,
-                                                     string currency,
-                                                     string appPaymentId,
-                                                     CancellationToken cancellationToken = default)
+        public async Task<AcmePaymentResult> SubmitPaymentAsync(
+            AcmePaymentSubmission payment,
+            CancellationToken cancellationToken = default)
         {
-            var envelope = new
+            var paymentRequest = new
             {
-                MessageHeader = new
-                {
-                    MessageDateTime = DateTimeOffset.UtcNow.ToString("o"),
-                    MessageID = Guid.NewGuid(),
-                    Channel = "App"
-                },
-                PaymentRequest = new
-                {
-                    MerchantID = zapperMerchantId,
-                    SubMerchantID = subMerchantRrn,
-                    CardOnFileScenario = "CIT",
-                    StoredCardToken = customerId,
-                    Amount = (int)(amount * 100), // lowest monetary unit
-                    CurrencyCode = currency,
-                    AppPaymentID = appPaymentId
-                }
+                MerchantID = _merchantId,
+                TransactionID = payment.TransactionId,
+                payment.OrderNumber,
+                payment.Amount,
+                payment.CurrencyCode,
+                payment.PaymentService,
+                Card = new { Token = payment.CardToken },
+                payment.CardOnFileScenario,
+                SubMerchantID = payment.SubMerchantId,
+                payment.MerchantCategoryCode,
+                payment.CardAcceptorName,
+                payment.Email
             };
 
-            using var response = await _httpClient.PostAsJsonAsync("payments", envelope, cancellationToken);
-            response.EnsureSuccessStatusCode();
-
-            // Expecting Acme transaction UUID in response body as JSON: { "TransactionID": "..." }
-            using var contentStream = await response.Content.ReadAsStreamAsync(cancellationToken);
-            var doc = await JsonDocument.ParseAsync(contentStream, cancellationToken: cancellationToken);
-            if (doc.RootElement.TryGetProperty("TransactionID", out var tx))
+            for (var attempt = 0; ; attempt++)
             {
-                return tx.GetString()!;
+                var request = new
+                {
+                    MessageHeader = CreateHeader(),
+                    PaymentRequest = paymentRequest
+                };
+                using var response = await _httpClient.PostAsJsonAsync("/api/payment", request, JsonOptions, cancellationToken);
+                if (response.StatusCode == HttpStatusCode.TooManyRequests && attempt < 2)
+                {
+                    await Task.Delay(GetRetryDelay(response), cancellationToken);
+                    continue;
+                }
+
+                return await ReadResponseAsync(response, cancellationToken);
             }
-            throw new InvalidOperationException("Missing TransactionID in Acme Pay response");
+        }
+
+        public async Task<AcmePaymentResult?> QueryPaymentAsync(
+            Guid transactionId,
+            CancellationToken cancellationToken = default)
+        {
+            using var response = await _httpClient.GetAsync(
+                $"/apirttq/query/Merchant/{_merchantId:D}?TransactionID={Uri.EscapeDataString(transactionId.ToString("D"))}",
+                cancellationToken);
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+
+            return await ReadResponseAsync(response, cancellationToken);
+        }
+
+        private static object CreateHeader() => new
+        {
+            MessageDateTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(2)).ToString("yyyy-MM-dd'T'HH:mm:ss.fff"),
+            MessageID = Guid.NewGuid(),
+            Channel = "App"
+        };
+
+        private static TimeSpan GetRetryDelay(HttpResponseMessage response)
+        {
+            var retryAfter = response.Headers.RetryAfter;
+            if (retryAfter?.Delta is { } delta)
+            {
+                return delta > TimeSpan.Zero ? delta : TimeSpan.FromSeconds(1);
+            }
+
+            if (retryAfter?.Date is { } date)
+            {
+                var delay = date - DateTimeOffset.UtcNow;
+                return delay > TimeSpan.Zero ? delay : TimeSpan.FromSeconds(1);
+            }
+
+            return TimeSpan.FromSeconds(1);
+        }
+
+        private static async Task<AcmePaymentResult> ReadResponseAsync(
+            HttpResponseMessage response,
+            CancellationToken cancellationToken)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                PaymentEnvelope? errorEnvelope = null;
+                try
+                {
+                    errorEnvelope = await response.Content.ReadFromJsonAsync<PaymentEnvelope>(JsonOptions, cancellationToken);
+                }
+                catch (JsonException)
+                {
+                }
+
+                var error = errorEnvelope?.PaymentResponse?.ResponseDetail;
+                throw new HttpRequestException(
+                    $"Acme Pay returned HTTP {(int)response.StatusCode} ({error?.Code ?? "unknown"}): {error?.Description ?? response.ReasonPhrase}",
+                    null,
+                    response.StatusCode);
+            }
+
+            var envelope = await response.Content.ReadFromJsonAsync<PaymentEnvelope>(JsonOptions, cancellationToken)
+                ?? throw new InvalidOperationException("Acme Pay returned an empty response.");
+            var payment = envelope.PaymentResponse
+                ?? throw new InvalidOperationException("Acme Pay response did not contain PaymentResponse.");
+            if (!Guid.TryParse(payment.TransactionID, out var transactionId))
+            {
+                throw new InvalidOperationException("Acme Pay response did not contain a valid PaymentResponse.TransactionID.");
+            }
+
+            return new AcmePaymentResult(
+                transactionId,
+                payment.TransactionStatus ?? "Processing",
+                payment.ResponseDetail?.Code,
+                payment.ResponseDetail?.Description,
+                payment.AuthAmount);
+        }
+
+        private sealed class PaymentEnvelope
+        {
+            public PaymentResponse? PaymentResponse { get; init; }
+        }
+
+        private sealed class PaymentResponse
+        {
+            public string? TransactionID { get; init; }
+            public string? TransactionStatus { get; init; }
+            public ResponseDetail? ResponseDetail { get; init; }
+            public long? AuthAmount { get; init; }
+        }
+
+        private sealed class ResponseDetail
+        {
+            public string? Code { get; init; }
+            public string? Description { get; init; }
         }
     }
 }

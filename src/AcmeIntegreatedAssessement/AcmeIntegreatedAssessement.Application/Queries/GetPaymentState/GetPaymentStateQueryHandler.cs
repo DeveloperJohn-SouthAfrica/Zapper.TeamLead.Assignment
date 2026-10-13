@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AcmeIntegreatedAssessement.Application.Common.Interfaces;
-using AcmeIntegreatedAssessement.Domain.Entities;
+using AcmeIntegreatedAssessement.Application.Contracts;
 using Intent.RoslynWeaver.Attributes;
 using MediatR;
 
@@ -12,7 +12,7 @@ using MediatR;
 namespace AcmeIntegreatedAssessement.Application.Queries.GetPaymentState
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class GetPaymentStateQueryHandler : IRequestHandler<GetPaymentStateQuery, int>
+    public class GetPaymentStateQueryHandler : IRequestHandler<GetPaymentStateQuery, PaymentStateResponseDto>
     {
         private readonly IPaymentRepository _paymentRepository;
 
@@ -23,19 +23,17 @@ namespace AcmeIntegreatedAssessement.Application.Queries.GetPaymentState
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Merge)]
-        public async Task<int> Handle(GetPaymentStateQuery request, CancellationToken cancellationToken)
+        public async Task<PaymentStateResponseDto> Handle(GetPaymentStateQuery request, CancellationToken cancellationToken)
         {
             var payment = await _paymentRepository.GetByAppPaymentIdAsync(request.AppPaymentId, cancellationToken)
                 ?? throw new InvalidOperationException($"Payment '{request.AppPaymentId}' not found.");
 
-            return payment.Status switch
+            return new PaymentStateResponseDto
             {
-                "Pending" => 0,
-                "Approved" => 1,
-                "Declined" => 2,
-                "Reversed" => 3,
-                "Refunded" => 4,
-                _ => throw new InvalidOperationException($"Unknown payment status '{payment.Status}'")
+                AppPaymentId = payment.AppPaymentId,
+                Status = payment.Status,
+                Amount = payment.Amount,
+                Currency = payment.Currency
             };
         }
     }

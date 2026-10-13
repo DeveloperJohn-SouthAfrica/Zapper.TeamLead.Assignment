@@ -29,7 +29,8 @@ namespace AcmeIntegreatedAssessement.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(opt => opt.Filters.Add<ExceptionFilter>());
+            services.AddControllers(opt => opt.Filters.Add<ExceptionFilter>())
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddApplication(Configuration);
             services.ConfigureApplicationSecurity(Configuration);
             services.ConfigureHealthChecks(Configuration);
@@ -60,7 +61,9 @@ namespace AcmeIntegreatedAssessement.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSerilogRequestLogging();
-            app.UseHttpsRedirection();
+            app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/api/payments/acme/notifications"),
+                branch => branch.UseHttpsRedirection());
 
             if (!env.IsDevelopment())
             {

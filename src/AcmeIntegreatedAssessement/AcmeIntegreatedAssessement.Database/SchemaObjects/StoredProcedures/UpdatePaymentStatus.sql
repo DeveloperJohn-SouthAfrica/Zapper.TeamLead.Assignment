@@ -13,5 +13,6 @@ BEGIN
     SET [Status] = @StatusParam,
         [UpdatedAt] = SYSUTCDATETIME(),
         [UpdatedBy] = @UpdatedBy
-    WHERE [AppPaymentId] = @AppPaymentIdParam;
+    WHERE [AppPaymentId] = @AppPaymentIdParam
+      AND [Status] = 'Processing';
 END;

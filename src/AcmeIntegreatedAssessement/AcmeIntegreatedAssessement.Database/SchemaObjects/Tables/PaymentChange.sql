@@ -6,7 +6,7 @@ CREATE TABLE [dbo].[PaymentChange]
     [IsApproved] BIT NULL,
     [AcmeNotificationTransactionUuid] UNIQUEIDENTIFIER NULL,
     [Rrn] NVARCHAR(100) NULL,
-    [Amount] DECIMAL(18,2) NOT NULL,
+    [Amount] BIGINT NOT NULL,
     [OccurredAt] DATETIME2 NOT NULL,
     [PaymentId] UNIQUEIDENTIFIER NOT NULL CONSTRAINT FK_PaymentChange_Payment REFERENCES [dbo].[Payment](Id),
     [CreatedAt] DATETIME2 NOT NULL CONSTRAINT DF_PaymentChange_CreatedAt DEFAULT SYSUTCDATETIME(),

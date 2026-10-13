@@ -17,5 +17,6 @@ namespace AcmeIntegreatedAssessement.Domain.Repositories
         Task<SubMerchant?> FindByIdAsync(Guid id, Func<IQueryable<SubMerchant>, IQueryable<SubMerchant>> queryOptions, CancellationToken cancellationToken = default);
         [IntentManaged(Mode.Fully)]
         Task<List<SubMerchant>> FindByIdsAsync(Guid[] ids, CancellationToken cancellationToken = default);
+        Task<SubMerchant?> GetByZapperMerchantIdAsync(string zapperMerchantId, CancellationToken cancellationToken = default);
     }
 }

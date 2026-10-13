@@ -1,4 +1,5 @@
 using AcmeIntegreatedAssessement.Application.Common.Interfaces;
+using AcmeIntegreatedAssessement.Application.Contracts;
 using Intent.RoslynWeaver.Attributes;
 using MediatR;
 
@@ -7,7 +8,7 @@ using MediatR;
 
 namespace AcmeIntegreatedAssessement.Application.Queries.GetPaymentState
 {
-    public class GetPaymentStateQuery : IRequest<int>, IQuery
+    public class GetPaymentStateQuery : IRequest<PaymentStateResponseDto>, IQuery
     {
         public GetPaymentStateQuery(string appPaymentId)
         {

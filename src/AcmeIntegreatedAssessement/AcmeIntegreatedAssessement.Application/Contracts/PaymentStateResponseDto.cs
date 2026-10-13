@@ -16,7 +16,7 @@ namespace AcmeIntegreatedAssessement.Application.Contracts
 
         public string AppPaymentId { get; init; }
         public string Status { get; init; }
-        public decimal Amount { get; init; }
+        public long Amount { get; init; }
         public string Currency { get; init; }
     }
 }

@@ -35,15 +35,13 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Repositories
         private static DailyPaymentSummaryEntry Map(SqlDataReader reader)
         {
             var subMerchantId = reader.GetGuid(reader.GetOrdinal("SubMerchantId"));
-            var rrn = reader.GetString(reader.GetOrdinal("SubMerchantRrn"));
             var currency = reader.GetString(reader.GetOrdinal("Currency"));
             var eventType = reader.GetString(reader.GetOrdinal("EventType"));
             var eventCount = reader.GetInt64(reader.GetOrdinal("EventCount"));
-            var totalAmount = reader.GetDecimal(reader.GetOrdinal("TotalAmount"));
+            var totalAmount = reader.GetInt64(reader.GetOrdinal("TotalAmount"));
 
             return new DailyPaymentSummaryEntry(
                 subMerchantId,
-                rrn,
                 currency,
                 eventType,
                 eventCount,

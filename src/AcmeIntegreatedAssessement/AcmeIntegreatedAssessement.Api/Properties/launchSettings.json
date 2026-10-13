@@ -19,7 +19,12 @@
         "ConnectionStrings__PaymentDatabase": "Server=localhost,1433;Database=Payments;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=True;TrustServerCertificate=True",
         "ConnectionStrings__RedisOmConnectionString": "localhost:6379,abortConnect=false",
         "Infrastructure__EnableRedis": "true",
-        "AcmePay__BaseUrl": "https://sandbox.acmepay.example/"
+        "AcmePay__BaseUrl": "http://localhost:8082/",
+        "AcmePay__ApiKey": "local-acme-pay-key",
+        "ACME_PAY_MERCHANT_ID": "8B67BF88-BB8D-4EB5-ADFC-0F5C97C7ED67",
+        "ACME_ADVICE_USERNAME": "local-advice-user",
+        "ACME_ADVICE_PASSWORD": "local-advice-password",
+        "ACME_WEBHOOK_SECRET": "local-webhook-secret-change-me"
       }
     },
     "IIS Express": {

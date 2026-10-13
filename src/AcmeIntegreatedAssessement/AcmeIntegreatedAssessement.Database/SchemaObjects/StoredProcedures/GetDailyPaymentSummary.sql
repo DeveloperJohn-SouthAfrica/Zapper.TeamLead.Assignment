@@ -5,12 +5,11 @@ BEGIN
     SET NOCOUNT ON;
 
     DECLARE @ReportDateParam DATE = @ReportDate;
-    DECLARE @ReportStart DATETIME2 = DATEADD(DAY, DATEDIFF(DAY, 0, @ReportDateParam), 0);
+    DECLARE @ReportStart DATETIME2 = DATEADD(HOUR, -2, CONVERT(DATETIME2, @ReportDateParam));
     DECLARE @ReportEnd DATETIME2 = DATEADD(DAY, 1, @ReportStart);
 
     SELECT
         p.SubMerchantId,
-        p.SubMerchantRrn,
         p.Currency,
         pc.EventType,
         COUNT_BIG(*) AS EventCount,
@@ -20,5 +19,5 @@ BEGIN
     WHERE pc.OccurredAt >= @ReportStart
       AND pc.OccurredAt < @ReportEnd
       AND pc.EventType IN ('Approved','Declined','Reversed','Refunded')
-    GROUP BY p.SubMerchantId, p.SubMerchantRrn, p.Currency, pc.EventType;
+    GROUP BY p.SubMerchantId, p.Currency, pc.EventType;
 END;

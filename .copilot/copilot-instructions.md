@@ -4,7 +4,7 @@
 
  ## Key conventions
 
- **JSON envelope:** every request/response wraps payload in a `MessageHeader` with `MessageDateTime` (ISO 8601 UTC+02:00), `MessageID` (UUID) and `Channel` (`App`/`Web`/`POS`).
+ **JSON envelope:** app requests/responses and Acme payment/RTTQ messages wrap payloads in a `MessageHeader` with `MessageDateTime`, `MessageID` (UUID) and `Channel` (`App`/`Web`/`POS`). Preserve the exact flat JSON shape for Acme payment-advice and adjustment callbacks.
 
  **Field naming:** PascalCase for JSON fields; enums like `TransactionStatus` use exact values (Success, Failure, Reversed, Complete, Refunded); `CardOnFileScenario` values are CIT/MIT.
 
@@ -12,10 +12,10 @@
 
  **Sub-merchant facilitator fields:** `SubMerchantID`, `MerchantCategoryCode`, `CardAcceptorName` (fixed 40-char, space-padded with sub-fields at fixed positions).
 
- **Forward-compatibility:** ignore unrecognized fields in API responses.
+ **Forward-compatibility:** ignore unrecognized fields in Acme API responses.
 
  **Webhooks & notifications:** Basic auth for payment advice (`ACME_ADVICE_USERNAME`/`PASSWORD`), HMAC-SHA256 `x-signature` header for reversal/refund webhook (`ACME_WEBHOOK_SECRET`, Base64 of raw body), retry on non-200 responses.
 
  ## Deliverables & workflow
 
- Refer to `SOLUTION.md` for design trade-offs, AWS readiness and AI workflow. Commit `README.md` (local run instructions), `SOLUTION.md`, AI config files (e.g., `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/`) and `ai/` artifacts.
+ Refer to `SOLUTION.md` for design trade-offs, AWS readiness and AI workflow. Commit `README.md` (local run instructions), `SOLUTION.md`, AI config files (e.g., `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/`) and `ai/` artifacts. Local credentials in Compose/launch profiles are development placeholders only.

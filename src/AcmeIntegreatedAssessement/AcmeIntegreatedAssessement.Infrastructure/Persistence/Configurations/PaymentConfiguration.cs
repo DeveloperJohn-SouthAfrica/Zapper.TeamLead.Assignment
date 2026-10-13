@@ -21,6 +21,7 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Persistence.Configurations
                     .IsRequired();
 
             builder.Property(x => x.Amount)
+                    .HasColumnType("bigint")
                     .IsRequired();
 
             builder.Property(x => x.Currency)
@@ -68,6 +69,7 @@ namespace AcmeIntegreatedAssessement.Infrastructure.Persistence.Configurations
                     .IsRequired();
 
             builder.Property(x => x.Amount)
+                    .HasColumnType("bigint")
                     .IsRequired();
 
             builder.Property(x => x.OccurredAt)
